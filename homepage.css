@@ -1,8 +1,9 @@
 nav {
     background-color: #4CAF50;  /* Keep existing green */
     padding: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    
 }
 
 nav ul {
@@ -44,7 +45,7 @@ nav a:hover {
 }
 
 body {
-    color: #333333;  /* Soft black for better readability */
+    color: #000000;  /* Soft black for better readability */
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
@@ -57,17 +58,17 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 10px;
-    background-color: white;
+    padding: 0px;
+    background-color: rgb(255, 255, 255);
 }
 
 .content-box {
-    max-width: 700px;
-    background-color: white;
+    max-width: 1000px;
+    background-color: rgb(245, 245, 245);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(76, 175, 80, 0.1);  
-    border: 1px solid #e8f5e9;  
+    border: 1px solid #ffffff;  
 }
 
 p {
@@ -91,6 +92,7 @@ button, .button {
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: block;
 }
 
 button:hover, .button:hover {
@@ -110,10 +112,6 @@ a {
 
 a:hover {
     color: #2e7d32;
-}
-#MCC {
-    width: 560px;
-    height: 320px;
 }
 table {
   width: 100%;
@@ -141,4 +139,111 @@ table tr:nth-child(even) {
 table tr:hover {
   background-color: #dcedc8;
   transition: background-color 0.3s ease;
+}
+/* General Section Styling */
+section {
+  background-color: #f9fdf9;
+  padding: 3rem 2rem;
+  margin: 2rem auto;
+  max-width: 900px;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* Headings */
+section h2 {
+  font-size: 1.8rem;
+  color: #1f5133;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  border-left: 6px solid #4CAF50;
+  padding-left: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+/* Paragraph Text */
+section p {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+}
+
+/* Lists */
+section ul {
+  list-style: none;
+  padding: 0;
+}
+
+section ul li {
+  background: #eaf8ec;
+  margin: 0.5rem 0;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 12px;
+  color: #1b3b28;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+section ul li:hover {
+  background: #d8f5db;
+}
+
+/* Optional: add icons before each list item */
+section ul li::before {
+  content: "";
+  font-size: 1.1rem;
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: #4CAF50;
+  color: white;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: #43a047;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  section {
+    padding: 2rem 1.2rem;
+  }
+
+  section h2 {
+    font-size: 1.5rem;
+  }
+
+  section p,
+  section ul li {
+    font-size: 0.95rem;
+  }
+}
+body {
+  background: linear-gradient(to bottom right, #f2fff4, #e8f9ee);
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+.image1{
+  width: 400px;
+  length: 390px;
 }
