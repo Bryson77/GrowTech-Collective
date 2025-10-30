@@ -41,6 +41,19 @@ nav ul {
     gap: 1rem;
 }
 
+.brand a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    padding: 0;
+}
+
+.brand a:hover {
+    background: none;
+    transform: none;
+}
+
 .name {
     font-size: 1.3rem;
     color: white;
@@ -220,4 +233,30 @@ main ul li {
 .button:active, button:active {
     transform: translateY(1px);
     box-shadow: 0 2px 4px rgba(46, 125, 50, 0.1);
+}
+/* Button container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+}
+
+/* Update existing button styles */
+.button, button {
+    margin: 0 auto;
+    min-width: 200px;
+}
+
+@media (max-width: 768px) {
+    .button-container {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+    
+    .button, button {
+        width: 100%;
+        min-width: unset;
+    }
 }

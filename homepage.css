@@ -123,7 +123,7 @@ section:hover {
 }
 
 /* Buttons */
-.button {
+.button, button {
     background: linear-gradient(45deg, var(--primary-dark), var(--primary));
     color: white;
     padding: 0.8rem 1.6rem;
@@ -134,6 +134,8 @@ section:hover {
     transition: all 0.2s ease;
     text-decoration: none;
     display: inline-block;
+    margin: 0 auto;
+    min-width: 200px;
 }
 
 .button:hover {
@@ -145,8 +147,9 @@ section:hover {
 @media (max-width: 768px) {
     .center-container {
         padding: 0 1rem;
+        flex-direction: column;
+        gap: 0.8rem;
     }
-    
     .content-box {
         padding: 1.5rem;
     }
@@ -162,4 +165,13 @@ section:hover {
     nav ul {
         gap: 1rem;
     }
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+     width: 100%;
+    min-width: unset;
 }
