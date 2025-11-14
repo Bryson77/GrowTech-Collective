@@ -1,5 +1,5 @@
 nav {
-    background-color: #4CAF50;  /* Keep existing green */
+    background-color: #00a105;  /* Keep existing green */
     padding: 1rem;
     margin-bottom: 2rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -39,7 +39,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: #45a049;  /* Slightly lighter green */
+    background-color: #2fff36;  /* Slightly lighter green */
     border-radius: 6px;
 }
 
