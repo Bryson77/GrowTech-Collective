@@ -1,44 +1,275 @@
 <!DOCTYPE html>
-    <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="Stylesheet" href="aboutUs.css">
-             <script src="search.js" defer></script>
-            <title>Plant Specific</title>
-            <link rel="icon" href="..\static\images\finalogo.png" type="image/png">
-        </head>
-        <body>
-                <header>
-                    <nav>
-                        <ul>
-                            <li class="brand">
-                                <img src="..\static\images\finalogo.png" alt="Our Logo" class="nav-logo">
-                                <span class="name">GrowTech Collective</span>
-                            </li>
-                            <li><a href="..\..\index.html">Home</a></li>
-                            <li><a href="generalGardening.html">Gardening Guide</a></li>
-                            <li><a href="#">Plant Guides</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                        </ul>
-                    </nav>
-                </header>
-                <div class="center-container">
-                    <div class="content-box">
-                        <main>
-                        <h1>Not all plants are the same, look up the one you want to plant!</h1>
-                        <h2>Search Pages</h2>
-                        <input type="text" id="searchBox" placeholder="Type to search...">
-                        <ul id="results"></ul>
-                        <p>Did we miss one of your favourite fruit/Vegetable? Ask Tyler for advice!</p>
-                        <iframe
-                                src="https://www.chatbase.co/chatbot-iframe/uy3rgp2TERhZa8OWQ6Tv_"
-                                width="100%"
-                                style="height: 100%; min-height: 700px"
-                                frameborder="0"
-                            ></iframe>
-                        </main>
-                    </div>
-                </div>
-        </body>
-    </html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Styles.css">
+    <script src="search.js" defer></script>
+    <title>Plant Guides - GrowTech Collective</title>
+    <link rel="icon" href="../static/images/finalogo.png" type="image/png">
+    <style>
+        /* Plant Guides Specific Styles */
+        .plant-hero {
+            background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: -3rem -3rem 3rem -3rem;
+            border-radius: 0 0 20px 20px;
+            box-shadow: 0 4px 20px rgba(47, 133, 90, 0.2);
+        }
+
+        .plant-hero h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .plant-hero h1::before {
+            content: "🌿 ";
+        }
+
+        .plant-hero p {
+            color: rgba(255, 255, 255, 0.95);
+            font-size: 1.15rem;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Search Section */
+        .search-section {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e2e8f0;
+        }
+
+        .search-section h2 {
+            color: #2f855a;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .search-section h2::before {
+            content: "🔍 ";
+        }
+
+        #searchBox {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: #f7fafc;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        #searchBox:focus {
+            outline: none;
+            border-color: #2f855a;
+            background: white;
+            box-shadow: 0 4px 12px rgba(47, 133, 90, 0.15);
+        }
+
+        #searchBox::placeholder {
+            color: #a0aec0;
+        }
+
+        /* Results List */
+        #results {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+
+        #results li {
+            background: linear-gradient(135deg, #f7fafc 0%, #ffffff 100%);
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 0.75rem;
+            border-radius: 10px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            padding-left: 3.5rem;
+        }
+
+        #results li::before {
+            content: "🌱";
+            position: absolute;
+            left: 1.25rem;
+            font-size: 1.5rem;
+        }
+
+        #results li:hover {
+            transform: translateX(5px);
+            border-color: #9ae6b4;
+            box-shadow: 0 4px 12px rgba(47, 133, 90, 0.15);
+            background: linear-gradient(135deg, #f0fff4 0%, #ffffff 100%);
+        }
+
+        #results li a {
+            color: #2d3748;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.05rem;
+            display: block;
+        }
+
+        #results li:hover a {
+            color: #2f855a;
+        }
+
+        /* Empty state */
+        #results:empty::before {
+            content: "Start typing to search for plants...";
+            display: block;
+            text-align: center;
+            color: #a0aec0;
+            padding: 2rem;
+            font-style: italic;
+        }
+
+        /* AI Assistant Section */
+        .ai-helper-section {
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            margin-top: 3rem;
+            border: 2px solid #9ae6b4;
+        }
+
+        .ai-helper-section h2 {
+            color: #2f855a;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .ai-helper-section h2::before {
+            content: "🤖 ";
+        }
+
+        .ai-helper-section > p {
+            text-align: center;
+            color: #4a5568;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .ai-helper-section iframe {
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border: none;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #fff5f5 0%, #fffaf0 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 4px solid #f6ad55;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-box p {
+            margin: 0;
+            color: #744210;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .info-box p::before {
+            content: "💡 ";
+            font-size: 1.25rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .plant-hero {
+                padding: 2.5rem 1.5rem;
+                margin: -2rem -2rem 2rem -2rem;
+            }
+
+            .plant-hero h1 {
+                font-size: 2rem;
+            }
+
+            .search-section {
+                padding: 2rem 1.5rem;
+            }
+
+            #searchBox {
+                padding: 0.875rem 1.25rem;
+                font-size: 1rem;
+            }
+
+            #results li {
+                padding: 1rem 1.25rem;
+                padding-left: 3rem;
+            }
+
+            .ai-helper-section {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="brand">
+                <img src="../static/images/finalogo.png" alt="Our Logo" class="nav-logo">
+                <span class="name">GrowTech Collective</span>
+            </li>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="learningHub.html">Learning Hub</a></li>
+            <li><a href="plantspecific.html">Plant Guides</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="plant-hero">
+            <h1>Plant Guides</h1>
+            <p>Every plant has unique needs. Search for your plant to discover the best growing practices, care tips, and harvest information.</p>
+        </div>
+
+        <div class="content-box">
+            <!-- Search Section -->
+            <div class="search-section">
+                <h2>Find Your Plant</h2>
+                <input type="text" id="searchBox" placeholder="Search for tomatoes, spinach, carrots...">
+                <ul id="results"></ul>
+            </div>
+
+            <!-- Info Box -->
+            <div class="info-box">
+                <p>Can't find what you're looking for? Tyler, our AI assistant, can help with any plant-related questions!</p>
+            </div>
+
+            <!-- AI Assistant Section -->
+            <div class="ai-helper-section">
+                <h2>Ask Tyler</h2>
+                <p>Get personalized advice for your garden. Tyler knows about planting schedules, soil needs, pest control, and more!</p>
+                <iframe
+                    src="https://www.chatbase.co/chatbot-iframe/uy3rgp2TERhZa8OWQ6Tv_"
+                    width="100%"
+                    style="height: 700px; min-height: 700px"
+                    frameborder="0"
+                ></iframe>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

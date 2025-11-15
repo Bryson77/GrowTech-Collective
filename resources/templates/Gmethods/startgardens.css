@@ -1,5 +1,5 @@
 /* ============================================
-   GROWTECH COLLECTIVE - ABOUT US CSS
+   GROWTECH COLLECTIVE - LEARNING HUB CSS
    ============================================ */
 
 * {
@@ -75,7 +75,6 @@ nav a:hover {
     color: white;
 }
 
-
 /* ============================================
    MAIN CONTENT
    ============================================ */
@@ -85,16 +84,10 @@ main {
     padding: 3rem 2rem;
 }
 
-.content-box {
-    max-width: 1000px;
-    width: 100%;
-    margin: 0 auto;
-}
-
 /* ============================================
    HERO SECTION
    ============================================ */
-.about-hero {
+.learning-hero {
     background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
     color: white;
     padding: 4rem 2rem;
@@ -104,183 +97,158 @@ main {
     box-shadow: 0 4px 20px rgba(47, 133, 90, 0.2);
 }
 
-.about-hero h1 {
+.learning-hero h1 {
     color: white;
-    font-size: 2.75rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
     font-weight: 800;
     letter-spacing: -1px;
 }
 
-.about-hero h1::before {
-    content: "👋 ";
+.learning-hero p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
 }
 
 /* ============================================
-   LOGO
+   CONTENT BOX
    ============================================ */
-.mainLogo {
-    max-width: 250px;
-    margin: 2rem auto;
-    display: block;
-    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
-    border-radius: 8px;
+.content-box {
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
 }
 
 /* ============================================
-   MISSION STATEMENT
+   TOPIC CARDS
    ============================================ */
-.mission-statement {
-    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
-    padding: 2.5rem;
-    border-radius: 12px;
-    border-left: 4px solid #2f855a;
-    margin: 2rem 0;
-    box-shadow: 0 4px 12px rgba(47, 133, 90, 0.1);
-}
-
-.mission-statement p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #2d3748;
-    margin: 0;
-}
-
-/* ============================================
-   TEAM SECTION
-   ============================================ */
-.team-section {
+.topic-card {
     background: white;
-    padding: 2.5rem;
     border-radius: 12px;
-    margin: 3rem 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
     border: 1px solid #e2e8f0;
-}
-
-.team-section h2 {
-    color: #2f855a;
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
-    font-weight: 700;
-}
-
-.team-section h2::before {
-    content: "👥 ";
-}
-
-.team-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.team-member {
-    background: linear-gradient(135deg, #f7fafc 0%, #ffffff 100%);
-    padding: 1.5rem;
-    border-radius: 10px;
-    text-align: center;
-    border: 2px solid #e2e8f0;
     transition: all 0.3s ease;
 }
 
-.team-member:hover {
+.topic-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(47, 133, 90, 0.15);
-    border-color: #9ae6b4;
+    box-shadow: 0 10px 25px rgba(47, 133, 90, 0.15);
 }
 
-.team-member::before {
+.topic-card h2 {
+    color: #2f855a;
+    font-size: 1.875rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+}
+
+.topic-card h2::before {
     content: "🌱";
-    font-size: 2.5rem;
-    display: block;
-    margin-bottom: 0.75rem;
-}
-
-.team-member p {
-    color: #2d3748;
-    font-weight: 600;
-    font-size: 1.05rem;
-    margin: 0;
-}
-
-/* ============================================
-   WHAT WE OFFER SECTION
-   ============================================ */
-.offer-section {
-    background: linear-gradient(135deg, #ffffff 0%, #f0fff4 100%);
-    padding: 2.5rem;
-    border-radius: 12px;
-    margin: 3rem 0;
-    border: 1px solid #9ae6b4;
-}
-
-.offer-section h2 {
-    color: #2f855a;
     font-size: 2rem;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
 }
 
-.offer-section h2::before {
-    content: "✨ ";
-}
-
-.offer-section p {
-    font-size: 1.05rem;
-    line-height: 1.8;
+.topic-card p {
     color: #4a5568;
-    margin: 0;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+.topic-card .button {
+    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+    color: white;
+    padding: 0.75rem 1.75rem;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(47, 133, 90, 0.25);
+    cursor: pointer;
+}
+
+.topic-card .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(47, 133, 90, 0.35);
+}
+
+/* Alternate card backgrounds */
+.topic-card:nth-child(even) {
+    background: linear-gradient(135deg, #f0fff4 0%, #ffffff 100%);
 }
 
 /* ============================================
-   CONTACT FORM SECTION
+   SPECIFIC SECTION IDs
    ============================================ */
-.contact-section {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 12px;
-    margin: 3rem 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border: 2px solid #e2e8f0;
+#benefits h2::before {
+    content: "✨";
 }
 
-.contact-section h2 {
-    color: #2f855a;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
+#getting-started h2::before {
+    content: "🚀";
+}
+
+#methods h2::before {
+    content: "🌿";
+}
+
+#irrigation h2::before {
+    content: "💧";
+}
+
+#fertilizers h2::before {
+    content: "🌾";
+}
+
+#soil h2::before {
+    content: "🪴";
+}
+
+/* ============================================
+   AI ASSISTANT SECTION
+   ============================================ */
+.ai-section {
+    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    margin-top: 3rem;
+    border: 2px solid #9ae6b4;
+    box-shadow: 0 4px 16px rgba(47, 133, 90, 0.1);
+}
+
+.ai-section h1 {
     text-align: center;
-    font-weight: 700;
+    color: #2f855a;
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
 }
 
-.contact-section h2::before {
-    content: "📧 ";
+.ai-section h1::before {
+    content: "🤖 ";
 }
 
-.contact-section > p {
+.ai-section > p {
     text-align: center;
     color: #4a5568;
     margin-bottom: 2rem;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
 }
 
-.contact-form-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-}
-
-.contact-form-container iframe {
+.ai-section iframe {
     border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e2e8f0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border: none;
 }
 
 /* ============================================
@@ -342,10 +310,6 @@ a:hover {
         padding: 0.4rem 0.65rem;
         font-size: 0.88rem;
     }
-
-    .team-grid {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
 }
 
 @media (max-width: 768px) {
@@ -377,33 +341,37 @@ a:hover {
         padding: 2rem 1rem;
     }
 
-    .about-hero {
+    .learning-hero {
         padding: 2.5rem 1.5rem;
         margin: -2rem -1rem 2rem -1rem;
     }
 
-    .about-hero h1 {
+    .learning-hero h1 {
         font-size: 2rem;
     }
 
-    .mainLogo {
-        max-width: 180px;
+    .learning-hero p {
+        font-size: 1rem;
     }
 
-    .team-grid {
-        grid-template-columns: 1fr;
+    .topic-card {
+        padding: 2rem;
     }
 
-    .mission-statement,
-    .team-section,
-    .offer-section,
-    .contact-section {
+    .topic-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .topic-card p {
+        font-size: 1rem;
+    }
+
+    .ai-section {
         padding: 2rem 1.5rem;
     }
 
-    .contact-form-container iframe {
-        width: 100% !important;
-        max-width: 100%;
+    .ai-section h1 {
+        font-size: 1.875rem;
     }
 }
 
@@ -421,20 +389,62 @@ a:hover {
         height: 24px;
     }
 
-    .about-hero h1 {
-        font-size: 1.75rem;
-    }
-
-    .team-section h2,
-    .offer-section h2,
-    .contact-section h2 {
-        font-size: 1.5rem;
-    }
-
-    .mission-statement,
-    .team-section,
-    .offer-section,
-    .contact-section {
+    .topic-card {
         padding: 1.5rem;
     }
+
+    .topic-card h2 {
+        font-size: 1.35rem;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
+/* Modern Table with proper hierarchy */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2rem auto;
+    font-size: 0.9375rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e8f0e3;
+}
+
+table th, table td {
+    border: none;
+    border-bottom: 1px solid #e8f0e3;
+    padding: 1rem 1.25rem;
+    text-align: left;
+}
+
+table th {
+    background-color: #38a169;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+table tr {
+    transition: background-color 0.15s ease;
+}
+
+table tr:nth-child(even) {
+    background-color: #9bd69b;
+}
+
+table tr:hover {
+    background-color: #f1f5ee;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+table td {
+    color: #4a5546;
+}
+
