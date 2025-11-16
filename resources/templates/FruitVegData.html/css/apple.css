@@ -1,219 +1,446 @@
+/* ============================================
+   GROWTECH COLLECTIVE - APPLE PAGE CSS
+   Modern, clean design for plant-specific pages
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.6;
+    color: #2d3748;
+    background: linear-gradient(to bottom, #f7fafc 0%, #ffffff 100%);
+    min-height: 100vh;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
 nav {
-    background-color: #4CAF50;  /* Keep existing green */
-    padding: 1rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+    padding: 0.6rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(47, 133, 90, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 0.5rem;
     padding: 0;
-    display: flex;
-    justify-content: right;
-    gap: 1rem;
 }
-.brand{
+
+.brand {
     display: flex;
-    text-align: left;
+    align-items: center;
+    gap: 0.6rem;
 }
-.name{
+
+.nav-logo {
+    height: 35px;
+    width: auto;
+}
+
+.name {
     font-size: 1.3rem;
+    font-weight: 700;
     color: white;
-    font-weight: bold;
-    margin-right: 500px;  /* Pushes the name to the left */
+    letter-spacing: -0.5px;
 }
-.nav-logo{
-     height: 30px;
-    width: 60px;
-}
-nav li {
+
+nav li:not(.brand) {
     display: inline-block;
 }
 
 nav a {
     color: white;
     text-decoration: none;
-    padding: 0.5rem 1rem;
-    transition: all 0.3s ease;
+    padding: 0.5rem 0.9rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
 }
 
 nav a:hover {
-    background-color: #45a049;  /* Slightly lighter green */
-    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.15);
 }
 
-body {
-    color: #333333;  /* Soft black for better readability */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: #f8fff8;  /* Very light green tint */
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
 }
 
 .center-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 10px;
-    background-color: white;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .content-box {
-    max-width: 700px;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(76, 175, 80, 0.1);  /* Green tinted shadow */
-    border: 1px solid #e8f5e9;  /* Very light green border */
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+h1 {
+    font-size: 3rem;
+    color: #2f855a;
+    margin-bottom: 2rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.75rem;
+    color: #2f855a;
+    margin: 2.5rem 0 1rem;
+    font-weight: 700;
+    border-left: 4px solid #2f855a;
+    padding-left: 1rem;
+}
+
+h3 {
+    font-size: 1.3rem;
+    color: #2d3748;
+    margin: 1.5rem 0 0.75rem;
+    font-weight: 600;
 }
 
 p {
-    line-height: 1.6;
-    color: #333333;  /* Soft black */
+    font-size: 1.05rem;
+    color: #4a5568;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
 }
 
-strong {
-    font-size: 24px;
-    display: block;
-    margin-bottom: 20px;
-    color: #2e7d32;  /* Darker green for emphasis */
-}
-
-/* Add styles for buttons */
-button, .button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover, .button:hover {
-    background-color: #45a049;
-}
-
-/* Add styles for headings */
-h1, h2, h3 {
-    color: #2e7d32;  /* Darker green */
-}
-
-/* Add styles for links */
-a {
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #2e7d32;
-}
-.Apple1{
-    height: 350px;
-    width: 370px;
-}
-.calculator-section {
-    margin-top: 2rem;
-    padding: 1rem;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-}
-
-.input-group {
-    margin-bottom: 1rem;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #2e7d32;
-}
-
-.input-group input,
-.input-group select {
+/* ============================================
+   IMAGES
+   ============================================ */
+.Apple1 {
     width: 100%;
-    max-width: 300px;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
+    max-width: 600px;
+    height: auto;
+    border-radius: 12px;
+    margin: 2rem auto;
+    display: block;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-#results {
-    margin-top: 1rem;
-    padding: 1rem;
-    background-color: #e8f5e9;
-    border-radius: 4px;
+iframe {
+    width: 100%;
+    max-width: 700px;
+    height: 400px;
+    border-radius: 12px;
+    margin: 2rem auto;
+    display: block;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
-#calculateBtn {
-    margin-top: 1rem;
-    background-color: #4CAF50;
-    color: white;
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+/* ============================================
+   DISEASE & PEST SECTIONS
+   ============================================ */
+.disease-section, .pest-section {
+    background: linear-gradient(135deg, #fff5f5 0%, #fffaf0 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border-left: 4px solid #fc8181;
 }
 
-#calculateBtn:hover {
-    background-color: #45a049;
-}
-
-.garden-planner {
-    margin-top: 2rem;
+.disease-card, .pest-card {
+    background: white;
     padding: 1.5rem;
-    background-color: #f5f5f5;
+    border-radius: 10px;
+    margin: 1rem 0;
+    border: 2px solid #fed7d7;
+    transition: all 0.3s ease;
+}
+
+.disease-card:hover, .pest-card:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(252, 129, 129, 0.15);
+}
+
+.disease-card h3, .pest-card h3 {
+    color: #c53030;
+    margin-top: 0;
+}
+
+.symptoms {
+    color: #744210;
+    font-style: italic;
+    margin: 0.5rem 0;
+}
+
+.treatment {
+    background: #f0fff4;
+    padding: 1rem;
     border-radius: 8px;
-    border: 1px solid #4CAF50;
+    margin-top: 1rem;
+    border-left: 3px solid #2f855a;
+}
+
+.treatment strong {
+    color: #2f855a;
+}
+
+/* ============================================
+   FERTILIZER SECTION
+   ============================================ */
+.fertilizer-section {
+    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border-left: 4px solid #48bb78;
+}
+
+.fertilizer-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.fertilizer-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 2px solid #9ae6b4;
+    transition: all 0.3s ease;
+}
+
+.fertilizer-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(47, 133, 90, 0.15);
+}
+
+.fertilizer-card h4 {
+    color: #2f855a;
+    margin-top: 0;
+    font-size: 1.2rem;
+}
+
+.cost-badge {
+    display: inline-block;
+    background: #2f855a;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   GARDEN PLANNER
+   ============================================ */
+.garden-planner {
+    background: linear-gradient(135deg, #ebf8ff 0%, #e6fffa 100%);
+    padding: 2.5rem;
+    border-radius: 16px;
+    margin: 3rem 0;
+    border: 2px solid #4299e1;
+    box-shadow: 0 4px 20px rgba(66, 153, 225, 0.15);
+}
+
+.garden-planner h2 {
+    color: #2c5282;
+    border-left: 4px solid #4299e1;
+    margin-top: 0;
 }
 
 .input-group {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .input-group label {
     display: block;
+    color: #2d3748;
+    font-weight: 600;
     margin-bottom: 0.5rem;
-    color: #2e7d32;
-    font-weight: 500;
+    font-size: 1.05rem;
 }
 
 .input-group input,
 .input-group select {
     width: 100%;
-    max-width: 300px;
-    padding: 0.75rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: 0.875rem 1.25rem;
     font-size: 1rem;
+    border: 2px solid #bee3f8;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background: white;
+    font-family: inherit;
 }
 
-#gardenResults {
-    margin-top: 1.5rem;
-    padding: 1.25rem;
-    background-color: #e8f5e9;
-    border-radius: 4px;
-    border-left: 4px solid #4CAF50;
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 4px 12px rgba(66, 153, 225, 0.2);
 }
 
 #planGarden {
-    margin-top: 1.5rem;
-    background-color: #4CAF50;
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
     color: white;
-    padding: 0.75rem 1.5rem;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(66, 153, 225, 0.3);
+    display: block;
+    width: 100%;
+    margin-top: 1rem;
 }
 
 #planGarden:hover {
-    background-color: #45a049;
-    transform: scale(1.02);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(66, 153, 225, 0.4);
+}
+
+#gardenResults {
+    margin-top: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #bee3f8;
+}
+
+#gardenResults h3 {
+    color: #2c5282;
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+#gardenResults p {
+    margin: 0.75rem 0;
+}
+
+#gardenResults strong {
+    color: #2d3748;
+}
+
+#gardenResults ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#gardenResults li {
+    padding: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+#gardenResults li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #2f855a;
+    font-weight: bold;
+}
+
+.cost-breakdown {
+    background: #fffaf0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1rem 0;
+    border-left: 4px solid #f6ad55;
+}
+
+.cost-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #fed7aa;
+}
+
+.cost-item:last-child {
+    border-bottom: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #2f855a;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 2px solid #f6ad55;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .brand {
+        flex-basis: 100%;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+
+    main {
+        padding: 2rem 1rem;
+    }
+
+    .content-box {
+        padding: 2rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .garden-planner {
+        padding: 2rem 1.5rem;
+    }
+
+    .fertilizer-options {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-box {
+        padding: 1.5rem 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    iframe {
+        height: 250px;
+    }
 }

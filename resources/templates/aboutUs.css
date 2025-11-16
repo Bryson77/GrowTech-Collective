@@ -438,3 +438,99 @@ a:hover {
         padding: 1.5rem;
     }
 }
+/* ============================================
+   SITE FOOTER - FULLY UPDATED
+   ============================================ */
+.site-footer {
+    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+    color: white;
+    padding: 3rem 2rem 1rem;
+    font-size: 0.95rem;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    gap: 2rem;
+}
+
+.footer-section {
+    flex: 1 1 250px;
+}
+
+.footer-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #ffffff; /* White headings */
+}
+
+.footer-section p,
+.footer-section ul,
+.footer-section li {
+    color: #ffffff; /* White text for readability */
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #ffffff; /* White links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #f0fff4; /* Slightly lighter white on hover */
+}
+
+/* Footer Social Media */
+.footer-social-media {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.footer-social-media a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+    background: #ffffff; /* White circle */
+    color: #2f855a; /* Green icon */
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.footer-social-media a:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: #38a169; /* Green on hover */
+    color: #ffffff; /* Icon turns white on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    color: #ffffff; /* Full white copyright */
+    font-weight: 500; /* Slightly bolder for visibility */
+}
+#copy{
+    color: white;
+}

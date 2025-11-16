@@ -7,6 +7,7 @@
     <script src="calculator.js" defer></script>
     <title>Farmer's Calculator - GrowTech Collective</title>
     <link rel="icon" href="../../static/images/finalogo.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
     <nav>
@@ -16,9 +17,9 @@
                 <span class="name">GrowTech Collective</span>
             </li>
             <li><a href="../../index.html">Home</a></li>
-            <li><a href="learningHub.html">Learning Hub</a></li>
-            <li><a href="plantspecific.html">Plant Guides</a></li>
-            <li><a href="about.html">About Us</a></li>
+            <li><a href="../learningHub.html">Learning Hub</a></li>
+            <li><a href="../plantspecific.html">Plant Guides</a></li>
+            <li><a href="../about.html">About Us</a></li>
         </ul>
     </nav>
 
@@ -113,21 +114,10 @@
 
             <!-- Results Section -->
             <div id="resultsSection" class="results-section" style="display: none;">
-                <!-- Crop Name Header -->
-                <div class="crop-header">
-                    <h2 id="cropNameDisplay">--</h2>
-                    <p class="crop-subtitle">Financial & Operational Analysis</p>
+                <div class="crop-title-display">
+                    <h2 id="cropNameDisplay">Crop Analysis</h2>
                 </div>
 
-                <!-- Calculation Transparency Section -->
-                <div class="transparency-section">
-                    <h3>📋 How We Calculated This</h3>
-                    <div id="transparencyContent" class="transparency-content">
-                        <!-- Will be populated by JavaScript -->
-                    </div>
-                </div>
-
-                <!-- Results Grid - 6 Cards -->
                 <div class="results-grid">
                     <div class="result-card yield-card">
                         <div class="card-icon">🌾</div>
@@ -164,32 +154,26 @@
                         <p class="result-detail" id="waterDetail">--</p>
                     </div>
 
-                    <div class="result-card time-card">
+                    <div class="result-card growing-card">
                         <div class="card-icon">⏱️</div>
                         <h3>Growing Period</h3>
-                        <p class="result-value" id="timeResult">--</p>
-                        <p class="result-detail" id="timeDetail">--</p>
+                        <p class="result-value" id="growingResult">--</p>
                     </div>
                 </div>
 
+                <div class="calculation-transparency">
+                    <h3>🔍 Calculation Breakdown</h3>
+                    <div id="transparencyContent" class="transparency-content">--</div>
+                </div>
+
                 <div class="province-recommendation">
-                    <h3>🎯 Best Provinces for Your Crop</h3>
+                    <h3>🎯 Best Province for Your Crop</h3>
                     <div id="provinceResult" class="province-content">--</div>
                 </div>
 
                 <div class="ai-insights">
                     <h3>🤖 AI-Powered Insights</h3>
-                    <div class="insights-content insights-coming-soon">
-                        <p><strong>Coming Soon!</strong></p>
-                        <p>We're developing AI-powered personalized farming advice to help you optimize your operations. This feature will provide:</p>
-                        <ul>
-                            <li>Market trend analysis and price forecasting</li>
-                            <li>Risk assessment and mitigation strategies</li>
-                            <li>Yield optimization recommendations</li>
-                            <li>Seasonal timing and climate considerations</li>
-                        </ul>
-                        <p style="margin-top: 1rem;">In the meantime, feel free to ask Tyler below for personalized farming advice!</p>
-                    </div>
+                    <div id="aiInsights" class="insights-content">--</div>
                 </div>
 
                 <button id="recalculateBtn" class="secondary-btn">Calculate Another Crop</button>
@@ -213,5 +197,42 @@
             </div>
         </div>
     </main>
+    <!-- FOOTER -->
+                <footer class="site-footer">
+                    <div class="footer-container">
+                        <!-- About / Mission -->
+                        <div class="footer-section about-footer">
+                            <h3>GrowTech Collective</h3>
+                            <p>Empowering communities with sustainable food gardening and innovative technology. Join us in reducing food insecurity and creating opportunities for growth.</p>
+                        </div>
+
+                        <!-- Quick Links -->
+                        <div class="footer-section links-footer">
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="../../index.html">Home</a></li>
+                                <li><a href="learningHub.html">Learning Hub</a></li>
+                                <li><a href="plantspecific.html">Plant Guides</a></li>
+                                <li><a href="about.html">About Us</a></li>
+                            </ul>
+                        </div>
+
+                        <!-- Contact / Social Media -->
+                        <div class="footer-section contact-footer">
+                            <h3>Connect With Us</h3>
+                            <div class="footer-social-media">
+                                <a href="https://www.instagram.com/brysonn.iv" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.tiktok.com/@brysonn.iv" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                                <a href="brysonmabilo@icloud.com" title="Email"><i class="fas fa-envelope"></i></a>
+                                <a href="0694046138" title="Phone"><i class="fas fa-phone"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Copyright -->
+                    <div class="footer-bottom" id="copy">
+                        <p>&copy; 2025 GrowTech Collective. All rights reserved.</p>
+                    </div>
+                </footer>
 </body>
 </html>

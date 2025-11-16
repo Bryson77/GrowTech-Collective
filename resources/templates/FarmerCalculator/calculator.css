@@ -312,80 +312,32 @@ button[type="submit"]:disabled {
     }
 }
 
-/* ============================================
-   CROP NAME HEADER
-   ============================================ */
-.crop-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    padding: 2rem;
-    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
-    border-radius: 12px;
-    border: 2px solid #9ae6b4;
-}
-
-.crop-header h2 {
-    color: #2f855a;
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-
-.crop-subtitle {
-    color: #4a5568;
-    font-size: 1.1rem;
-    font-weight: 500;
-    margin: 0;
-}
-
-/* ============================================
-   TRANSPARENCY SECTION
-   ============================================ */
-.transparency-section {
-    background: linear-gradient(135deg, #fffaf0 0%, #fef5e7 100%);
+.crop-title-display {
+    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
     padding: 2rem;
     border-radius: 12px;
     margin-bottom: 2rem;
-    border-left: 4px solid #f6ad55;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(47, 133, 90, 0.2);
 }
 
-.transparency-section h3 {
+.crop-title-display h2 {
+    color: white !important;
+    font-size: 3.5rem;
+    margin: 0;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.results-section h2 {
     color: #2f855a;
-    font-size: 1.5rem;
-    margin-bottom: 1.25rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
     font-weight: 700;
 }
 
-.transparency-content {
-    color: #4a5568;
-    line-height: 1.8;
-    font-size: 1rem;
-}
-
-.transparency-content p {
-    margin-bottom: 0.75rem;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-.transparency-content p::before {
-    content: "▪";
-    position: absolute;
-    left: 0;
-    color: #2f855a;
-    font-weight: bold;
-}
-
-.transparency-content strong {
-    color: #2d3748;
-    font-weight: 600;
-}
-
-/* ============================================
-   RESULTS GRID - 6 CARDS
-   ============================================ */
 .results-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -431,7 +383,7 @@ button[type="submit"]:disabled {
     border-top: 4px solid #4299e1;
 }
 
-.time-card {
+.growing-card {
     border-top: 4px solid #9f7aea;
 }
 
@@ -472,6 +424,51 @@ button[type="submit"]:disabled {
 }
 
 /* ============================================
+   CALCULATION TRANSPARENCY
+   ============================================ */
+.calculation-transparency {
+    background: linear-gradient(135deg, #fffaf0 0%, #fef5e7 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border-left: 4px solid #f6ad55;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.calculation-transparency h3 {
+    color: #2f855a;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.transparency-content {
+    color: #4a5568;
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.transparency-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.transparency-content li {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.transparency-content li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #2f855a;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* ============================================
    PROVINCE RECOMMENDATION
    ============================================ */
 .province-recommendation {
@@ -497,7 +494,7 @@ button[type="submit"]:disabled {
 }
 
 /* ============================================
-   AI INSIGHTS - COMING SOON
+   AI INSIGHTS
    ============================================ */
 .ai-insights {
     background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
@@ -515,28 +512,10 @@ button[type="submit"]:disabled {
     font-weight: 700;
 }
 
-.insights-coming-soon {
+.insights-content {
     color: #4a5568;
     line-height: 1.8;
     font-size: 1.05rem;
-}
-
-.insights-coming-soon p {
-    margin-bottom: 1rem;
-}
-
-.insights-coming-soon strong {
-    color: #2f855a;
-    font-size: 1.1rem;
-}
-
-.insights-coming-soon ul {
-    margin: 1rem 0 1rem 2rem;
-    color: #4a5568;
-}
-
-.insights-coming-soon li {
-    margin-bottom: 0.5rem;
 }
 
 /* ============================================
@@ -617,7 +596,7 @@ button[type="submit"]:disabled {
     }
 
     .results-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 1rem;
     }
 }
@@ -668,12 +647,12 @@ button[type="submit"]:disabled {
         padding: 2rem 1.5rem;
     }
 
-    .crop-header h2 {
-        font-size: 2rem;
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .results-grid {
-        grid-template-columns: 1fr;
+    .crop-title-display h2 {
+        font-size: 2.25rem;
     }
 
     .ai-helper-section {
@@ -682,10 +661,6 @@ button[type="submit"]:disabled {
 
     .ai-helper-section h2 {
         font-size: 1.75rem;
-    }
-
-    .transparency-section {
-        padding: 1.5rem;
     }
 }
 
@@ -707,12 +682,9 @@ button[type="submit"]:disabled {
         font-size: 1.75rem;
     }
 
-    .calculator-section h2 {
+    .calculator-section h2,
+    .results-section h2 {
         font-size: 1.5rem;
-    }
-
-    .crop-header h2 {
-        font-size: 1.75rem;
     }
 
     button[type="submit"] {
@@ -724,7 +696,107 @@ button[type="submit"]:disabled {
         font-size: 1.5rem;
     }
 
-    .transparency-section h3 {
-        font-size: 1.25rem;
+    .results-grid {
+        grid-template-columns: 1fr;
     }
+
+    .crop-title-display h2 {
+        font-size: 1.75rem;
+    }
+}
+/* ============================================
+   SITE FOOTER - FULLY UPDATED
+   ============================================ */
+.site-footer {
+    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+    color: white;
+    padding: 3rem 2rem 1rem;
+    font-size: 0.95rem;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto 2rem;
+    gap: 2rem;
+}
+
+.footer-section {
+    flex: 1 1 250px;
+}
+
+.footer-section h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    color: #ffffff; /* White headings */
+}
+
+.footer-section p,
+.footer-section ul,
+.footer-section li {
+    color: #ffffff; /* White text for readability */
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #ffffff; /* White links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #f0fff4; /* Slightly lighter white on hover */
+}
+
+/* Footer Social Media */
+.footer-social-media {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.footer-social-media a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+    background: #ffffff; /* White circle */
+    color: #2f855a; /* Green icon */
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+}
+
+.footer-social-media a:hover {
+    transform: translateY(-5px) scale(1.1);
+    background: #38a169; /* Green on hover */
+    color: #ffffff; /* Icon turns white on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    text-align: center;
+    padding-top: 1rem;
+    font-size: 0.85rem;
+    color: #ffffff; /* Full white copyright */
+    font-weight: 500; /* Slightly bolder for visibility */
+}
+#copy{
+    color: white;
 }
