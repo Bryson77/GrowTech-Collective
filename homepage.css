@@ -236,6 +236,7 @@ button:active {
     nav ul {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 0.5rem;
     }
     
     .brand {
