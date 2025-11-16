@@ -1,69 +1,38 @@
-GrowTech Collective 🌱
+🌱 GrowTech Collective
 
-Your Smart Growing Companion
+Your Smart Growing Companion – A web platform built with HTML, CSS, and JavaScript to help communities, schools, and households grow food sustainably.
 
-GrowTech Collective is a web platform built with HTML, CSS, and JavaScript designed to help communities, schools, and households grow food sustainably. It provides intelligent guidance, practical lessons, and interactive tools to empower every grower to make confident decisions and achieve better harvests.
+🌐 Visit Website
 
 🚀 Features
-Learn the Right Way
-
-Master the essentials of gardening with simple, practical lessons.
-
-Covers soil preparation, watering, seasonal planning, and sustainable farming.
-
-Accessible inside the Learning Hub.
-
-Understand Your Plants
-
-Explore detailed plant guides with information on soil, water, sunlight, pests, growth stages, and harvesting.
-
-Guides are tailored to each crop for precise, localised advice.
-
-Plan Smarter
-
-Powerful calculators estimate crop yield, water usage, production costs, labor needs, and potential profit.
-
-Helps you make data-driven decisions for home gardens or larger farms.
-
-Plant Search
-
-Quickly find the plant you want to grow.
-
-Access its full guide and automatically calculate yield and water requirements based on your garden or farm size.
-
-Everything You Need to Grow Better
-
-Combines learning, planning, and practical decision-making in one platform.
-
-Supports sustainable practices while optimizing efficiency and productivity.
-
+Feature	Description
+Learn the Right Way	Practical lessons on soil prep, watering, seasonal planning, and sustainable gardening in the Learning Hub.
+Understand Your Plants	Detailed guides on soil, water, sunlight, pests, growth stages, and harvesting for each crop.
+Plan Smarter	Interactive calculators for yield, water usage, costs, labor needs, and potential profit.
+Plant Search	Quickly find plants and access their guides with automated calculations for your garden/farm.
+Sustainable & Practical	Combines learning, planning, and actionable guidance in one platform.
 🛠 Tech Stack
 
-HTML5 – Semantic structure and responsive layout.
 
-CSS3 – Gradients, flexbox/grid, animations, hover effects, and responsive design.
 
-JavaScript – Interactive calculators, dynamic navigation, and responsive behavior.
 
-🌐 Visit the Website
 
-GrowTech Collective
 
-📂 Project Structure (Optional)
-/templates      - HTML pages for content and methods
-/static/css     - Stylesheets (aboutUs.css, main.css, etc.)
-/static/js      - JavaScript files for calculators and interactivity
-/resources      - Images, data, and additional assets
+HTML5 – Semantic structure, responsive grids
+
+CSS3 – Gradients, flexbox/grid layouts, animations, hover effects
+
+JavaScript – Interactive calculators, dynamic navigation
+
+
 
 🤝 Contribute
 
-GrowTech Collective is an open platform for collaboration.
+Share ideas to improve sustainable gardening practices
 
-Share your ideas to improve sustainability practices.
+Add new plant guides or calculators
 
-Contribute new plant guides or calculators.
-
-Help us expand features and reach more communities.
+Help expand features to reach more communities
 
 📄 License
 
