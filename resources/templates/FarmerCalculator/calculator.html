@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="calculator.css">
+    <script src="calculator.js" defer></script>
+    <title>Farmer's Calculator - GrowTech Collective</title>
+    <link rel="icon" href="../../static/images/finalogo.png" type="image/png">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="brand">
+                <img src="../../static/images/finalogo.png" alt="Our Logo" class="nav-logo">
+                <span class="name">GrowTech Collective</span>
+            </li>
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="learningHub.html">Learning Hub</a></li>
+            <li><a href="plantspecific.html">Plant Guides</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <div class="plant-hero">
+            <h1>Farmer's Calculator</h1>
+            <p>Plan smarter, harvest better. Get instant insights on yield, costs, profits, and the best provinces for your crops—all backed by real South African agricultural data.</p>
+        </div>
+
+        <div class="content-box">
+            <!-- Calculator Form Section -->
+            <div class="calculator-section">
+                <h2>Calculate Your Farm's Potential</h2>
+                <p class="section-description">Select your crop and enter your farm size to receive detailed calculations on yield estimates, costs, water requirements, and profitability projections.</p>
+                
+                <form id="calculatorForm">
+                    <div class="form-group">
+                        <label for="cropSelect">Select Your Crop:</label>
+                        <select id="cropSelect" required>
+                            <option value="">-- Choose a Crop --</option>
+                            <optgroup label="High-Value Crops">
+                                <option value="macadamia">Macadamia Nuts</option>
+                                <option value="avocado">Avocados</option>
+                                <option value="blueberries">Blueberries</option>
+                            </optgroup>
+                            <optgroup label="Citrus Fruits">
+                                <option value="oranges">Oranges</option>
+                                <option value="lemons">Lemons</option>
+                                <option value="grapefruit">Grapefruit</option>
+                            </optgroup>
+                            <optgroup label="Table & Wine Grapes">
+                                <option value="table_grapes">Table Grapes</option>
+                                <option value="wine_grapes">Wine Grapes</option>
+                            </optgroup>
+                            <optgroup label="Field Crops">
+                                <option value="maize">Maize</option>
+                                <option value="soybeans">Soybeans</option>
+                                <option value="sunflower">Sunflower</option>
+                                <option value="wheat">Wheat</option>
+                                <option value="sorghum">Sorghum</option>
+                                <option value="groundnuts">Groundnuts</option>
+                            </optgroup>
+                            <optgroup label="Vegetables">
+                                <option value="tomatoes">Tomatoes</option>
+                                <option value="potatoes">Potatoes</option>
+                                <option value="onions">Onions</option>
+                                <option value="cabbage">Cabbage</option>
+                                <option value="carrots">Carrots</option>
+                                <option value="lettuce">Lettuce</option>
+                                <option value="peppers">Peppers</option>
+                            </optgroup>
+                            <optgroup label="Deciduous Fruits">
+                                <option value="apples">Apples</option>
+                                <option value="pears">Pears</option>
+                                <option value="peaches">Peaches</option>
+                                <option value="plums">Plums</option>
+                            </optgroup>
+                            <optgroup label="Tropical Fruits">
+                                <option value="mangoes">Mangoes</option>
+                                <option value="bananas">Bananas</option>
+                                <option value="pineapples">Pineapples</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hectares">Farm Size (Hectares):</label>
+                        <input 
+                            type="number" 
+                            id="hectares" 
+                            min="0.1" 
+                            step="0.1" 
+                            placeholder="e.g., 10.5"
+                            required
+                        >
+                        <small>Enter the size of your farm in hectares (1 hectare = 10,000 m²)</small>
+                    </div>
+
+                    <button type="submit" id="calculateBtn">
+                        <span class="btn-text">Calculate Now</span>
+                        <span class="btn-icon">📊</span>
+                    </button>
+                </form>
+
+                <!-- Loading State -->
+                <div id="loadingState" class="loading-state" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Analyzing your farm data...</p>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <!-- Crop Name Header -->
+                <div class="crop-header">
+                    <h2 id="cropNameDisplay">--</h2>
+                    <p class="crop-subtitle">Financial & Operational Analysis</p>
+                </div>
+
+                <!-- Calculation Transparency Section -->
+                <div class="transparency-section">
+                    <h3>📋 How We Calculated This</h3>
+                    <div id="transparencyContent" class="transparency-content">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Results Grid - 6 Cards -->
+                <div class="results-grid">
+                    <div class="result-card yield-card">
+                        <div class="card-icon">🌾</div>
+                        <h3>Estimated Yield</h3>
+                        <p class="result-value" id="yieldResult">--</p>
+                        <p class="result-detail" id="yieldDetail">--</p>
+                    </div>
+
+                    <div class="result-card revenue-card">
+                        <div class="card-icon">💵</div>
+                        <h3>Revenue Potential</h3>
+                        <p class="result-value" id="revenueResult">--</p>
+                        <p class="result-detail" id="revenueDetail">--</p>
+                    </div>
+
+                    <div class="result-card cost-card">
+                        <div class="card-icon">💰</div>
+                        <h3>Total Costs</h3>
+                        <p class="result-value" id="costResult">--</p>
+                        <div class="cost-breakdown" id="costBreakdown">--</div>
+                    </div>
+
+                    <div class="result-card profit-card">
+                        <div class="card-icon">📈</div>
+                        <h3>Projected Profit</h3>
+                        <p class="result-value profit-highlight" id="profitResult">--</p>
+                        <p class="result-detail" id="profitDetail">--</p>
+                    </div>
+
+                    <div class="result-card water-card">
+                        <div class="card-icon">💧</div>
+                        <h3>Water Requirements</h3>
+                        <p class="result-value" id="waterResult">--</p>
+                        <p class="result-detail" id="waterDetail">--</p>
+                    </div>
+
+                    <div class="result-card time-card">
+                        <div class="card-icon">⏱️</div>
+                        <h3>Growing Period</h3>
+                        <p class="result-value" id="timeResult">--</p>
+                        <p class="result-detail" id="timeDetail">--</p>
+                    </div>
+                </div>
+
+                <div class="province-recommendation">
+                    <h3>🎯 Best Provinces for Your Crop</h3>
+                    <div id="provinceResult" class="province-content">--</div>
+                </div>
+
+                <div class="ai-insights">
+                    <h3>🤖 AI-Powered Insights</h3>
+                    <div class="insights-content insights-coming-soon">
+                        <p><strong>Coming Soon!</strong></p>
+                        <p>We're developing AI-powered personalized farming advice to help you optimize your operations. This feature will provide:</p>
+                        <ul>
+                            <li>Market trend analysis and price forecasting</li>
+                            <li>Risk assessment and mitigation strategies</li>
+                            <li>Yield optimization recommendations</li>
+                            <li>Seasonal timing and climate considerations</li>
+                        </ul>
+                        <p style="margin-top: 1rem;">In the meantime, feel free to ask Tyler below for personalized farming advice!</p>
+                    </div>
+                </div>
+
+                <button id="recalculateBtn" class="secondary-btn">Calculate Another Crop</button>
+            </div>
+
+            <!-- Info Box -->
+            <div class="info-box">
+                <p>All calculations are based on verified data from GrainSA, DAFF, and industry experts. Results may vary based on local conditions, management practices, and market fluctuations.</p>
+            </div>
+
+            <!-- AI Assistant Section -->
+            <div class="ai-helper-section">
+                <h2>Ask Tyler</h2>
+                <p>Have questions about your results? Tyler can help you understand the calculations and provide personalized farming advice!</p>
+                <iframe
+                    src="https://www.chatbase.co/chatbot-iframe/uy3rgp2TERhZa8OWQ6Tv_"
+                    width="100%"
+                    style="height: 700px; min-height: 700px"
+                    frameborder="0"
+                ></iframe>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

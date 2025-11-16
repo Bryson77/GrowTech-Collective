@@ -1,0 +1,730 @@
+/* ============================================
+   GROWTECH COLLECTIVE - FARMER'S CALCULATOR CSS
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.6;
+    color: #2d3748;
+    background: linear-gradient(to bottom, #f7fafc 0%, #ffffff 100%);
+    min-height: 100vh;
+}
+
+/* ============================================
+   STICKY NAVIGATION
+   ============================================ */
+nav {
+    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+    padding: 0.6rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(47, 133, 90, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 0.5rem;
+    padding: 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.nav-logo {
+    height: 35px;
+    width: auto;
+}
+
+.name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.5px;
+}
+
+nav li:not(.brand) {
+    display: inline-block;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 0.9rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+.content-box {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+.plant-hero {
+    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin: -3rem -2rem 3rem -2rem;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 20px rgba(47, 133, 90, 0.2);
+}
+
+.plant-hero h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.plant-hero h1::before {
+    content: "🧮 ";
+}
+
+.plant-hero p {
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.15rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* ============================================
+   CALCULATOR SECTION
+   ============================================ */
+.calculator-section {
+    background: white;
+    padding: 3rem;
+    border-radius: 16px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e2e8f0;
+}
+
+.calculator-section h2 {
+    color: #2f855a;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.section-description {
+    text-align: center;
+    color: #4a5568;
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+}
+
+/* ============================================
+   FORM STYLES
+   ============================================ */
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    color: #2d3748;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+}
+
+.form-group select,
+.form-group input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    font-size: 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background: #f7fafc;
+    font-family: inherit;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    outline: none;
+    border-color: #2f855a;
+    background: white;
+    box-shadow: 0 4px 12px rgba(47, 133, 90, 0.15);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 0.5rem;
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.form-group optgroup {
+    font-weight: 600;
+    color: #2f855a;
+}
+
+.form-group option {
+    padding: 0.5rem;
+}
+
+/* ============================================
+   BUTTON STYLES
+   ============================================ */
+button[type="submit"] {
+    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+    color: white;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(47, 133, 90, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 2rem auto 0;
+    width: 100%;
+    max-width: 300px;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(47, 133, 90, 0.35);
+}
+
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-icon {
+    font-size: 1.3rem;
+}
+
+.secondary-btn {
+    background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+    color: white;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(66, 153, 225, 0.25);
+    display: block;
+    margin: 2rem auto 0;
+}
+
+.secondary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(66, 153, 225, 0.35);
+}
+
+/* ============================================
+   LOADING STATE
+   ============================================ */
+.loading-state {
+    text-align: center;
+    padding: 3rem;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #e2e8f0;
+    border-top: 4px solid #2f855a;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-state p {
+    color: #4a5568;
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* ============================================
+   RESULTS SECTION
+   ============================================ */
+.results-section {
+    margin-top: 3rem;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   CROP NAME HEADER
+   ============================================ */
+.crop-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+    border-radius: 12px;
+    border: 2px solid #9ae6b4;
+}
+
+.crop-header h2 {
+    color: #2f855a;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.crop-subtitle {
+    color: #4a5568;
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* ============================================
+   TRANSPARENCY SECTION
+   ============================================ */
+.transparency-section {
+    background: linear-gradient(135deg, #fffaf0 0%, #fef5e7 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    border-left: 4px solid #f6ad55;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.transparency-section h3 {
+    color: #2f855a;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+}
+
+.transparency-content {
+    color: #4a5568;
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+.transparency-content p {
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.transparency-content p::before {
+    content: "▪";
+    position: absolute;
+    left: 0;
+    color: #2f855a;
+    font-weight: bold;
+}
+
+.transparency-content strong {
+    color: #2d3748;
+    font-weight: 600;
+}
+
+/* ============================================
+   RESULTS GRID - 6 CARDS
+   ============================================ */
+.results-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+/* ============================================
+   RESULT CARDS
+   ============================================ */
+.result-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 2px solid #e2e8f0;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.yield-card {
+    border-top: 4px solid #f6ad55;
+}
+
+.revenue-card {
+    border-top: 4px solid #48bb78;
+}
+
+.cost-card {
+    border-top: 4px solid #fc8181;
+}
+
+.profit-card {
+    border-top: 4px solid #2f855a;
+}
+
+.water-card {
+    border-top: 4px solid #4299e1;
+}
+
+.time-card {
+    border-top: 4px solid #9f7aea;
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-card h3 {
+    color: #2d3748;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.result-value {
+    color: #2f855a;
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.profit-highlight {
+    color: #2f855a;
+}
+
+.result-detail {
+    color: #718096;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+}
+
+.cost-breakdown {
+    color: #4a5568;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    line-height: 1.6;
+}
+
+/* ============================================
+   PROVINCE RECOMMENDATION
+   ============================================ */
+.province-recommendation {
+    background: linear-gradient(135deg, #fff5f5 0%, #fffaf0 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border-left: 4px solid #f6ad55;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.province-recommendation h3 {
+    color: #2f855a;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.province-content {
+    color: #4a5568;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+/* ============================================
+   AI INSIGHTS - COMING SOON
+   ============================================ */
+.ai-insights {
+    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    border: 2px solid #9ae6b4;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.ai-insights h3 {
+    color: #2f855a;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.insights-coming-soon {
+    color: #4a5568;
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.insights-coming-soon p {
+    margin-bottom: 1rem;
+}
+
+.insights-coming-soon strong {
+    color: #2f855a;
+    font-size: 1.1rem;
+}
+
+.insights-coming-soon ul {
+    margin: 1rem 0 1rem 2rem;
+    color: #4a5568;
+}
+
+.insights-coming-soon li {
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   INFO BOX
+   ============================================ */
+.info-box {
+    background: linear-gradient(135deg, #fff5f5 0%, #fffaf0 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 2rem 0;
+    border-left: 4px solid #f6ad55;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.info-box p {
+    margin: 0;
+    color: #744210;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.info-box p::before {
+    content: "💡 ";
+    font-size: 1.25rem;
+}
+
+/* ============================================
+   AI ASSISTANT SECTION
+   ============================================ */
+.ai-helper-section {
+    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+    padding: 3rem 2rem;
+    border-radius: 16px;
+    margin-top: 3rem;
+    border: 2px solid #9ae6b4;
+}
+
+.ai-helper-section h2 {
+    color: #2f855a;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.ai-helper-section h2::before {
+    content: "🤖 ";
+}
+
+.ai-helper-section > p {
+    text-align: center;
+    color: #4a5568;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.ai-helper-section iframe {
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border: none;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 992px) {
+    nav ul {
+        gap: 0.4rem;
+    }
+    
+    .name {
+        font-size: 1.2rem;
+    }
+    
+    nav a {
+        padding: 0.45rem 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    nav {
+        padding: 0.6rem 1rem;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .brand {
+        flex-basis: 100%;
+        justify-content: center;
+        margin-bottom: 0.5rem;
+    }
+    
+    .nav-logo {
+        height: 30px;
+    }
+    
+    .name {
+        font-size: 1.1rem;
+    }
+
+    main {
+        padding: 2rem 1rem;
+    }
+
+    .plant-hero {
+        padding: 2.5rem 1.5rem;
+        margin: -2rem -1rem 2rem -1rem;
+    }
+
+    .plant-hero h1 {
+        font-size: 2rem;
+    }
+
+    .plant-hero p {
+        font-size: 1rem;
+    }
+
+    .calculator-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .crop-header h2 {
+        font-size: 2rem;
+    }
+
+    .results-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ai-helper-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .ai-helper-section h2 {
+        font-size: 1.75rem;
+    }
+
+    .transparency-section {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav a {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.85rem;
+    }
+    
+    .name {
+        font-size: 1rem;
+    }
+    
+    .nav-logo {
+        height: 28px;
+    }
+
+    .plant-hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .calculator-section h2 {
+        font-size: 1.5rem;
+    }
+
+    .crop-header h2 {
+        font-size: 1.75rem;
+    }
+
+    button[type="submit"] {
+        font-size: 1rem;
+        padding: 0.875rem 2rem;
+    }
+
+    .result-value {
+        font-size: 1.5rem;
+    }
+
+    .transparency-section h3 {
+        font-size: 1.25rem;
+    }
+}
