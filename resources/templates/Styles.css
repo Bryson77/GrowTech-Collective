@@ -17,7 +17,7 @@ body {
 }
 
 /* ============================================
-   STICKY NAVIGATION - HOMEPAGE SIZE
+   STICKY NAVIGATION - CONSISTENT SIZE
    ============================================ */
 nav {
     background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
@@ -289,6 +289,66 @@ main {
 }
 
 /* ============================================
+   FARMER'S CALCULATOR SECTION
+   ============================================ */
+.FarmerCalculator {
+    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+    padding: 2.5rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 2px solid #9ae6b4;
+}
+
+.FarmerCalculator h2 {
+    color: #2f855a;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.FarmerCalculator h2::before {
+    content: "🧮 ";
+}
+
+.FarmerCalculator p {
+    color: #4a5568;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    text-align: center;
+    margin: 0;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+button {
+    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+    color: white;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(47, 133, 90, 0.25);
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(47, 133, 90, 0.35);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* ============================================
    TYPOGRAPHY
    ============================================ */
 h1 {
@@ -340,18 +400,18 @@ a:hover {
     }
     
     .name {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
     }
     
     nav a {
-        padding: 0.45rem 0.75rem;
-        font-size: 0.9rem;
+        padding: 0.4rem 0.65rem;
+        font-size: 0.88rem;
     }
 }
 
 @media (max-width: 768px) {
     nav {
-        padding: 0.6rem 1rem;
+        padding: 0.5rem 1rem;
     }
     
     nav ul {
@@ -363,15 +423,15 @@ a:hover {
     .brand {
         flex-basis: 100%;
         justify-content: center;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.4rem;
     }
     
     .nav-logo {
-        height: 30px;
+        height: 26px;
     }
     
     .name {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
 
     main {
@@ -412,20 +472,28 @@ a:hover {
     .ai-helper-section h2 {
         font-size: 1.75rem;
     }
+
+    .FarmerCalculator {
+        padding: 2rem 1.5rem;
+    }
+
+    .FarmerCalculator h2 {
+        font-size: 1.75rem;
+    }
 }
 
 @media (max-width: 480px) {
     nav a {
-        padding: 0.4rem 0.6rem;
-        font-size: 0.85rem;
+        padding: 0.35rem 0.55rem;
+        font-size: 0.82rem;
     }
     
     .name {
-        font-size: 1rem;
+        font-size: 0.95rem;
     }
     
     .nav-logo {
-        height: 28px;
+        height: 24px;
     }
 
     .plant-hero h1 {
@@ -433,7 +501,8 @@ a:hover {
     }
 
     .search-section h2,
-    .ai-helper-section h2 {
+    .ai-helper-section h2,
+    .FarmerCalculator h2 {
         font-size: 1.5rem;
     }
 
@@ -452,85 +521,12 @@ a:hover {
         font-size: 1.25rem;
         left: 1rem;
     }
-}
-/* ============================================
-   FARMER'S CALCULATOR SECTION
-   ============================================ */
-.FarmerCalculator {
-    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
-    padding: 2.5rem;
-    border-radius: 12px;
-    margin: 2rem 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    border: 2px solid #9ae6b4;
-}
-
-.FarmerCalculator h2 {
-    color: #2f855a;
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    text-align: center;
-    font-weight: 700;
-}
-
-.FarmerCalculator h2::before {
-    content: "🧮 ";
-}
-
-.FarmerCalculator p {
-    color: #4a5568;
-    font-size: 1.05rem;
-    line-height: 1.7;
-    text-align: center;
-    margin: 0;
-}
-
-/* ============================================
-   RESPONSIVE - FARMER'S CALCULATOR
-   ============================================ */
-@media (max-width: 768px) {
-    .FarmerCalculator {
-        padding: 2rem 1.5rem;
-    }
-
-    .FarmerCalculator h2 {
-        font-size: 1.75rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .FarmerCalculator h2 {
-        font-size: 1.5rem;
-    }
 
     .FarmerCalculator p {
         font-size: 1rem;
     }
 }
-button {
-    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
-    color: white;
-    padding: 0.875rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(47, 133, 90, 0.25);
-    text-align: center;
-    display: block;
-    margin: 0 auto;
-}
 
-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(47, 133, 90, 0.35);
-}
-
-button:active {
-    transform: translateY(0);
-}
 /* ============================================
    SITE FOOTER - FULLY UPDATED
    ============================================ */
@@ -624,6 +620,7 @@ button:active {
     color: #ffffff; /* Full white copyright */
     font-weight: 500; /* Slightly bolder for visibility */
 }
-#copy{
+
+#copy {
     color: white;
 }

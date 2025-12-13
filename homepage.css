@@ -228,25 +228,9 @@ button:active {
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    nav {
-        padding: 0.6rem 1rem;
-    }
-    
+@media (max-width: 992px) {
     nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-    
-    .brand {
-        flex-basis: 100%;
-        justify-content: center;
-        margin-bottom: 0.5rem;
-    }
-    
-    .nav-logo {
-        height: 30px;
+        gap: 0.4rem;
     }
     
     .name {
@@ -254,8 +238,8 @@ button:active {
     }
     
     nav a {
-        padding: 0.4rem 0.7rem;
-        font-size: 0.9rem;
+        padding: 0.4rem 0.65rem;
+        font-size: 0.88rem;
     }
 
     .hero h1 {
@@ -274,6 +258,129 @@ button:active {
         grid-template-columns: 1fr;
     }
 }
+
+@media (max-width: 768px) {
+    nav {
+        padding: 0.5rem 1rem;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .brand {
+        flex-basis: 100%;
+        justify-content: center;
+        margin-bottom: 0.4rem;
+    }
+    
+    .nav-logo {
+        height: 26px;
+    }
+    
+    .name {
+        font-size: 1rem;
+    }
+
+    main {
+        padding: 2rem 1rem;
+    }
+
+    .hero {
+        padding: 3rem 1.5rem;
+    }
+
+    .hero h1 {
+        font-size: 1.875rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    .cta-section {
+        padding: 3rem 1.5rem;
+    }
+
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    nav a {
+        padding: 0.35rem 0.55rem;
+        font-size: 0.82rem;
+    }
+    
+    .name {
+        font-size: 0.95rem;
+    }
+    
+    .nav-logo {
+        height: 24px;
+    }
+
+    main {
+        padding: 1.5rem 1rem;
+    }
+
+    .hero {
+        padding: 2.5rem 1rem;
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .hero .cta-button {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+
+    .section {
+        margin: 3rem 0;
+    }
+
+    .section h2 {
+        font-size: 1.75rem;
+    }
+
+    .section p {
+        font-size: 1rem;
+    }
+
+    .features {
+        gap: 1.5rem;
+    }
+
+    .feature-card {
+        padding: 1.25rem;
+    }
+
+    .feature-card h3 {
+        font-size: 1.35rem;
+    }
+
+    .cta-section {
+        padding: 2.5rem 1rem;
+    }
+
+    .cta-section h2 {
+        font-size: 1.875rem;
+    }
+
+    .cta-section p {
+        font-size: 1rem;
+    }
+}
+
 /* ============================================
    SITE FOOTER - FULLY UPDATED
    ============================================ */
@@ -367,6 +474,7 @@ button:active {
     color: #ffffff; /* Full white copyright */
     font-weight: 500; /* Slightly bolder for visibility */
 }
-#copy{
+
+#copy {
     color: white;
 }

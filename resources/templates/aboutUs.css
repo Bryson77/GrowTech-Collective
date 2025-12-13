@@ -17,7 +17,7 @@ body {
 }
 
 /* ============================================
-   COMPACT STICKY NAVIGATION
+   STICKY NAVIGATION - CONSISTENT SIZE
    ============================================ */
 nav {
     background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
@@ -74,7 +74,6 @@ nav a:hover {
     background: rgba(255, 255, 255, 0.15);
     color: white;
 }
-
 
 /* ============================================
    MAIN CONTENT
@@ -438,6 +437,7 @@ a:hover {
         padding: 1.5rem;
     }
 }
+
 /* ============================================
    SITE FOOTER - FULLY UPDATED
    ============================================ */
@@ -531,6 +531,7 @@ a:hover {
     color: #ffffff; /* Full white copyright */
     font-weight: 500; /* Slightly bolder for visibility */
 }
-#copy{
+
+#copy {
     color: white;
 }
