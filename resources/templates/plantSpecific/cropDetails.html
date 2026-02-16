@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Crop Details - GrowTech Collective</title>
+    <link rel="stylesheet" href="cropStyles.css">
+    <script src="cropsDatabase.js" defer></script>
+    <script src="cropDetails.js" defer></script>
+    <link rel="icon" href="../../static/images/finalogo.png" type="image/png">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="brand">
+                <img src="../../static/images/finalogo.png" alt="Our Logo" class="nav-logo">
+                <span class="name">GrowTech Collective</span>
+            </li>
+            <li><a href="../../../index.html">Home</a></li>
+            <li><a href="/resources/templates/learningHub.html">Learning Hub</a></li>
+            <li><a href="crops.html">Browse Crops</a></li>
+            <li><a href="/resources/templates/about.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="back-button-container">
+            <a href="crops.html" class="back-button">← Back to All Crops</a>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingState" class="loading-state">
+            <div class="spinner"></div>
+            <p>Loading crop information...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="errorState" class="error-state" style="display: none;">
+            <h2>🌾 Crop Not Found</h2>
+            <p>We couldn't find information for this crop.</p>
+            <a href="crops.html" class="primary-btn">Browse All Crops</a>
+        </div>
+
+        <!-- Content Container (populated by JS) -->
+        <div id="cropContent" class="content-container" style="display: none;">
+            <!-- Dynamic content will be inserted here -->
+        </div>
+    </main>
+
+    <footer style="background: #f7fafc; padding: 2rem; text-align: center; margin-top: 4rem; border-top: 1px solid #e2e8f0;">
+        <p style="color: #4a5568;">© 2025 GrowTech Collective | Empowering South African Farmers</p>
+    </footer>
+</body>
+</html>

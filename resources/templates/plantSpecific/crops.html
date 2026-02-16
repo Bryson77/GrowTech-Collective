@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Crops - GrowTech Collective</title>
+    <link rel="stylesheet" href="cropStyles.css">
+    <script src="cropsDatabase.js" defer></script>
+    <script src="cropsBrowse.js" defer></script>
+    <link rel="icon" href="../../static/images/finalogo.png" type="image/png">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li class="brand">
+                <img src="../../static/images/finalogo.png" alt="Our Logo" class="nav-logo">
+                <span class="name">GrowTech Collective</span>
+            </li>
+            <li><a href="../../../index.html">Home</a></li>
+            <li><a href="../learningHub.html">Learning Hub</a></li>
+            <li><a href="crops.html">Browse Crops</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <div class="crops-hero">
+            <h1>🌱 Crop Growing Guides</h1>
+            <p>Comprehensive growing information for 30+ crops. Search or browse to find everything you need to grow successfully in South Africa.</p>
+        </div>
+
+        <div class="content-container">
+            <!-- Search Section -->
+            <div class="search-section">
+                <div class="search-box">
+                    <input 
+                        type="text" 
+                        id="cropSearch" 
+                        placeholder="Search for tomatoes, maize, avocados..."
+                        autocomplete="off"
+                    >
+                    <span class="search-icon">🔍</span>
+                </div>
+                
+                <!-- Category Filter -->
+                <div class="category-filter">
+                    <button class="filter-btn active" data-category="all">All Crops</button>
+                    <button class="filter-btn" data-category="High-Value Crops">High-Value</button>
+                    <button class="filter-btn" data-category="Field Crops">Field Crops</button>
+                    <button class="filter-btn" data-category="Vegetables">Vegetables</button>
+                    <button class="filter-btn" data-category="Fruits">Fruits</button>
+                </div>
+            </div>
+
+            <!-- Results Count -->
+            <div class="results-info">
+                <p id="resultsCount">Showing all crops</p>
+            </div>
+
+            <!-- Crops Grid -->
+            <div class="crops-grid" id="cropsGrid">
+                <!-- Cards will be dynamically generated here -->
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="noResults" style="display: none;">
+                <p>🔍 No crops found matching your search.</p>
+                <p>Try searching for something else!</p>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #f7fafc; padding: 2rem; text-align: center; margin-top: 4rem; border-top: 1px solid #e2e8f0;">
+        <p style="color: #4a5568;">© 2025 GrowTech Collective | Empowering South African Farmers</p>
+    </footer>
+</body>
+</html>
