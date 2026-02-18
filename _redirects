@@ -1,4 +1,4 @@
 /about       /resources/templates/about.html                         200
 /learninghub /resources/templates/learningHub.html                   200
-/crops       /resources/templates/plantSpecific/cropDetails.html     200
+/crops       /resources/templates/plantSpecific/crops.html     200
 /calculator  /resources/templates/FarmerCalculator/calculator.html   200
