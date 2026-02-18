@@ -26,7 +26,7 @@
 
     <main>
         <div class="back-button-container">
-            <a href="crops.html" class="back-button">← Back to All Crops</a>
+            <a href="/crops" class="back-button">← Back to All Crops</a>
         </div>
 
         <!-- Loading State -->
@@ -39,7 +39,7 @@
         <div id="errorState" class="error-state" style="display: none;">
             <h2>🌾 Crop Not Found</h2>
             <p>We couldn't find information for this crop.</p>
-            <a href="crops.html" class="primary-btn">Browse All Crops</a>
+            <a href="/crops" class="primary-btn">Browse All Crops</a>
         </div>
 
         <!-- Content Container (populated by JS) -->
@@ -47,9 +47,43 @@
             <!-- Dynamic content will be inserted here -->
         </div>
     </main>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- About / Mission -->
+            <div class="footer-section about-footer">
+                <h3>GrowTech Collective</h3>
+                <p>Empowering communities with sustainable food gardening and innovative technology. Join us in reducing food insecurity and creating opportunities for growth.</p>
+            </div>
 
-    <footer style="background: #f7fafc; padding: 2rem; text-align: center; margin-top: 4rem; border-top: 1px solid #e2e8f0;">
-        <p style="color: #4a5568;">© 2025 GrowTech Collective | Empowering South African Farmers</p>
+            <!-- Quick Links -->
+            <div class="footer-section links-footer">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resources/templates/learningHub.html">Learning Hub</a></li>
+                    <li><a href="resources/templates/plantSpecific/crops.html">Browse Crops</a></li>
+                    <li><a href="/resources/templates/FarmerCalculator/calculator.html">Calculator</a></li>
+                    <li><a href="resources/templates/about.html">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact / Social Media -->
+            <div class="footer-section contact-footer">
+                <h3>Connect With Us</h3>
+                <div class="footer-social-media">
+                                <li><a href="/about">Home</a></li>
+                                <li><a href="/learningHub">Learning Hub</a></li>
+                                <li><a href="/crops">Browse Crops</a></li>
+                                <li><a href="/calculator">Calculator</a></li>
+                                <li><a href="about">About Us</a></li>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-bottom" id="copy">
+            <p>&copy; 2025 GrowTech Collective. All rights reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
