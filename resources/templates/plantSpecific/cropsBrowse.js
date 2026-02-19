@@ -104,5 +104,5 @@ function updateResultsCount(count, searchTerm) {
 }
 
 function navigateToCrop(cropId) {
-    window.location.href = `cropDetails#${cropId}`;
+    window.location.href = `/cropDetails#${cropId}`;
 }
