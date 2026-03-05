@@ -190,6 +190,10 @@ main {
 /* ============================================
    SPECIFIC SECTION IDs
    ============================================ */
+#plant-guides h2::before {
+    content: "🌿";
+}
+
 #benefits h2::before {
     content: "✨";
 }
@@ -212,6 +216,34 @@ main {
 
 #soil h2::before {
     content: "🪴";
+}
+
+#pests h2::before {
+    content: "🐛";
+}
+
+#composting h2::before {
+    content: "♻️";
+}
+
+#seasonal-calendar h2::before {
+    content: "📅";
+}
+
+#harvesting h2::before {
+    content: "🧺";
+}
+
+#companion-planting h2::before {
+    content: "🌻";
+}
+
+#plant-nutrition h2::before {
+    content: "💊";
+}
+
+#microclimate h2::before {
+    content: "🌡️";
 }
 
 /* ============================================

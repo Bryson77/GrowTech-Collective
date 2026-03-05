@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Hub – GrowTech Collective</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(to bottom, #f7fafc 0%, #ffffff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+            padding: 0.6rem 1.5rem;
+            box-shadow: 0 2px 10px rgba(47,133,90,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 0.5rem;
+        }
+        .brand { display: flex; align-items: center; gap: 0.6rem; }
+        .nav-logo { height: 35px; width: auto; }
+        .name { font-size: 1.3rem; font-weight: 700; color: white; letter-spacing: -0.5px; }
+        nav li:not(.brand) { display: inline-block; }
+        nav a { color: white; text-decoration: none; padding: 0.5rem 0.9rem; border-radius: 6px; transition: all 0.2s; font-weight: 500; font-size: 0.95rem; }
+        nav a:hover { background: rgba(255,255,255,0.15); }
+
+        /* ── LAYOUT ── */
+        .viewer-layout {
+            display: flex;
+            flex: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 2rem 1.5rem;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        /* ── SIDEBAR ── */
+        .sidebar {
+            width: 260px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 70px;
+        }
+        .sidebar-inner {
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(47,133,90,0.1);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+        .sidebar-header {
+            background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+            padding: 1.1rem 1.25rem;
+            color: white;
+        }
+        .sidebar-header h3 {
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.85;
+            margin-bottom: 0.15rem;
+        }
+        .sidebar-header p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+        .sidebar-nav { padding: 0.5rem 0; }
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.85rem 1.25rem;
+            cursor: pointer;
+            border-left: 3px solid transparent;
+            transition: all 0.2s ease;
+            color: #4a5568;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .sidebar-item:hover {
+            background: #f0fff4;
+            color: #2f855a;
+            border-left-color: #9ae6b4;
+        }
+        .sidebar-item.active {
+            background: #f0fff4;
+            color: #2f855a;
+            border-left-color: #2f855a;
+            font-weight: 600;
+        }
+        .sidebar-item .icon { font-size: 1.1rem; width: 22px; text-align: center; }
+        .back-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            margin-top: 0.5rem;
+            border-top: 1px solid #e2e8f0;
+            color: #718096;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            text-decoration: none;
+        }
+        .back-link:hover { color: #2f855a; }
+
+        /* ── MAIN CONTENT ── */
+        .content-area {
+            flex: 1;
+            min-width: 0;
+        }
+        .content-panel {
+            background: white;
+            border-radius: 14px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            border: 1px solid #e2e8f0;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── TOPIC HEADER ── */
+        .topic-header {
+            background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+            color: white;
+            padding: 2rem 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+        .topic-header .topic-icon { font-size: 2.5rem; }
+        .topic-header h1 { color: white; font-size: 2rem; font-weight: 800; letter-spacing: -0.5px; margin: 0; }
+        .topic-header p { color: rgba(255,255,255,0.9); margin: 0.35rem 0 0; font-size: 1rem; }
+
+        /* ── TYPOGRAPHY ── */
+        .content-panel h2 {
+            font-size: 1.5rem;
+            color: #2f855a;
+            margin: 2rem 0 0.75rem;
+            font-weight: 700;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #e6fffa;
+        }
+        .content-panel h2:first-of-type { margin-top: 0; }
+        .content-panel h3 {
+            font-size: 1.15rem;
+            color: #276749;
+            margin: 1.25rem 0 0.5rem;
+            font-weight: 600;
+        }
+        .content-panel p {
+            color: #4a5568;
+            line-height: 1.75;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        .content-panel ul, .content-panel ol {
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .content-panel li {
+            color: #4a5568;
+            line-height: 1.75;
+            margin-bottom: 0.35rem;
+        }
+
+        /* ── TABLES ── */
+        .content-panel table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 1.25rem 0 2rem;
+            font-size: 0.9rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(47,133,90,0.1);
+            border: 1px solid #c6f6d5;
+        }
+        .content-panel th, .content-panel td {
+            padding: 0.85rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e6fffa;
+        }
+        .content-panel th {
+            background: #2f855a;
+            color: white;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .content-panel tr:nth-child(even) td { background: #f0fff4; }
+        .content-panel tr:hover td { background: #e6fffa; }
+        .content-panel tr:last-child td { border-bottom: none; }
+        .content-panel td { color: #2d4a3e; }
+
+        /* ── PROS/CONS ── */
+        .pros-cons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0 1.5rem; }
+        .pros-box, .cons-box {
+            border-radius: 10px;
+            padding: 1.1rem 1.25rem;
+        }
+        .pros-box { background: #f0fff4; border: 1px solid #9ae6b4; }
+        .cons-box { background: #fff5f5; border: 1px solid #feb2b2; }
+        .pros-box h4 { color: #276749; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.6rem; }
+        .cons-box h4 { color: #c53030; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.6rem; }
+        .pros-box li { color: #2d6a4f; }
+        .cons-box li { color: #742a2a; }
+
+        /* ── TIP BOX ── */
+        .tip-box {
+            background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
+            border: 1.5px solid #9ae6b4;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .tip-box h4 { color: #276749; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; }
+        .tip-box ul { padding-left: 1.25rem; margin: 0; }
+        .tip-box li { color: #2d6a4f; font-size: 0.95rem; }
+
+        /* ── STEP CARDS ── */
+        .step-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
+        .step-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 1.25rem;
+            transition: all 0.2s;
+            border-top: 3px solid #38a169;
+        }
+        .step-card:hover { box-shadow: 0 4px 12px rgba(47,133,90,0.12); transform: translateY(-2px); }
+        .step-card h3 { color: #2f855a; font-size: 1rem; margin: 0 0 0.5rem; }
+        .step-card p { color: #4a5568; font-size: 0.9rem; margin: 0; line-height: 1.6; }
+
+        /* ── EMPTY STATE ── */
+        .empty-state { text-align: center; padding: 4rem 2rem; color: #718096; }
+        .empty-state .big-icon { font-size: 4rem; margin-bottom: 1rem; }
+
+        /* ── FOOTER ── */
+        .site-footer {
+            background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
+            color: white; padding: 3rem 2rem 1rem; font-size: 0.95rem; margin-top: auto;
+        }
+        .footer-container { display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1200px; margin: 0 auto 2rem; gap: 2rem; }
+        .footer-section { flex: 1 1 250px; }
+        .footer-section h3 { font-size: 1.25rem; margin-bottom: 1rem; font-weight: 700; color: #fff; }
+        .footer-section p, .footer-section li { color: #fff; line-height: 1.6; }
+        .footer-section ul { list-style: none; padding: 0; }
+        .footer-section li { margin-bottom: 0.5rem; }
+        .footer-section a { color: #fff; text-decoration: none; transition: color 0.3s; }
+        .footer-section a:hover { color: #f0fff4; }
+        .footer-social-media { display: flex; gap: 1rem; margin-top: 0.5rem; }
+        .footer-social-media a { display: flex; justify-content: center; align-items: center; width: 50px; height: 50px; font-size: 1.4rem; background: #fff; color: #2f855a; border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.15); transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s; }
+        .footer-social-media a:hover { transform: translateY(-5px) scale(1.1); background: #38a169; color: #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.2); text-align: center; padding-top: 1rem; font-size: 0.85rem; color: #fff; font-weight: 500; }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .viewer-layout { flex-direction: column; padding: 1.25rem 1rem; }
+            .sidebar { width: 100%; position: static; }
+            .sidebar-nav { display: flex; flex-wrap: wrap; padding: 0.5rem; }
+            .sidebar-item { border-left: none; border-bottom: 2px solid transparent; border-radius: 8px; flex: 1 1 120px; justify-content: center; text-align: center; flex-direction: column; gap: 0.25rem; font-size: 0.82rem; padding: 0.7rem 0.5rem; }
+            .sidebar-item.active { border-bottom-color: #2f855a; border-left-color: transparent; }
+            .back-link { display: none; }
+            .pros-cons-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .content-panel { padding: 1.5rem 1.1rem; }
+            .topic-header { padding: 1.25rem 1.25rem; flex-direction: column; text-align: center; gap: 0.75rem; }
+            .topic-header h1 { font-size: 1.5rem; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 0.4rem; }
+            .brand { flex-basis: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li class="brand">
+            <img src="../../static/images/finalogo.png" alt="GrowTech Logo" class="nav-logo">
+            <span class="name">GrowTech Collective</span>
+        </li>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../learningHub.html">Learning Hub</a></li>
+        <li><a href="/crops">Browse Crops</a></li>
+        <li><a href="/calculator">Calculator</a></li>
+        <li><a href="/about">About Us</a></li>
+    </ul>
+</nav>
+
+<div class="viewer-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="sidebar-inner">
+            <div class="sidebar-header">
+                <h3>Learning Hub</h3>
+                <p>Topic Guide</p>
+            </div>
+            <nav class="sidebar-nav" id="sidebarNav"></nav>
+            <a href="/plantspecific" class="back-link" style="color:#2f855a; font-weight:600; border-top: 1px solid #e2e8f0; border-bottom: 1px solid #e2e8f0;">
+                <i class="fas fa-seedling"></i> Plant Guides
+            </a>
+            <a href="../learningHub.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Hub
+            </a>
+        </div>
+    </aside>
+
+    <!-- CONTENT -->
+    <main class="content-area">
+        <div id="topicContent" class="content-panel">
+            <div class="empty-state">
+                <div class="big-icon">🌱</div>
+                <p>Select a topic from the sidebar to get started.</p>
+            </div>
+        </div>
+    </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-section about-footer">
+            <h3>GrowTech Collective</h3>
+            <p>Empowering communities with sustainable food gardening and innovative technology. Join us in reducing food insecurity and creating opportunities for growth.</p>
+        </div>
+        <div class="footer-section links-footer">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="../../index.html">Home</a></li>
+                <li><a href="../learningHub.html">Learning Hub</a></li>
+                <li><a href="/crops">Browse Crops</a></li>
+                <li><a href="/calculator">Calculator</a></li>
+                <li><a href="/about">About Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-section contact-footer">
+            <h3>Connect With Us</h3>
+            <div class="footer-social-media">
+                <a href="https://www.instagram.com/brysonn.iv" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@brysonn.iv" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="/cdn-cgi/l/email-protection#fe9c8c878d9190939f9c979291be979d92918b9ad09d9193" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+27694046138" title="Phone"><i class="fas fa-phone"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 GrowTech Collective. All rights reserved.</p>
+    </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ============================================================
+   GROWTECH CONTENT DATABASE
+   ============================================================ */
+const TOPICS = [
+    {
+        slug: 'start-garden',
+        label: 'Starting a Garden',
+        icon: '🚀',
+        description: 'Step-by-step guide to starting your first garden',
+        render() {
+            return `
+            <div class="topic-header">
+                <span class="topic-icon">🚀</span>
+                <div>
+                    <h1>How to Start a Garden</h1>
+                    <p>A practical, beginner-friendly guide to growing your own food</p>
+                </div>
+            </div>
+
+            <div class="step-grid">
+                <div class="step-card">
+                    <h3>☀️ Choose the Right Spot</h3>
+                    <p>Pick an area that receives at least 6–8 hours of sunlight daily with good air circulation. This helps plants grow stronger and reduces disease risk.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌍 Prepare the Soil</h3>
+                    <p>Remove weeds and loosen the soil before planting. Mix in compost or organic matter to improve fertility, water retention, and drainage.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌿 Decide What to Grow</h3>
+                    <p>Begin with easy crops such as spinach, tomatoes, or beans. These are low-maintenance and provide a rewarding harvest for beginners.</p>
+                </div>
+                <div class="step-card">
+                    <h3>📐 Spacing and Planting</h3>
+                    <p>Give each plant enough room to grow. Spinach needs 10–15 cm spacing, while tomatoes need 45–90 cm. Proper spacing prevents overcrowding and disease.</p>
+                </div>
+                <div class="step-card">
+                    <h3>💧 Watering</h3>
+                    <p>Most vegetables need about 2.5 cm of water per week. Water deeply 1–2 times a week, rather than sprinkling lightly every day. Early morning is best.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌾 Fertiliser</h3>
+                    <p>Use compost or a balanced fertiliser. Leafy vegetables benefit from nitrogen-rich fertiliser; fruiting plants like tomatoes need potassium and phosphorus.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🛡️ Maintenance</h3>
+                    <p>Check regularly for weeds, pests, and diseases. Remove weeds early, rotate crops each season, and encourage beneficial insects like ladybugs.</p>
+                </div>
+                <div class="step-card">
+                    <h3>⏳ Be Patient</h3>
+                    <p>Gardening takes time, care, and consistency. With regular watering, feeding, and observation, your garden will thrive and reward you with fresh produce.</p>
+                </div>
+            </div>
+
+            <div style="margin-top:2rem; border-radius:12px; overflow:hidden;">
+                <iframe width="100%" height="315" src="https://www.youtube.com/embed/X3SP1Fub3bw?si=dXj2R0qt9qJ5Wb7i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="display:block;border:none;"></iframe>
+            </div>`;
+        }
+    },
+    {
+        slug: 'container',
+        label: 'Gardening Methods',
+        icon: '🌿',
+        description: 'Container, raised bed, vertical, and community gardening',
+        render() {
+            return `
+            <div class="topic-header">
+                <span class="topic-icon">🌿</span>
+                <div>
+                    <h1>Gardening Methods</h1>
+                    <p>Find the approach that suits your space, resources, and goals</p>
+                </div>
+            </div>
+
+            <p>There are several gardening methods available, and the right one for you depends on your space, resources, and goals. Below we explore four common approaches along with their advantages and disadvantages.</p>
+
+            <h2>Container Gardening</h2>
+            <p>Container gardening involves growing plants in pots, tubs, or other containers rather than directly in the ground. It is ideal for people with limited space, such as apartment dwellers or those with small yards.</p>
+            <div class="pros-cons-grid">
+                <div class="pros-box"><h4>✅ Pros</h4><ul>
+                    <li>Suitable for small spaces like balconies and patios</li>
+                    <li>Easy to move plants to optimal sunlight or indoors</li>
+                    <li>Reduces soil-borne pest and disease risks</li>
+                    <li>Good control over soil quality and nutrients</li>
+                </ul></div>
+                <div class="cons-box"><h4>❌ Cons</h4><ul>
+                    <li>Containers dry out faster and need frequent watering</li>
+                    <li>Limited root space can restrict plant growth</li>
+                    <li>Nutrients deplete faster — more fertilisation needed</li>
+                </ul></div>
+            </div>
+
+            <h2>Raised Bed Gardening</h2>
+            <p>Raised bed gardening uses elevated garden beds filled with soil, compost, and amendments. It is popular in home and community gardens for its productivity and ease of management.</p>
+            <div class="pros-cons-grid">
+                <div class="pros-box"><h4>✅ Pros</h4><ul>
+                    <li>Better drainage and soil structure</li>
+                    <li>Fewer weeds and pests compared to in-ground planting</li>
+                    <li>Easier to manage and harvest — less bending</li>
+                    <li>High productivity in a small footprint</li>
+                </ul></div>
+                <div class="cons-box"><h4>❌ Cons</h4><ul>
+                    <li>Initial setup cost for materials and soil can be high</li>
+                    <li>Beds can dry out more quickly than ground soil</li>
+                    <li>Not ideal for large crops like maize or pumpkins</li>
+                </ul></div>
+            </div>
+
+            <h2>Vertical Gardening</h2>
+            <p>Vertical gardening grows plants upward using trellises, wall planters, or stacked containers. It is a space-saving solution that maximises growing area in small or urban spaces.</p>
+            <div class="pros-cons-grid">
+                <div class="pros-box"><h4>✅ Pros</h4><ul>
+                    <li>Maximises growing space — ideal for urban settings</li>
+                    <li>Improves air circulation, reducing fungal issues</li>
+                    <li>Creates visual appeal and can be used decoratively</li>
+                </ul></div>
+                <div class="cons-box"><h4>❌ Cons</h4><ul>
+                    <li>Requires structural support — walls, fences, or frames</li>
+                    <li>Watering and fertilising can be more complex</li>
+                    <li>Limited to certain plant types (climbers, herbs, small veg)</li>
+                </ul></div>
+            </div>
+
+            <h2>Community Gardening</h2>
+            <p>Community gardening involves shared plots where members of a neighbourhood or group cultivate vegetables, herbs, and flowers together. It promotes food security and social connection.</p>
+            <div class="pros-cons-grid">
+                <div class="pros-box"><h4>✅ Pros</h4><ul>
+                    <li>Builds community relationships and shared knowledge</li>
+                    <li>Access to larger growing space than a personal garden</li>
+                    <li>Shared tools and resources reduce individual costs</li>
+                </ul></div>
+                <div class="cons-box"><h4>❌ Cons</h4><ul>
+                    <li>Requires coordination and agreement among members</li>
+                    <li>Individual plot sizes are often small</li>
+                    <li>Shared spaces may have inconsistent maintenance standards</li>
+                </ul></div>
+            </div>`;
+        }
+    },
+    {
+        slug: 'irrigation',
+        label: 'Irrigation Methods',
+        icon: '💧',
+        description: 'Drip, sprinkler, manual, and rainwater systems',
+        render() {
+            return `
+            <div class="topic-header">
+                <span class="topic-icon">💧</span>
+                <div>
+                    <h1>Irrigation Methods</h1>
+                    <p>Choosing the right watering system for your garden</p>
+                </div>
+            </div>
+
+            <p>Proper irrigation is essential for healthy plant growth. Choosing the right watering method depends on the size of your garden, available resources, and the water needs of your plants. Below, we explore four common irrigation methods along with their advantages and disadvantages.</p>
+
+            <h2>Drip Irrigation</h2>
+            <p>Drip irrigation delivers water directly to the plant roots through small pipes, tubes, or emitters. This method is highly efficient, reducing water wastage while ensuring plants receive the exact amount they need.</p>
+            <div class="pros-cons-grid">
+                <div class="pros-box"><h4>✅ Pros</h4><ul>
+                    <li>Saves water by targeting only the root zone</li>
+                    <li>Reduces weed growth since water is delivered only where needed</li>
+                    <li>Improves plant health with consistent soil moisture</li>
+                    <li>Can be automated with timers for convenience</li>
+                </ul></div>
+                <div class="cons-box"><h4>❌ Cons</h4><ul>
+                    <li>Initial installation can be costly and requires planning</li>
+                    <li>Emitters can clog if not maintained properly</li>
+                    <li>Not ideal for lawns or areas requiring uniform coverage</li>
+                </ul></div>
+            </div>
+
+            <h2>Sprinkler Systems</h2>
+            <p>Sprinklers distribute water over a large area, mimicking rainfall. They are suitable for lawns, flower beds, and large vegetable gardens, providing even coverage across the soil surface.</p>
+            <div class="pros-cons-grid">
+                <div class="pros-box"><h4>✅ Pros</h4><ul>
+                    <li>Efficient for watering large areas evenly</li>
+                    <li>Can be automated with timers for regular watering</li>
+                    <li>Reduces labour compared to manual watering</li>
+                </ul></div>
+                <div class="cons-box"><h4>❌ Cons</h4><ul>
+                    <li>Water can be lost to evaporation during hot, sunny hours</li>
+                    <li>May encourage fungal diseases if leaves stay wet too long</li>
+                    <li>Installation and maintenance can be expensive</li>
+                </ul></div>
+            </div>
+
+            <h2>Manual Watering</h2>
+            <p>Manual watering uses a watering can or hose to provide water directly to plants. It's a simple and affordable method that allows gardeners to inspect their plants closely while watering.</p>
+            <div class="pros-cons-grid">
+                <div class="pros-box"><h4>✅ Pros</h4><ul>
+                    <li>Low-cost and easy to implement</li>
+                    <li>Allows close observation of plant health, pests, and soil condition</li>
+                    <li>Flexible and can be adjusted to specific plant needs</li>
+                </ul></div>
+                <div class="cons-box"><h4>❌ Cons</h4><ul>
+                    <li>Time-consuming, especially for larger gardens</li>
+                    <li>Watering may be inconsistent depending on the gardener</li>
+                    <li>Can be physically tiring for extensive garden areas</li>
+                </ul></div>
+            </div>
+
+            <h2>Rainwater Harvesting</h2>
+            <p>Rainwater harvesting collects rainwater in tanks, barrels, or other storage systems for later use in the garden. It is an eco-friendly and sustainable approach that reduces dependence on municipal water supplies.</p>
+            <div class="pros-cons-grid">
+                <div class="pros-box"><h4>✅ Pros</h4><ul>
+                    <li>Reduces water bills by using free rainwater</li>
+                    <li>Environmentally friendly and promotes sustainability</li>
+                    <li>Provides a backup water source during droughts or restrictions</li>
+                </ul></div>
+                <div class="cons-box"><h4>❌ Cons</h4><ul>
+                    <li>Requires initial investment for storage tanks and plumbing</li>
+                    <li>Dependent on rainfall, which may be inconsistent</li>
+                    <li>Stored water must be managed to prevent mosquito breeding and algae</li>
+                </ul></div>
+            </div>
+
+            <div class="tip-box">
+                <h4>💡 Conclusion</h4>
+                <ul>
+                    <li>Drip irrigation is highly efficient for precise watering of vegetable beds</li>
+                    <li>Sprinklers cover large areas quickly with even distribution</li>
+                    <li>Manual watering offers flexibility and close plant observation</li>
+                    <li>Rainwater harvesting provides a sustainable, cost-free water source</li>
+                    <li>Combining methods often gives the best results for mixed gardens</li>
+                </ul>
+            </div>`;
+        }
+    },
+    {
+        slug: 'fertilisers',
+        label: 'Fertilizers',
+        icon: '🌾',
+        description: 'Organic, synthetic, and specialised fertiliser guide',
+        render() {
+            return `
+            <div class="topic-header">
+                <span class="topic-icon">🌾</span>
+                <div>
+                    <h1>Comprehensive Guide to Fertilizers</h1>
+                    <p>Nutrients, application rates, and tips for South African gardens</p>
+                </div>
+            </div>
+
+            <p>Fertilizers are essential for supplying nutrients that plants need to grow, flower, and produce fruits and vegetables. Understanding the types of fertilizers, their application rates, and benefits is crucial for successful gardening.</p>
+
+            <h2>1. Organic Fertilizers</h2>
+            <p>Organic fertilizers are derived from natural sources and improve soil structure while providing nutrients.</p>
+            <table>
+                <tr><th>Fertilizer</th><th>N-P-K</th><th>Rate (g/m²)</th><th>Frequency</th><th>Benefits</th></tr>
+                <tr><td>Compost</td><td>Varies (Balanced)</td><td>3–5 kg</td><td>Monthly</td><td>Improves soil structure, supports microbes, reduces waste</td></tr>
+                <tr><td>Manure (Cow/Chicken)</td><td>1-1-1 to 3-2-2</td><td>2–3 kg</td><td>Monthly or seasonal</td><td>Slow-release nutrients, improves fertility, adds organic matter</td></tr>
+                <tr><td>Bone Meal</td><td>3-15-0</td><td>50–100 g</td><td>Once per season</td><td>High phosphorus for root development, flowering, fruiting</td></tr>
+                <tr><td>Fish Emulsion</td><td>5-2-2</td><td>100–150 ml diluted/m²</td><td>Every 2–3 weeks</td><td>Fast-acting nitrogen, boosts leafy growth</td></tr>
+                <tr><td>Seaweed Extract</td><td>0-0-1 (trace)</td><td>100–150 ml diluted/m²</td><td>Every 2–4 weeks</td><td>Improves stress resistance, stimulates root growth, adds micronutrients</td></tr>
+            </table>
+
+            <h2>2. Inorganic / Synthetic Fertilizers</h2>
+            <p>Synthetic fertilizers provide nutrients in concentrated form for immediate uptake. They are convenient but should be used carefully to avoid soil degradation.</p>
+            <table>
+                <tr><th>Fertilizer</th><th>N-P-K</th><th>Rate (g/m²)</th><th>Frequency</th><th>Notes</th></tr>
+                <tr><td>Urea</td><td>46-0-0</td><td>20–40 g</td><td>Every 3–4 weeks</td><td>Highly concentrated nitrogen source, good for leafy crops</td></tr>
+                <tr><td>Superphosphate</td><td>0-20-0</td><td>50 g</td><td>Once per planting</td><td>Promotes root development, flowering, and fruit set</td></tr>
+                <tr><td>Potassium Sulfate</td><td>0-0-50</td><td>30–50 g</td><td>Every 4–6 weeks</td><td>Increases fruit size, sugar content, and disease resistance</td></tr>
+                <tr><td>NPK 2:3:2</td><td>2-3-2</td><td>50–100 g</td><td>Every 4 weeks</td><td>Balanced fertilizer for general vegetable gardens</td></tr>
+                <tr><td>NPK 3:1:5</td><td>3-1-5</td><td>50–100 g</td><td>Every 4 weeks</td><td>Enhances flowering and fruiting, good for fruit trees</td></tr>
+            </table>
+
+            <h2>3. Specialized Fertilizers</h2>
+            <p>Special fertilizers target specific plant needs or soil deficiencies.</p>
+            <table>
+                <tr><th>Fertilizer</th><th>Use</th><th>Rate</th><th>Frequency</th><th>Notes</th></tr>
+                <tr><td>Magnesium Sulfate (Epsom Salt)</td><td>Corrects magnesium deficiency</td><td>20–30 g/m²</td><td>Monthly</td><td>Improves chlorophyll formation, prevents yellow leaves</td></tr>
+                <tr><td>Calcium Nitrate</td><td>Prevents blossom-end rot in tomatoes and peppers</td><td>50 g/m²</td><td>Every 3–4 weeks</td><td>Provides calcium and nitrogen simultaneously</td></tr>
+                <tr><td>Iron Chelates</td><td>Corrects iron deficiency (yellowing leaves)</td><td>10–20 g/m²</td><td>Once per month</td><td>Especially for alkaline soils common in South Africa</td></tr>
+            </table>
+
+            <div class="tip-box">
+                <h4>🌍 Tips for South African Gardens</h4>
+                <ul>
+                    <li>Check soil pH before applying fertilizers — many SA soils are slightly acidic or alkaline</li>
+                    <li>Use slow-release fertilizers where possible to reduce leaching during heavy summer rains</li>
+                    <li>Combine organic and inorganic fertilizers for both immediate and long-term nutrient supply</li>
+                    <li>Adjust application rates based on crop type, growth stage, and seasonal rainfall</li>
+                    <li>Always water after applying granular fertilizers to reduce burn risk</li>
+                </ul>
+            </div>`;
+        }
+    },
+    {
+        slug: 'soil',
+        label: 'Soil Care',
+        icon: '🪴',
+        description: 'Soil types, productivity, and improvement strategies',
+        render() {
+            return `
+            <div class="topic-header">
+                <span class="topic-icon">🪴</span>
+                <div>
+                    <h1>Soil Health and Management</h1>
+                    <p>Understanding and improving your soil for a productive garden</p>
+                </div>
+            </div>
+
+            <p>Healthy soil is the foundation of a productive garden. Understanding soil types, nutrient content, and how to improve and maintain soil fertility is crucial for gardening success in South Africa.</p>
+
+            <h2>1. Major Soil Types in South Africa</h2>
+            <p>South Africa has diverse soil types, each affecting plant growth differently. Here are the most common types used in gardens:</p>
+            <table>
+                <tr><th>Soil Type</th><th>Texture</th><th>N-P-K (mg/kg)</th><th>Water Retention</th><th>Best Uses</th></tr>
+                <tr><td>Sandy Soil</td><td>Coarse</td><td>N:5–10, P:2–5, K:10–15</td><td>Low</td><td>Root vegetables (carrots, radishes), herbs, drought-tolerant plants</td></tr>
+                <tr><td>Loam Soil</td><td>Balanced (sand, silt, clay)</td><td>N:15–25, P:10–15, K:20–30</td><td>Medium–High</td><td>Most vegetables, fruits, and flowers; ideal for general gardening</td></tr>
+                <tr><td>Clay Soil</td><td>Fine, dense</td><td>N:10–15, P:5–10, K:10–20</td><td>High</td><td>Water-loving plants, heavy crops like cabbage, broccoli, and trees</td></tr>
+                <tr><td>Silty Soil</td><td>Smooth, fine</td><td>N:12–20, P:8–12, K:15–25</td><td>Medium–High</td><td>Vegetables and flowers; may require drainage improvement</td></tr>
+                <tr><td>Peaty Soil</td><td>Dark, rich organic matter</td><td>N:20–30, P:15–20, K:20–25</td><td>High</td><td>Acid-loving plants like blueberries, potatoes, and ferns</td></tr>
+            </table>
+
+            <h2>2. Soil Productivity: Which Soil Can Grow the Most?</h2>
+            <p>Not all soil types are equal in terms of plant density and yield. Below is an estimated comparison of planting potential per 1 m²:</p>
+            <table>
+                <tr><th>Soil Type</th><th>Estimated Plants/m²</th><th>Best Crops</th></tr>
+                <tr><td>Sandy Soil</td><td>4–6</td><td>Carrots, radishes, lettuce</td></tr>
+                <tr><td>Loam Soil</td><td>8–12</td><td>Tomatoes, peppers, cabbage, spinach</td></tr>
+                <tr><td>Clay Soil</td><td>5–7</td><td>Cabbage, broccoli, maize</td></tr>
+                <tr><td>Silty Soil</td><td>7–10</td><td>Leafy vegetables, herbs, flowers</td></tr>
+                <tr><td>Peaty Soil</td><td>6–8</td><td>Potatoes, blueberries, ferns</td></tr>
+            </table>
+
+            <h2>3. Improving and Refreshing Soil</h2>
+            <p>Garden soil loses nutrients over time due to plant growth, rainfall, and harvesting. Regular maintenance ensures long-term productivity:</p>
+            <table>
+                <tr><th>Technique</th><th>Description</th><th>Frequency</th><th>Benefits</th></tr>
+                <tr><td>Composting</td><td>Add organic compost from kitchen scraps, leaves, and garden waste</td><td>Monthly or seasonal</td><td>Improves soil structure, adds nutrients, encourages microbes</td></tr>
+                <tr><td>Mulching</td><td>Cover soil with straw, leaves, or bark</td><td>Every 2–3 weeks during growing season</td><td>Retains moisture, reduces weeds, prevents soil erosion</td></tr>
+                <tr><td>Crop Rotation</td><td>Alternate plant families to prevent nutrient depletion</td><td>Every planting season</td><td>Reduces disease, balances nutrient demand</td></tr>
+                <tr><td>Green Manure</td><td>Plant legumes or cover crops and turn them into the soil</td><td>Seasonally</td><td>Adds nitrogen naturally, improves soil texture</td></tr>
+                <tr><td>Soil Testing & Amendments</td><td>Test pH and nutrient levels; add lime, gypsum, or fertilizers as needed</td><td>Every 6–12 months</td><td>Maintains ideal nutrient balance and soil health</td></tr>
+            </table>
+
+            <div class="tip-box">
+                <h4>🌍 Summary Tips for South African Gardens</h4>
+                <ul>
+                    <li>Loam soil is ideal for most home and community gardens due to its nutrient and water balance</li>
+                    <li>Sandy soil needs more frequent fertilisation and watering, especially in dry provinces like Northern Cape</li>
+                    <li>Clay soil holds water well but may need organic matter for better drainage and aeration</li>
+                    <li>Peaty soils are nutrient-rich but acidic — adjust pH for general vegetable gardens</li>
+                    <li>Rotate crops and add compost yearly to maintain long-term fertility</li>
+                </ul>
+            </div>`;
+        }
+    },
+    {
+        slug: 'pests',
+        label: 'Pest & Disease Control',
+        icon: '🐛',
+        description: 'Identify, prevent, and treat common garden pests and diseases',
+        render() {
+            return `
+            <div class="topic-header">
+                <span class="topic-icon">🐛</span>
+                <div>
+                    <h1>Pest & Disease Control</h1>
+                    <p>Identify, prevent, and treat common threats to your garden</p>
+                </div>
+            </div>
+
+            <p>Pests and diseases are among the biggest challenges gardeners face. Early identification and the right response — whether organic or chemical — can save an entire crop. Prevention is always better than cure, and healthy soil and good spacing go a long way toward keeping plants resilient.</p>
+
+            <h2>1. Common Garden Pests in South Africa</h2>
+            <table>
+                <tr><th>Pest</th><th>Plants Affected</th><th>Signs</th><th>Organic Control</th><th>Chemical Control</th></tr>
+                <tr><td>Aphids</td><td>Most vegetables, roses</td><td>Sticky leaves, curled tips, tiny clusters of insects</td><td>Blast off with water; introduce ladybugs; neem oil spray</td><td>Imidacloprid-based insecticide</td></tr>
+                <tr><td>Whitefly</td><td>Tomatoes, peppers, cabbage</td><td>White cloud when plant is disturbed; yellowing leaves</td><td>Yellow sticky traps; insecticidal soap; neem oil</td><td>Pyrethroid spray</td></tr>
+                <tr><td>Cutworm</td><td>Seedlings (tomatoes, maize)</td><td>Seedlings cut at base overnight</td><td>Collar around stem base; diatomaceous earth</td><td>Chlorpyrifos soil drench</td></tr>
+                <tr><td>Spider Mites</td><td>Beans, tomatoes, cucumbers</td><td>Fine webbing on leaves; bronze or stippled appearance</td><td>Increase humidity; neem oil; introduce predatory mites</td><td>Abamectin miticide</td></tr>
+                <tr><td>Bollworm</td><td>Tomatoes, maize, peppers</td><td>Holes in fruit; frass (droppings) visible</td><td>Bt (Bacillus thuringiensis) spray; hand-pick larvae</td><td>Spinosad or cypermethrin</td></tr>
+                <tr><td>Snails & Slugs</td><td>Seedlings, lettuce, spinach</td><td>Irregular holes in leaves; slime trails</td><td>Crushed eggshells; beer traps; copper tape</td><td>Metaldehyde pellets (use sparingly)</td></tr>
+                <tr><td>Scale Insects</td><td>Citrus, fruit trees</td><td>Brown lumps on stems; sticky honeydew on leaves</td><td>Scrub off manually; white oil spray</td><td>Chlorpyrifos or white oil</td></tr>
+            </table>
+
+            <h2>2. Common Garden Diseases</h2>
+            <table>
+                <tr><th>Disease</th><th>Plants Affected</th><th>Symptoms</th><th>Prevention</th><th>Treatment</th></tr>
+                <tr><td>Powdery Mildew</td><td>Cucumbers, pumpkins, roses</td><td>White powdery coating on leaves</td><td>Good air circulation; avoid overhead watering</td><td>Baking soda spray (1 tsp/L); sulphur-based fungicide</td></tr>
+                <tr><td>Damping Off</td><td>Seedlings (most vegetables)</td><td>Stems collapse at soil level; young seedlings die suddenly</td><td>Sterile seed mix; avoid overwatering; good drainage</td><td>Remove affected seedlings; apply Trichoderma biocontrol</td></tr>
+                <tr><td>Leaf Blight</td><td>Tomatoes, potatoes, onions</td><td>Brown or black blotches on leaves; rapid spread in wet weather</td><td>Crop rotation; avoid wetting foliage</td><td>Copper-based fungicide; mancozeb</td></tr>
+                <tr><td>Root Rot</td><td>Most vegetables</td><td>Wilting despite moist soil; dark, mushy roots</td><td>Improve drainage; avoid overwatering</td><td>Phosphonate fungicide; remove affected plants</td></tr>
+                <tr><td>Fusarium Wilt</td><td>Tomatoes, peppers, watermelon</td><td>One-sided yellowing; browning inside stem when cut</td><td>Use resistant varieties; crop rotation</td><td>No chemical cure — remove and destroy affected plants</td></tr>
+                <tr><td>Grey Mould (Botrytis)</td><td>Strawberries, grapes, lettuce</td><td>Fuzzy grey growth on fruit or stems</td><td>Remove dead plant material; improve airflow</td><td>Iprodione or copper fungicide</td></tr>
+            </table>
+
+            <h2>3. Integrated Pest Management (IPM)</h2>
+            <p>IPM is a sustainable approach that combines multiple strategies to keep pest damage below harmful levels while minimising impact on people, the environment, and beneficial organisms.</p>
+            <div class="step-grid">
+                <div class="step-card">
+                    <h3>🔍 Monitor Regularly</h3>
+                    <p>Inspect plants at least twice a week. Check undersides of leaves, soil level, and fruit. Early detection prevents small problems from becoming large infestations.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌿 Cultural Controls</h3>
+                    <p>Rotate crops, remove plant debris, maintain proper spacing, and choose disease-resistant varieties to reduce conditions where pests and diseases thrive.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🐞 Biological Controls</h3>
+                    <p>Encourage natural predators like ladybugs, lacewings, and parasitic wasps. Avoid broad-spectrum pesticides that kill beneficial insects along with pests.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🧴 Organic Treatments</h3>
+                    <p>Use neem oil, insecticidal soap, diatomaceous earth, or chilli-garlic sprays as a first line of defence before resorting to chemical options.</p>
+                </div>
+                <div class="step-card">
+                    <h3>⚗️ Chemical Controls (Last Resort)</h3>
+                    <p>If organic methods fail, use the least toxic registered pesticide. Always follow label instructions, apply in the early morning or evening, and avoid spraying near bees.</p>
+                </div>
+                <div class="step-card">
+                    <h3>📋 Record & Rotate</h3>
+                    <p>Keep a simple log of what pests appeared, when, and what worked. Rotate crops each season to break pest and disease cycles in the soil.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>🌍 South African Pest Season Tips</h4>
+                <ul>
+                    <li>Bollworm and whitefly populations peak in hot, dry summer months (Nov–Feb) — monitor closely</li>
+                    <li>Snails and slugs are most active after the first spring rains — set traps early</li>
+                    <li>Powdery mildew spreads rapidly in the cool, humid conditions of late summer to autumn</li>
+                    <li>Avoid watering in the evening — wet foliage overnight encourages fungal disease</li>
+                    <li>Companion planting with basil, marigolds, or chives naturally deters many common pests</li>
+                </ul>
+            </div>`;
+        }
+    },
+    {
+        slug: 'composting',
+        label: 'Composting & Waste',
+        icon: '♻️',
+        description: 'Turn kitchen and garden waste into rich, free fertiliser',
+        render() {
+            return `
+            <div class="topic-header">
+                <span class="topic-icon">♻️</span>
+                <div>
+                    <h1>Composting & Waste Management</h1>
+                    <p>Turn kitchen and garden scraps into rich, free fertiliser</p>
+                </div>
+            </div>
+
+            <p>Composting is one of the most valuable skills a gardener can develop. It transforms organic waste — vegetable peels, garden trimmings, cardboard — into nutrient-rich compost that improves soil structure, feeds plants, and reduces landfill waste. It costs nothing except a little time and attention.</p>
+
+            <h2>1. What to Compost</h2>
+            <div class="pros-cons-grid">
+                <div class="pros-box">
+                    <h4>✅ Add These (Greens & Browns)</h4>
+                    <ul>
+                        <li>Vegetable and fruit peels and scraps</li>
+                        <li>Coffee grounds and tea bags (remove staples)</li>
+                        <li>Eggshells (crushed)</li>
+                        <li>Grass clippings and fresh garden trimmings</li>
+                        <li>Dry leaves, straw, and cardboard (torn up)</li>
+                        <li>Paper bags and newspaper (black ink only)</li>
+                        <li>Wood ash (small amounts)</li>
+                        <li>Manure from chickens, cows, or horses</li>
+                    </ul>
+                </div>
+                <div class="cons-box">
+                    <h4>❌ Never Add These</h4>
+                    <ul>
+                        <li>Meat, fish, or dairy products (attract vermin)</li>
+                        <li>Diseased plant material</li>
+                        <li>Pet waste (dogs, cats)</li>
+                        <li>Oily or cooked foods</li>
+                        <li>Weeds that have gone to seed</li>
+                        <li>Glossy or coloured paper</li>
+                        <li>Coal or charcoal ash</li>
+                        <li>Chemically treated wood or sawdust</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h2>2. Composting Methods</h2>
+            <table>
+                <tr><th>Method</th><th>Best For</th><th>Time to Compost</th><th>Effort Required</th><th>Notes</th></tr>
+                <tr><td>Open Heap</td><td>Large gardens with lots of material</td><td>3–6 months</td><td>Low</td><td>Pile material in a corner; turn monthly to speed decomposition</td></tr>
+                <tr><td>Compost Bin</td><td>Home gardens and small spaces</td><td>2–4 months</td><td>Low–Medium</td><td>Contained, tidy, and pest-resistant; available at hardware stores</td></tr>
+                <tr><td>Tumbler</td><td>Fast composting, urban gardens</td><td>4–8 weeks</td><td>Medium</td><td>Rotate every few days; produces compost quickly with less odour</td></tr>
+                <tr><td>Trench Composting</td><td>Vegetable beds</td><td>2–3 months (in-ground)</td><td>Low</td><td>Bury scraps directly in a trench between plant rows</td></tr>
+                <tr><td>Vermicomposting (Worm Farm)</td><td>Small spaces, indoors or balconies</td><td>4–8 weeks</td><td>Medium</td><td>Uses red worms to break down food scraps; produces worm castings and liquid fertiliser</td></tr>
+            </table>
+
+            <h2>3. The Carbon-to-Nitrogen Ratio</h2>
+            <p>Good compost needs a balance of <strong>carbon-rich "brown" materials</strong> and <strong>nitrogen-rich "green" materials</strong>. The ideal ratio is roughly <strong>25–30 parts carbon to 1 part nitrogen</strong> by weight. In practice, aim for roughly equal volumes of browns and greens.</p>
+            <table>
+                <tr><th>Browns (Carbon-Rich)</th><th>Greens (Nitrogen-Rich)</th></tr>
+                <tr><td>Dry leaves</td><td>Fresh grass clippings</td></tr>
+                <tr><td>Cardboard and paper</td><td>Vegetable and fruit scraps</td></tr>
+                <tr><td>Straw and hay</td><td>Coffee grounds</td></tr>
+                <tr><td>Wood chips and sawdust</td><td>Fresh plant trimmings</td></tr>
+                <tr><td>Corn stalks</td><td>Chicken or cow manure</td></tr>
+            </table>
+
+            <h2>4. Troubleshooting Your Compost</h2>
+            <table>
+                <tr><th>Problem</th><th>Likely Cause</th><th>Solution</th></tr>
+                <tr><td>Smells bad (rotten egg odour)</td><td>Too wet or too many greens</td><td>Add browns (dry leaves, cardboard); turn the pile to aerate</td></tr>
+                <tr><td>Not decomposing</td><td>Too dry or too many browns</td><td>Add water; add greens (grass, food scraps); turn the pile</td></tr>
+                <tr><td>Attracting flies or vermin</td><td>Food scraps exposed or meat added</td><td>Bury scraps in the centre; never add meat or dairy</td></tr>
+                <tr><td>Pile feels cold</td><td>Not enough nitrogen; too small</td><td>Add more greens; ensure pile is at least 1m³ in volume</td></tr>
+                <tr><td>Compost looks finished but clumpy</td><td>Not fully broken down</td><td>Sieve it; return large pieces to the pile for another cycle</td></tr>
+            </table>
+
+            <h2>5. Using Your Compost</h2>
+            <div class="step-grid">
+                <div class="step-card">
+                    <h3>🌱 Soil Amendment</h3>
+                    <p>Mix 5–10 cm of compost into garden beds before planting. It improves texture in both sandy and clay soils while adding nutrients.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🪣 Potting Mix</h3>
+                    <p>Blend 1 part compost with 2 parts garden soil and 1 part sand or perlite for a rich, well-draining container mix.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🍵 Compost Tea</h3>
+                    <p>Steep 1 part finished compost in 5 parts water for 24–48 hours. Strain and use the liquid as a gentle foliar or root feed.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌾 Mulch Layer</h3>
+                    <p>Spread 3–5 cm of compost around plant bases as mulch. It slowly feeds roots, retains moisture, and suppresses weeds.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>💡 Quick Composting Tips</h4>
+                <ul>
+                    <li>Chop or shred materials smaller for faster decomposition</li>
+                    <li>Keep the pile as moist as a wrung-out sponge — not wet, not dry</li>
+                    <li>Turn the pile every 2–4 weeks to introduce oxygen and speed things up</li>
+                    <li>Finished compost is dark, crumbly, and smells like rich earth — not rot</li>
+                    <li>In hot South African summers, shade your compost bin to prevent it drying out too fast</li>
+                </ul>
+            </div>`;
+        }
+    },
+    {
+        slug: 'seasonal-calendar',
+        label: 'Seasonal Planting Calendar',
+        icon: '📅',
+        description: 'What to plant and when across South African seasons',
+        render() {
+            return `
+            <div class="topic-header">
+                <span class="topic-icon">📅</span>
+                <div>
+                    <h1>Seasonal Planting Calendar</h1>
+                    <p>What to plant and when — tailored for South African conditions</p>
+                </div>
+            </div>
+
+            <p>South Africa's diverse climate means planting schedules vary significantly by region. This calendar is based on the <strong>Highveld and Gauteng region</strong> as a baseline — adjust by 2–4 weeks earlier for warmer coastal regions (KwaZulu-Natal, Eastern Cape) and later for colder highland areas (Free State, Karoo).</p>
+
+            <h2>1. Spring (September – November)</h2>
+            <p>Spring is the most active planting season. Soil warms up quickly and day length increases — ideal for a wide range of vegetables and herbs.</p>
+            <table>
+                <tr><th>Crop</th><th>Action</th><th>Notes</th></tr>
+                <tr><td>Tomatoes</td><td>Transplant seedlings (mid-Oct onwards)</td><td>Wait until frost risk has passed; stake or cage plants</td></tr>
+                <tr><td>Peppers & Chillies</td><td>Sow indoors Sept; transplant Oct–Nov</td><td>Need warm soil (min 18°C); slow starters</td></tr>
+                <tr><td>Beans (Bush & Climbing)</td><td>Direct sow from mid-Sept</td><td>Fast-growing; great beginner crop</td></tr>
+                <tr><td>Cucumbers & Courgettes</td><td>Sow from Oct</td><td>Need lots of space and consistent watering</td></tr>
+                <tr><td>Pumpkin & Butternut</td><td>Sow from Oct</td><td>Give 1–2 m² per plant; water at base</td></tr>
+                <tr><td>Sweet Corn (Maize)</td><td>Direct sow Oct–Nov</td><td>Plant in blocks (not rows) for good pollination</td></tr>
+                <tr><td>Basil & Coriander</td><td>Sow from Oct</td><td>Sow every 3 weeks for continuous harvest</td></tr>
+                <tr><td>Sunflowers</td><td>Sow from Sept</td><td>Excellent for attracting pollinators</td></tr>
+            </table>
+
+            <h2>2. Summer (December – February)</h2>
+            <p>Summer brings peak growing conditions but also heat stress, heavy rains, and pest pressure. Focus on maintenance and succession planting.</p>
+            <table>
+                <tr><th>Crop</th><th>Action</th><th>Notes</th></tr>
+                <tr><td>Tomatoes</td><td>Harvest and maintain; side-dress with fertiliser</td><td>Watch for blight and bollworm in humid conditions</td></tr>
+                <tr><td>Spinach & Swiss Chard</td><td>Sow succession crops every 3 weeks</td><td>Harvest outer leaves to keep plants producing</td></tr>
+                <tr><td>Sweet Potatoes</td><td>Plant slips from Dec</td><td>Thrive in heat; harvest after 4–5 months</td></tr>
+                <tr><td>Okra</td><td>Direct sow Dec–Jan</td><td>Loves heat; harvest when pods are 8–10 cm long</td></tr>
+                <tr><td>Herbs (Basil, Mint, Thyme)</td><td>Harvest regularly; pinch flowers</td><td>Pinching flowers keeps plants producing leaves longer</td></tr>
+                <tr><td>Beetroot</td><td>Sow Jan for late-summer harvest</td><td>Tolerates some heat; keep moist</td></tr>
+            </table>
+
+            <h2>3. Autumn (March – May)</h2>
+            <p>Autumn is ideal for cool-season crops. The soil is warm, rains taper off, and temperatures become more manageable. One of the best planting windows of the year.</p>
+            <table>
+                <tr><th>Crop</th><th>Action</th><th>Notes</th></tr>
+                <tr><td>Cabbage & Broccoli</td><td>Sow from March; transplant April</td><td>Cool-season brassicas perform best in autumn and winter</td></tr>
+                <tr><td>Carrots & Radishes</td><td>Direct sow March–April</td><td>Loosen soil deeply; avoid rocky ground</td></tr>
+                <tr><td>Lettuce & Salad Greens</td><td>Sow from March</td><td>Fast-growing; harvest outer leaves for cut-and-come-again</td></tr>
+                <tr><td>Onions & Leeks</td><td>Plant seedlings or sets March–April</td><td>Long growing season; harvest in spring</td></tr>
+                <tr><td>Garlic</td><td>Plant cloves April–May</td><td>Plant with pointed end up, 5 cm deep</td></tr>
+                <tr><td>Peas</td><td>Sow direct April–May</td><td>Need support; very cold-tolerant once established</td></tr>
+                <tr><td>Kale & Spinach</td><td>Sow April</td><td>Harvest through winter with minimal care</td></tr>
+            </table>
+
+            <h2>4. Winter (June – August)</h2>
+            <p>Winter on the Highveld brings frost — many warm-season crops die back. Focus on cool-season crops, soil improvement, and planning for spring.</p>
+            <table>
+                <tr><th>Crop</th><th>Action</th><th>Notes</th></tr>
+                <tr><td>Broad Beans</td><td>Sow June–July</td><td>One of few legumes that thrive in cold; harvest spring</td></tr>
+                <tr><td>Swiss Chard & Kale</td><td>Harvest existing plants; sow July for spring</td><td>Frost-hardy; cover young seedlings with fleece on cold nights</td></tr>
+                <tr><td>Cabbage, Broccoli, Cauliflower</td><td>Harvest autumn-planted crops; sow July for spring transplants</td><td>Cauliflower is most frost-sensitive — protect heads</td></tr>
+                <tr><td>Herbs (Rosemary, Thyme, Sage)</td><td>Harvest lightly; these are evergreen perennials</td><td>Woody herbs are frost-hardy and require little winter care</td></tr>
+                <tr><td>Compost & Soil Work</td><td>Turn and enrich beds; add compost and mulch</td><td>Prepare beds now for fast planting when spring arrives</td></tr>
+                <tr><td>Potatoes</td><td>Plant mid-July for spring harvest (frost-free areas only)</td><td>Cover emerging shoots if frost threatens</td></tr>
+            </table>
+
+            <h2>5. Year-Round Crops</h2>
+            <p>Some crops are productive in multiple seasons or can be harvested continuously with proper management:</p>
+            <div class="step-grid">
+                <div class="step-card">
+                    <h3>🌿 Perennial Herbs</h3>
+                    <p>Rosemary, thyme, sage, oregano, and chives grow year-round with minimal care. Plant once and harvest for years.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🍋 Citrus Trees</h3>
+                    <p>Lemons, naartjies, and oranges produce fruit across different seasons. Plant in full sun with well-drained soil.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌱 Microgreens</h3>
+                    <p>Radish, sunflower, and pea microgreens grow indoors in just 7–14 days. No seasons needed — plant any time.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🥬 Swiss Chard</h3>
+                    <p>One of the most versatile crops — tolerates both heat and light frost. Harvest outer leaves throughout the year.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>📍 Regional Adjustments</h4>
+                <ul>
+                    <li><strong>KwaZulu-Natal Coast:</strong> Frost-free — plant tomatoes and warm crops 4–6 weeks earlier than Highveld</li>
+                    <li><strong>Western Cape:</strong> Mediterranean climate — winter is the rainy planting season for many crops</li>
+                    <li><strong>Limpopo & Lowveld:</strong> Very hot summers — focus on heat-tolerant crops; plant in autumn for best results</li>
+                    <li><strong>Free State & Karoo:</strong> Severe frost — delay spring planting until late October; extend cool-season crops later into autumn</li>
+                    <li>Always check your last and first frost dates for your specific town using local weather services</li>
+                </ul>
+            </div>`;
+        }
+    },
+    {
+        slug: 'harvesting',
+        label: 'Harvesting & Storage',
+        icon: '🧺',
+        description: 'When and how to harvest, and how to store your produce',
+        render() {
+            return `
+            <div class="topic-header">
+                <span class="topic-icon">🧺</span>
+                <div>
+                    <h1>Harvesting & Storage</h1>
+                    <p>Get the most from your garden — know when to pick and how to keep it fresh</p>
+                </div>
+            </div>
+
+            <p>Knowing when and how to harvest is just as important as planting. Harvesting at the right time improves flavour, encourages more production, and reduces waste. Proper storage then extends the life of your produce so nothing goes to waste.</p>
+
+            <h2>1. Harvesting Guide by Crop</h2>
+            <table>
+                <tr><th>Crop</th><th>Days to Harvest</th><th>Signs of Readiness</th><th>Harvest Tip</th></tr>
+                <tr><td>Tomatoes</td><td>60–85 days from transplant</td><td>Fully coloured (red, yellow, or variety colour); slightly soft to touch</td><td>Twist gently or cut with scissors; leave stem on</td></tr>
+                <tr><td>Lettuce & Spinach</td><td>30–50 days</td><td>Outer leaves are 10–15 cm long; before plant bolts (flowers)</td><td>Cut outer leaves; centre regrows — "cut-and-come-again"</td></tr>
+                <tr><td>Beans (Bush)</td><td>50–60 days</td><td>Pods are firm, snap cleanly, seeds not yet bulging</td><td>Harvest every 2–3 days to keep plant producing</td></tr>
+                <tr><td>Carrots</td><td>70–80 days</td><td>Shoulder (top) is 1–2 cm wide at soil surface</td><td>Water the day before; loosen soil gently to pull without breaking</td></tr>
+                <tr><td>Cabbage</td><td>80–120 days</td><td>Head feels firm and dense when pressed; outer leaves large</td><td>Cut at base; leave outer leaves as mulch around stump — side shoots may regrow</td></tr>
+                <tr><td>Butternut / Pumpkin</td><td>90–110 days</td><td>Skin is hard and cannot be dented with fingernail; stem dries and cracks</td><td>Leave 5 cm of stem attached for longer storage</td></tr>
+                <tr><td>Cucumbers</td><td>50–65 days</td><td>Firm, dark green, 15–20 cm long; before skin yellows</td><td>Pick frequently — leaving overripe cucumbers stops production</td></tr>
+                <tr><td>Garlic</td><td>120–150 days</td><td>Lower 3–4 leaves have died back; upper leaves still green</td><td>Lift with a fork; cure in a dry, airy spot for 2–3 weeks before storing</td></tr>
+                <tr><td>Onions</td><td>100–120 days</td><td>Tops fall over naturally; neck softens</td><td>Cure in the sun for 1–2 weeks; store in a cool, dry place with good airflow</td></tr>
+                <tr><td>Potatoes</td><td>70–120 days (variety)</td><td>Foliage turns yellow and dies back</td><td>Wait 2 weeks after foliage dies before digging — skin toughens for storage</td></tr>
+                <tr><td>Herbs (Basil, Parsley)</td><td>4–6 weeks after planting</td><td>Plant has 6+ leaves; harvest before flowering</td><td>Pinch the top 2–3 sets of leaves; this encourages bushy growth</td></tr>
+                <tr><td>Chillies & Peppers</td><td>70–90 days</td><td>Firm and full-sized; colour depends on variety (green to red)</td><td>Use scissors to cut; pulling can damage the plant</td></tr>
+            </table>
+
+            <h2>2. Post-Harvest Handling</h2>
+            <div class="step-grid">
+                <div class="step-card">
+                    <h3>🧹 Clean Gently</h3>
+                    <p>Remove soil with a dry brush first. Wash only just before use for most produce — moisture accelerates decay in storage.</p>
+                </div>
+                <div class="step-card">
+                    <h3>❄️ Cool Quickly</h3>
+                    <p>Move leafy greens and soft fruits into a cool place within an hour of harvesting. Heat causes rapid wilting and nutrient loss.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌬️ Cure Root Crops</h3>
+                    <p>Onions, garlic, potatoes, and pumpkin need curing in a warm, dry, airy spot for 1–3 weeks before long-term storage. This toughens the skin.</p>
+                </div>
+                <div class="step-card">
+                    <h3>✂️ Don't Wash Before Storing</h3>
+                    <p>Wash produce only when ready to eat. Wet surfaces encourage mould and rotting, especially for berries, tomatoes, and leafy greens.</p>
+                </div>
+            </div>
+
+            <h2>3. Storage Methods by Produce Type</h2>
+            <table>
+                <tr><th>Produce</th><th>Best Storage Method</th><th>Temperature</th><th>Shelf Life</th><th>Notes</th></tr>
+                <tr><td>Tomatoes</td><td>Room temperature, out of direct sun</td><td>18–22°C</td><td>5–10 days</td><td>Never refrigerate — cold destroys flavour and texture</td></tr>
+                <tr><td>Leafy Greens</td><td>Damp cloth in fridge crisper drawer</td><td>2–4°C</td><td>5–7 days</td><td>Wrap in a barely damp cloth or paper towel</td></tr>
+                <tr><td>Root Vegetables (Carrots, Beetroot)</td><td>Remove tops; store in damp sand or fridge</td><td>2–4°C</td><td>2–4 weeks</td><td>Remove greens — they draw moisture from the root</td></tr>
+                <tr><td>Onions & Garlic</td><td>Cool, dry, dark place with airflow</td><td>10–15°C</td><td>1–6 months</td><td>Never store onions with potatoes — they accelerate each other's spoiling</td></tr>
+                <tr><td>Potatoes</td><td>Dark, cool, ventilated bag or box</td><td>8–12°C</td><td>4–8 weeks</td><td>Avoid light — it causes greening (solanine, mildly toxic)</td></tr>
+                <tr><td>Pumpkin & Butternut</td><td>Cool, dry room; whole, uncured</td><td>10–15°C</td><td>3–6 months</td><td>Keep stem attached; inspect monthly for soft spots</td></tr>
+                <tr><td>Herbs (Fresh)</td><td>Trim stems; stand in a jar of water</td><td>Room temp or fridge</td><td>1–2 weeks</td><td>Treat like flowers — change water every 2 days</td></tr>
+                <tr><td>Chillies (Fresh)</td><td>Fridge in paper bag</td><td>7–10°C</td><td>2–3 weeks</td><td>Can also be dried, frozen, or made into chilli paste for longer storage</td></tr>
+                <tr><td>Beans (Fresh)</td><td>Fridge in breathable bag</td><td>4–7°C</td><td>5–7 days</td><td>Blanch and freeze for up to 12 months</td></tr>
+            </table>
+
+            <h2>4. Preserving Your Harvest</h2>
+            <p>When you have more than you can eat fresh, preserving lets you enjoy your garden's abundance throughout the year.</p>
+            <div class="step-grid">
+                <div class="step-card">
+                    <h3>🧊 Freezing</h3>
+                    <p>Blanch vegetables in boiling water for 2–3 minutes, then plunge into ice water before freezing. Most vegetables last 6–12 months frozen.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🫙 Pickling</h3>
+                    <p>Pack vegetables in sterilised jars with vinegar, salt, and spices. Cucumbers, chillies, onions, and carrots all pickle beautifully.</p>
+                </div>
+                <div class="step-card">
+                    <h3>☀️ Sun Drying</h3>
+                    <p>South Africa's sunny climate is ideal for drying tomatoes, chillies, and herbs. Slice thinly and dry on racks in full sun for 3–5 days.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🍅 Sauces & Pastes</h3>
+                    <p>Cook surplus tomatoes, peppers, or chillies into sauces and freeze in ice cube trays for easy use. A great zero-waste option.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>💡 General Harvesting Tips</h4>
+                <ul>
+                    <li>Harvest in the early morning when produce is coolest and most hydrated — it lasts longer after picking</li>
+                    <li>Regular harvesting signals the plant to keep producing — never leave overripe fruit on the plant</li>
+                    <li>Use clean, sharp scissors or a knife — tearing stems can introduce disease</li>
+                    <li>Handle produce gently — bruising causes faster spoilage</li>
+                    <li>Keep a harvest journal to track what produced most and plan better next season</li>
+                </ul>
+            </div>`;
+        }
+    },
+    {
+        slug: 'companion-planting',
+        label: 'Companion Planting',
+        icon: '🌻',
+        description: 'Which plants help each other grow — and which to keep apart',
+        render() {
+            return `
+            <div class="topic-header">
+                <span class="topic-icon">🌻</span>
+                <div>
+                    <h1>Companion Planting</h1>
+                    <p>Use plant relationships to boost yields, deter pests, and improve flavour</p>
+                </div>
+            </div>
+
+            <p>Companion planting is the practice of growing certain plants near each other to create mutually beneficial relationships. Some combinations deter pests, attract pollinators, fix nitrogen in the soil, or simply make better use of space. It's one of the oldest and most effective organic gardening techniques — and it costs nothing extra.</p>
+
+            <h2>1. The Science Behind It</h2>
+            <div class="step-grid">
+                <div class="step-card">
+                    <h3>🧪 Chemical Signals</h3>
+                    <p>Plants release volatile compounds through their roots and leaves. Strongly scented herbs like basil and marigolds confuse or repel insects looking for host plants.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🐝 Attracting Pollinators</h3>
+                    <p>Flowering companions like borage, nasturtiums, and calendula attract bees and beneficial insects, improving pollination rates for nearby fruit and vegetable crops.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌱 Nitrogen Fixation</h3>
+                    <p>Legumes (beans, peas, clover) host bacteria in their roots that convert atmospheric nitrogen into a form plants can absorb — a free, natural fertiliser for neighbouring crops.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌿 Space Optimisation</h3>
+                    <p>Tall plants shade low-growing crops that prefer cooler conditions. Sprawling ground covers suppress weeds between upright plants, reducing competition for water and nutrients.</p>
+                </div>
+            </div>
+
+            <h2>2. Best Companion Combinations</h2>
+            <table>
+                <tr><th>Plant</th><th>Good Companions</th><th>Why It Works</th></tr>
+                <tr><td>Tomatoes</td><td>Basil, marigolds, carrots, parsley</td><td>Basil repels aphids and whitefly; marigolds deter nematodes; carrots loosen soil around roots</td></tr>
+                <tr><td>Beans</td><td>Carrots, cucumber, maize, squash</td><td>Beans fix nitrogen that feeds heavy feeders; maize provides climbing support</td></tr>
+                <tr><td>Cabbage & Brassicas</td><td>Dill, sage, rosemary, onions, nasturtiums</td><td>Aromatic herbs confuse cabbage moth; nasturtiums act as trap crops for aphids</td></tr>
+                <tr><td>Carrots</td><td>Onions, leeks, rosemary, sage, tomatoes</td><td>Onions deter carrot fly; carrot scent masks onion fly; mutual pest protection</td></tr>
+                <tr><td>Spinach & Lettuce</td><td>Tall crops (tomatoes, beans, maize), radishes</td><td>Tall plants provide shade in summer heat; radishes deter leaf miners</td></tr>
+                <tr><td>Cucumbers</td><td>Nasturtiums, beans, dill, sunflowers</td><td>Nasturtiums deter aphids; beans fix nitrogen; sunflowers attract pollinators</td></tr>
+                <tr><td>Peppers & Chillies</td><td>Basil, carrots, spinach, marigolds</td><td>Basil improves pepper flavour and deters aphids; marigolds ward off spider mites</td></tr>
+                <tr><td>Onions & Garlic</td><td>Tomatoes, carrots, roses, beetroot</td><td>Strong scent confuses many pests; deters aphids and fungal diseases</td></tr>
+                <tr><td>Pumpkin & Butternut</td><td>Maize, beans, nasturtiums</td><td>The "Three Sisters" method: maize supports beans, beans fix nitrogen, pumpkin covers ground</td></tr>
+                <tr><td>Maize</td><td>Beans, squash, cucumber</td><td>Classic Three Sisters polyculture — each plant fills a different ecological niche</td></tr>
+            </table>
+
+            <h2>3. Plants to Keep Apart</h2>
+            <table>
+                <tr><th>Plant</th><th>Bad Companions</th><th>Why to Avoid</th></tr>
+                <tr><td>Onions & Garlic</td><td>Beans, peas</td><td>Alliums stunt the growth of legumes and inhibit their nitrogen-fixing ability</td></tr>
+                <tr><td>Fennel</td><td>Almost everything</td><td>Fennel releases compounds that inhibit germination and growth of most vegetables — plant it in isolation</td></tr>
+                <tr><td>Tomatoes</td><td>Fennel, brassicas, corn (in some cases)</td><td>Brassicas compete for nutrients; fennel stunts growth; corn can share pests</td></tr>
+                <tr><td>Potatoes</td><td>Tomatoes, cucumbers, squash, sunflowers</td><td>Tomatoes and potatoes share blight disease; sunflowers inhibit potato growth</td></tr>
+                <tr><td>Brassicas (Cabbage, Broccoli)</td><td>Strawberries, tomatoes, fennel</td><td>Competition for nutrients; strawberries attract pests that also affect brassicas</td></tr>
+                <tr><td>Peas</td><td>Onions, garlic, shallots</td><td>Alliums inhibit pea growth through root chemicals</td></tr>
+            </table>
+
+            <h2>4. The Three Sisters — A Classic South African Polyculture</h2>
+            <p>The Three Sisters is one of the oldest companion planting systems, originally developed by indigenous farmers and widely adaptable to South African conditions. Plant them together for a self-supporting, low-input food system.</p>
+            <div class="step-grid">
+                <div class="step-card">
+                    <h3>🌽 Maize (The Structure)</h3>
+                    <p>Plant first in a mound. Grows tall to provide a living trellis for climbing beans. Sow in blocks of at least 4×4 for good wind pollination.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🫘 Beans (The Fertiliser)</h3>
+                    <p>Plant around the base of maize once it is 15–20 cm tall. Climbs the stalks and fixes nitrogen into the soil, feeding the other two sisters.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🎃 Pumpkin (The Mulch)</h3>
+                    <p>Plant between the mounds once beans are established. Large leaves shade the soil, keeping it moist, cool, and weed-free — a natural living mulch.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌻 The Result</h3>
+                    <p>Together, the three sisters produce a complete, balanced diet — carbohydrates, protein, and vitamins — while improving soil and reducing inputs. Perfect for community gardens.</p>
+                </div>
+            </div>
+
+            <h2>5. Trap Cropping</h2>
+            <p>Trap crops are planted specifically to attract pests away from your main crops, where they can then be removed or destroyed. This is a highly effective organic pest management strategy.</p>
+            <table>
+                <tr><th>Trap Crop</th><th>Pest It Attracts</th><th>Main Crop Protected</th><th>What to Do</th></tr>
+                <tr><td>Nasturtiums</td><td>Aphids, whitefly</td><td>Tomatoes, cabbage, cucumbers</td><td>Plant around the perimeter; remove aphid-covered leaves weekly</td></tr>
+                <tr><td>Blue Hubbard Squash</td><td>Cucumber beetles, squash bugs</td><td>Courgettes, cucumbers, pumpkins</td><td>Plant on the border; destroy infested plants before pests spread</td></tr>
+                <tr><td>Dill</td><td>Tomato hornworm, aphids</td><td>Tomatoes, peppers</td><td>Allow to flower; inspect and hand-pick hornworm caterpillars</td></tr>
+                <tr><td>Sunflowers</td><td>Stink bugs, aphids</td><td>Beans, tomatoes</td><td>Plant on the south or east border; check daily for pests</td></tr>
+            </table>
+
+            <div class="tip-box">
+                <h4>🌍 South African Companion Planting Tips</h4>
+                <ul>
+                    <li>Marigolds (African and French varieties) are the most versatile companion plant — use them freely throughout the garden</li>
+                    <li>Plant basil between tomatoes at 30 cm spacing for maximum aphid and whitefly deterrence</li>
+                    <li>Grow nasturtiums as a border around your entire vegetable garden as a first line of pest defence</li>
+                    <li>Avoid planting fennel in vegetable beds — it inhibits most garden plants; grow it in a pot instead</li>
+                    <li>Rosemary, lavender, and thyme planted near brassicas significantly reduce caterpillar damage from cabbage moth</li>
+                </ul>
+            </div>`;
+        }
+    },
+    {
+        slug: 'plant-nutrition',
+        label: 'Plant Nutrition & Deficiencies',
+        icon: '💊',
+        description: 'Diagnose and fix nutrient problems by reading your plants',
+        render() {
+            return `
+            <div class="topic-header">
+                <span class="topic-icon">💊</span>
+                <div>
+                    <h1>Plant Nutrition &amp; Deficiencies</h1>
+                    <p>Read your plants' symptoms and fix nutrient problems fast</p>
+                </div>
+            </div>
+
+            <p>Plants communicate their nutritional needs through visible symptoms in their leaves, stems, and growth patterns. Learning to read these signs allows you to correct deficiencies before they cause significant damage. Most problems are preventable with healthy soil and a balanced fertilisation programme.</p>
+
+            <h2>1. The Essential Plant Nutrients</h2>
+            <p>Plants require 17 essential nutrients. These are divided into <strong>macronutrients</strong> (needed in large amounts) and <strong>micronutrients</strong> (needed in small but critical amounts).</p>
+            <table>
+                <tr><th>Nutrient</th><th>Symbol</th><th>Type</th><th>Primary Role</th><th>Common Source</th></tr>
+                <tr><td>Nitrogen</td><td>N</td><td>Macronutrient</td><td>Leaf and stem growth; chlorophyll production</td><td>Compost, manure, urea, fish emulsion</td></tr>
+                <tr><td>Phosphorus</td><td>P</td><td>Macronutrient</td><td>Root development, flowering, fruiting, energy transfer</td><td>Bone meal, superphosphate, rock phosphate</td></tr>
+                <tr><td>Potassium</td><td>K</td><td>Macronutrient</td><td>Disease resistance, water regulation, fruit quality</td><td>Wood ash, potassium sulphate, compost</td></tr>
+                <tr><td>Calcium</td><td>Ca</td><td>Secondary macro</td><td>Cell wall strength, root tip growth</td><td>Lime, gypsum, calcium nitrate, eggshells</td></tr>
+                <tr><td>Magnesium</td><td>Mg</td><td>Secondary macro</td><td>Central atom of chlorophyll; enzyme activation</td><td>Epsom salt (MgSO₄), dolomitic lime</td></tr>
+                <tr><td>Sulphur</td><td>S</td><td>Secondary macro</td><td>Protein synthesis, enzyme function, flavour in alliums</td><td>Gypsum, elemental sulphur, compost</td></tr>
+                <tr><td>Iron</td><td>Fe</td><td>Micronutrient</td><td>Chlorophyll formation; enzyme function</td><td>Iron chelates, acidifying soil</td></tr>
+                <tr><td>Manganese</td><td>Mn</td><td>Micronutrient</td><td>Photosynthesis, nitrogen metabolism</td><td>Manganese sulphate, compost</td></tr>
+                <tr><td>Zinc</td><td>Zn</td><td>Micronutrient</td><td>Growth hormone production, enzyme function</td><td>Zinc sulphate, compost</td></tr>
+                <tr><td>Boron</td><td>B</td><td>Micronutrient</td><td>Cell division, pollen development, sugar transport</td><td>Borax (small amounts), compost</td></tr>
+            </table>
+
+            <h2>2. Identifying & Fixing Deficiencies</h2>
+            <p>The location and appearance of symptoms on the plant tell you a great deal about which nutrient is lacking. <strong>Mobile nutrients</strong> (N, P, K, Mg) show symptoms in older leaves first — the plant moves these to new growth. <strong>Immobile nutrients</strong> (Ca, Fe, Mn, Zn, B) show symptoms in young leaves and growing tips first.</p>
+            <table>
+                <tr><th>Nutrient</th><th>Symptoms</th><th>Which Leaves First</th><th>Quick Fix</th><th>Long-Term Fix</th></tr>
+                <tr><td>Nitrogen (N)</td><td>Pale yellow-green leaves; slow growth; thin stems; lower leaves yellow first</td><td>Older (lower) leaves</td><td>Liquid fish emulsion or urea (20 g/m²) diluted in water</td><td>Add compost and manure regularly; plant legume cover crops</td></tr>
+                <tr><td>Phosphorus (P)</td><td>Purple or reddish tinge on underside of leaves; dark green upper surface; poor root development; delayed fruiting</td><td>Older leaves; whole plant</td><td>Liquid seaweed or diluted superphosphate</td><td>Bone meal at planting (50–100 g/m²); maintain soil pH 6–7</td></tr>
+                <tr><td>Potassium (K)</td><td>Leaf edge browning and scorching (tip burn); weak stems; poor fruit quality; lower leaves affected first</td><td>Older (outer) leaves</td><td>Wood ash dissolved in water; potassium sulphate (30 g/m²)</td><td>Regular compost; potassium sulphate every 4–6 weeks</td></tr>
+                <tr><td>Calcium (Ca)</td><td>Blossom-end rot (black base on tomatoes/peppers); tip burn in lettuce; hollow stems; new growth distorted</td><td>Young leaves and tips; fruit</td><td>Calcium nitrate foliar spray (5 g/L) or soil drench</td><td>Add lime or gypsum; ensure consistent watering (prevents uptake issues)</td></tr>
+                <tr><td>Magnesium (Mg)</td><td>Interveinal chlorosis — yellowing between green veins on older leaves; leaves curl upward</td><td>Older (middle) leaves</td><td>Epsom salt foliar spray (20 g/L) or soil drench (30 g/m²)</td><td>Dolomitic lime; regular compost; avoid excessive potassium</td></tr>
+                <tr><td>Iron (Fe)</td><td>Interveinal chlorosis on young leaves — veins stay dark green but tissue between turns pale yellow</td><td>Young (upper) leaves and new growth</td><td>Iron chelate foliar spray or soil drench</td><td>Lower soil pH below 7 using sulphur; add acidifying compost</td></tr>
+                <tr><td>Zinc (Zn)</td><td>Small, distorted new leaves; short internodes; mottled or striped yellowing between veins</td><td>Young leaves</td><td>Zinc sulphate foliar spray (2 g/L)</td><td>Zinc sulphate soil application; regular compost</td></tr>
+                <tr><td>Boron (B)</td><td>Hollow, cracked, or corky stems; distorted, thickened new growth; poor fruit set; tip death</td><td>Growing tips and new leaves</td><td>Borax solution — very small amounts (0.3 g/L foliar spray)</td><td>Add compost; avoid overliming; use balanced fertiliser with trace elements</td></tr>
+            </table>
+
+            <h2>3. Nutrient Availability and Soil pH</h2>
+            <p>Soil pH is one of the most important factors affecting nutrient availability. Even if nutrients are present in the soil, a pH outside the ideal range "locks them up" so plants cannot absorb them. Most vegetables grow best between pH 6.0 and 7.0.</p>
+            <table>
+                <tr><th>Soil pH</th><th>Condition</th><th>Nutrients Affected</th><th>How to Adjust</th></tr>
+                <tr><td>Below 5.5</td><td>Too acidic</td><td>P, Ca, Mg become less available; Al and Mn become toxic</td><td>Add agricultural lime (dolomitic or calcitic) — 100–200 g/m²</td></tr>
+                <tr><td>5.5 – 6.5</td><td>Slightly acidic — ideal</td><td>All nutrients most available; best for most vegetables</td><td>Maintain with compost; test annually</td></tr>
+                <tr><td>6.5 – 7.0</td><td>Near neutral — good</td><td>Excellent for most crops; slightly less Fe and Mn availability</td><td>Maintain with compost; monitor iron-sensitive plants</td></tr>
+                <tr><td>Above 7.5</td><td>Alkaline</td><td>Fe, Mn, Zn, B become unavailable; common in SA highveld soils</td><td>Add elemental sulphur (30–60 g/m²) or acidifying fertiliser</td></tr>
+            </table>
+
+            <h2>4. Reading a Fertiliser Label</h2>
+            <p>All fertiliser bags display an <strong>N-P-K ratio</strong> showing the percentage of each primary nutrient by weight. Understanding this helps you choose the right product for your crop and growth stage.</p>
+            <div class="step-grid">
+                <div class="step-card">
+                    <h3>🌿 High N (e.g. 3:1:1)</h3>
+                    <p>Use for leafy crops and early vegetative growth. Spinach, lettuce, kale, and herbs all respond well to nitrogen-dominant feeds in spring.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌸 High P (e.g. 1:3:1)</h3>
+                    <p>Use at transplanting and early flowering stage. High phosphorus supports root establishment and bud formation in tomatoes, peppers, and fruit trees.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🍅 High K (e.g. 1:1:3)</h3>
+                    <p>Use during fruiting and ripening. Potassium improves fruit size, flavour, colour, and disease resistance. Ideal for tomatoes, peppers, and cucumbers.</p>
+                </div>
+                <div class="step-card">
+                    <h3>⚖️ Balanced (e.g. 2:3:2)</h3>
+                    <p>A general-purpose feed suitable for most vegetable gardens throughout the season. Easy to use and hard to over-apply at recommended rates.</p>
+                </div>
+            </div>
+
+            <h2>5. Diagnosing vs. Over-Fertilising</h2>
+            <p>Too much fertiliser is just as harmful as too little. Over-fertilisation — particularly with nitrogen — causes fertiliser burn, excessive leafy growth at the expense of fruit, and can damage soil biology.</p>
+            <table>
+                <tr><th>Symptom</th><th>Likely Cause</th><th>Action</th></tr>
+                <tr><td>White crusty residue on soil surface</td><td>Salt build-up from over-fertilising</td><td>Flush with heavy watering; reduce fertiliser frequency</td></tr>
+                <tr><td>Brown leaf tips and margins (uniform)</td><td>Fertiliser burn / salt stress</td><td>Water deeply to leach excess salts; skip 2–3 application cycles</td></tr>
+                <tr><td>Lush, dark green leaves but no fruit</td><td>Excess nitrogen</td><td>Switch to a low-N, high-K fertiliser; avoid manure during fruiting</td></tr>
+                <tr><td>Plants wilting despite moist soil</td><td>Root burn from over-fertilising</td><td>Flush soil; allow roots to recover before next application</td></tr>
+            </table>
+
+            <div class="tip-box">
+                <h4>💡 Practical Nutrition Tips</h4>
+                <ul>
+                    <li>Test your soil pH annually — a cheap pH meter or kit costs under R100 and saves significant money in wasted fertiliser</li>
+                    <li>In South Africa's alkaline highveld soils, iron and zinc deficiencies are very common — use chelated forms for best results</li>
+                    <li>Compost applied regularly provides a wide spectrum of macro- and micronutrients in balanced, slow-release form</li>
+                    <li>Always water after applying granular fertiliser — it prevents root burn and begins dissolving nutrients into the soil</li>
+                    <li>Foliar feeding (spraying diluted liquid fertiliser on leaves) delivers nutrients 5–10× faster than soil application — ideal for urgent deficiency correction</li>
+                </ul>
+            </div>`;
+        }
+    },
+    {
+        slug: 'microclimate',
+        label: 'Climate & Microclimate',
+        icon: '🌡️',
+        description: 'Use your garden\'s unique conditions to grow better crops',
+        render() {
+            return `
+            <div class="topic-header">
+                <span class="topic-icon">🌡️</span>
+                <div>
+                    <h1>Climate &amp; Microclimate</h1>
+                    <p>Understand your garden's unique conditions and use them to your advantage</p>
+                </div>
+            </div>
+
+            <p>Every garden has its own microclimate — small-scale variations in temperature, wind, moisture, and sunlight that can differ significantly from the broader regional climate. Understanding and working with your microclimate allows you to extend growing seasons, protect vulnerable crops, and place each plant where it will genuinely thrive.</p>
+
+            <h2>1. South Africa's Major Climate Zones for Gardeners</h2>
+            <table>
+                <tr><th>Region</th><th>Climate Type</th><th>Summer</th><th>Winter</th><th>Key Considerations</th></tr>
+                <tr><td>Highveld (Gauteng, Mpumalanga, Free State plateau)</td><td>Semi-arid highland</td><td>Hot (25–35°C), afternoon thunderstorms</td><td>Cold, dry, severe frost (−5 to −8°C)</td><td>Short growing season; protect from hail; wait for frost to pass before planting warm crops</td></tr>
+                <tr><td>KwaZulu-Natal Coast</td><td>Subtropical humid</td><td>Hot and humid (30–38°C)</td><td>Mild, nearly frost-free (10–20°C)</td><td>Year-round growing; watch for fungal disease in humid conditions; excellent for tropical crops</td></tr>
+                <tr><td>Western Cape</td><td>Mediterranean</td><td>Hot and dry (30–40°C)</td><td>Cool and wet (5–15°C)</td><td>Winter rainfall — plant cool-season crops in autumn; summer irrigation essential</td></tr>
+                <tr><td>Eastern Cape</td><td>Mixed / transitional</td><td>Warm (25–32°C), variable rainfall</td><td>Mild to cool (5–15°C), occasional frost inland</td><td>Highly variable — inland areas frost-prone; coastal areas near frost-free</td></tr>
+                <tr><td>Limpopo & Lowveld</td><td>Tropical / bushveld</td><td>Very hot (35–42°C), summer rains</td><td>Warm (15–25°C), dry and frost-free</td><td>Ideal for tropical crops; extreme heat may require shade cloth; irrigate through dry winter</td></tr>
+                <tr><td>Karoo & Northern Cape</td><td>Arid / semi-arid</td><td>Very hot (38–45°C), very dry</td><td>Cold nights, warm days, frost possible</td><td>Water conservation critical; limited growing windows; drought-hardy varieties essential</td></tr>
+            </table>
+
+            <h2>2. Understanding Microclimates in Your Garden</h2>
+            <p>Even within a single garden, conditions vary significantly. Mapping your microclimate before planting helps you make better decisions about what to grow where.</p>
+            <div class="step-grid">
+                <div class="step-card">
+                    <h3>☀️ Sunny Hot Spots</h3>
+                    <p>South-facing walls and paved areas radiate heat and stay warm. Use these for heat-loving crops like tomatoes, peppers, chillies, sweet potatoes, and aubergines.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌥️ Sheltered Cool Spots</h3>
+                    <p>North-facing beds or areas shaded by walls and trees stay cooler. Use these for lettuce, spinach, parsley, and coriander, which bolt in full summer heat.</p>
+                </div>
+                <div class="step-card">
+                    <h3>💨 Wind Corridors</h3>
+                    <p>Gaps between buildings or fences create wind tunnels that damage plants, dry soil rapidly, and stunt growth. Use windbreaks — hedges, shade cloth, or trellises — to protect vulnerable areas.</p>
+                </div>
+                <div class="step-card">
+                    <h3>💧 Wet Low Points</h3>
+                    <p>Water collects in hollows and low-lying areas. These can be used for moisture-loving plants or improved with drainage. Avoid planting root crops in waterlogged spots.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🧱 Thermal Mass Walls</h3>
+                    <p>Brick and concrete walls absorb heat during the day and release it overnight, keeping nearby plants warmer. Use this to grow heat-lovers slightly beyond their normal season.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌫️ Frost Pockets</h3>
+                    <p>Cold air drains downhill and pools in low areas and against solid fences, creating frost pockets. Avoid planting frost-sensitive crops in these spots — or protect with frost cloth.</p>
+                </div>
+            </div>
+
+            <h2>3. Managing Temperature Extremes</h2>
+            <table>
+                <tr><th>Challenge</th><th>Effect on Plants</th><th>Solutions</th></tr>
+                <tr><td>Frost (below 0°C)</td><td>Kills tender plants; damages fruit; wilts seedlings overnight</td><td>Frost cloth or shade netting over plants; mulch around base; plant against warm walls; delay planting until last frost date</td></tr>
+                <tr><td>Hail</td><td>Shreds leaves; bruises fruit; snaps stems</td><td>Shade cloth (40%) over beds during hail season (Oct–Feb Highveld); grow some crops under structures</td></tr>
+                <tr><td>Extreme heat (35°C+)</td><td>Wilting; blossom drop; tip burn; bolting in cool-season crops</td><td>Shade cloth (30–40%) in afternoon; mulch to keep roots cool; deep watering in morning; choose heat-tolerant varieties</td></tr>
+                <tr><td>High humidity</td><td>Fungal diseases (mildew, blight, grey mould)</td><td>Increase plant spacing; avoid evening watering; use resistant varieties; apply copper fungicide preventatively</td></tr>
+                <tr><td>Dry winds (Berg winds)</td><td>Rapid moisture loss; leaf scorch; stressed plants</td><td>Windbreak planting; shade cloth barrier; mulch heavily; water more frequently during berg wind events</td></tr>
+            </table>
+
+            <h2>4. Frost Date Guide by Region</h2>
+            <p>Knowing your last spring frost and first autumn frost dates is essential for timing planting correctly. These are approximate dates — check local weather records for your specific area.</p>
+            <table>
+                <tr><th>Region</th><th>Last Spring Frost</th><th>First Autumn Frost</th><th>Frost-Free Growing Days</th></tr>
+                <tr><td>Johannesburg / Pretoria (Highveld)</td><td>Mid-September</td><td>Late April / Early May</td><td>~220 days</td></tr>
+                <tr><td>Bloemfontein (Free State)</td><td>Late September</td><td>Early May</td><td>~200 days</td></tr>
+                <tr><td>Durban (KZN Coast)</td><td>No frost</td><td>No frost</td><td>365 days</td></tr>
+                <tr><td>Cape Town (Western Cape)</td><td>Frost rare (July–Aug risk only)</td><td>Frost rare</td><td>~330+ days</td></tr>
+                <tr><td>Port Elizabeth / Gqeberha</td><td>Late August (inland)</td><td>June (inland)</td><td>~250 days coastal</td></tr>
+                <tr><td>Polokwane (Limpopo)</td><td>Late August</td><td>May</td><td>~210 days</td></tr>
+                <tr><td>Karoo (Graaff-Reinet area)</td><td>Late September</td><td>April</td><td>~185 days</td></tr>
+            </table>
+
+            <h2>5. Using Season Extension Techniques</h2>
+            <div class="step-grid">
+                <div class="step-card">
+                    <h3>🏠 Cold Frames</h3>
+                    <p>A simple box with a clear lid (old window, clear plastic) placed over plants traps solar heat. Extends both the spring and autumn season by 4–6 weeks.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌿 Shade Cloth</h3>
+                    <p>30–40% shade cloth reduces soil and air temperature by 4–8°C, allowing cool-season crops to survive into early summer on the Highveld.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🛡️ Frost Cloth</h3>
+                    <p>Lightweight frost fleece draped over plants can protect against frosts down to −3 or −4°C. Remove during the day to allow light and airflow.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🪣 Water Bottles as Thermal Mass</h3>
+                    <p>Place dark-painted water containers around frost-sensitive plants. They absorb heat during the day and radiate it overnight, raising ambient temperature by 1–3°C.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌱 Tunnel Greenhouses</h3>
+                    <p>A simple DIY tunnel of wire hoops and clear plastic sheeting creates a protected growing environment, extending the season by 6–8 weeks on both ends.</p>
+                </div>
+                <div class="step-card">
+                    <h3>🌾 Heavy Mulching</h3>
+                    <p>A 10 cm layer of straw or bark mulch insulates roots from both heat and cold, moderating soil temperature swings by up to 8°C compared to bare soil.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>🌍 Practical Climate Tips for SA Gardeners</h4>
+                <ul>
+                    <li>In Gauteng, keep frost cloth or old bedsheets ready from April to September — frosts can arrive suddenly overnight</li>
+                    <li>Shade cloth over summer vegetable beds reduces water use by up to 30% by lowering evaporation</li>
+                    <li>Berg winds on the Highveld in winter can drop humidity to near zero — water before they arrive, not after</li>
+                    <li>Build or buy a simple min-max thermometer to track your garden's actual temperature range — it often differs from city weather reports</li>
+                    <li>Orient raised beds north-to-south so all plants receive equal sunlight through the day, avoiding one side being permanently shaded</li>
+                </ul>
+            </div>`;
+        }
+    }
+];
+
+/* ============================================================
+   ROUTER + RENDER ENGINE
+   ============================================================ */
+function getSlugFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('topic');
+}
+
+function setSlugInURL(slug) {
+    const url = new URL(window.location);
+    url.searchParams.set('topic', slug);
+    window.history.pushState({}, '', url);
+}
+
+function renderSidebar(activeSlug) {
+    const nav = document.getElementById('sidebarNav');
+    nav.innerHTML = TOPICS.map(t => `
+        <div class="sidebar-item ${t.slug === activeSlug ? 'active' : ''}" data-slug="${t.slug}">
+            <span class="icon">${t.icon}</span>
+            <span>${t.label}</span>
+        </div>
+    `).join('');
+    nav.querySelectorAll('.sidebar-item').forEach(el => {
+        el.addEventListener('click', () => loadTopic(el.dataset.slug));
+    });
+}
+
+function loadTopic(slug) {
+    const topic = TOPICS.find(t => t.slug === slug);
+    const panel = document.getElementById('topicContent');
+    if (!topic) {
+        panel.innerHTML = `<div class="empty-state"><div class="big-icon">🌱</div><p>Select a topic from the sidebar to get started.</p></div>`;
+        return;
+    }
+    setSlugInURL(slug);
+    document.title = `${topic.label} – GrowTech Collective`;
+    panel.innerHTML = topic.render();
+    renderSidebar(slug);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Init
+(function init() {
+    const slug = getSlugFromURL();
+    renderSidebar(slug);
+    if (slug) loadTopic(slug);
+})();
+
+// Handle browser back/forward
+window.addE
