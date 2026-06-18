@@ -3,99 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browse Crops - GrowTech Collective</title>
+    <title>Browse Crops – GrowTech Collective</title>
+    <meta name="description" content="Search and browse complete growing guides for 30+ crops — soil, water, fertilizers, disease management, pest control, and planning tools for South Africa.">
+    <link rel="icon" href="/resources/static/images/finalogo.png" type="image/png">
+    <meta property="og:title" content="Browse Crops – GrowTech Collective">
+    <meta property="og:description" content="Complete growing guides for 30+ South African crops.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://growtechcollective.online/crops">
+    <meta property="og:image" content="https://growtechcollective.online/resources/static/images/finalogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="/resources/templates/global.css">
     <link rel="stylesheet" href="/resources/templates/plantSpecific/CropStyles.css">
     <script src="/resources/templates/plantSpecific/cropsDatabase.js"></script>
-    <script src="/resources/templates/plantSpecific/cropsBrowse.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <link rel="icon" href="/resources/static/images/finalogo.png" type="image/png">
+    <script src="/resources/templates/plantSpecific/cropsBrowse.js" defer></script>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li class="brand">
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="brand" id="nav-brand">
                 <img src="/resources/static/images/finalogo.png" alt="GrowTech Logo" class="nav-logo">
-                <span class="name">GrowTech Collective</span>
-            </li>
-           <li><a href="/index.html">Home</a></li>
-                        <li><a href="/learninghub">Learning Hub</a></li>
-                        <li><a href="/crops">Browse Crops</a></li>
-                        <li><a href="/calculator">Calculator</a></li>
-                        <li><a href="/about">About Us</a></li>
-        </ul>
+                <span class="name">GrowTech<span class="name-accent">.</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/learninghub" class="nav-link">Learning Hub</a></li>
+                <li><a href="/crops" class="nav-link active">Browse Crops</a></li>
+                <li><a href="/calculator" class="nav-link">Calculator</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+            </ul>
+            <a href="/calculator" class="nav-cta">Try Calculator</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="/" class="mobile-link">Home</a></li>
+            <li><a href="/learninghub" class="mobile-link">Learning Hub</a></li>
+            <li><a href="/crops" class="mobile-link">Browse Crops</a></li>
+            <li><a href="/calculator" class="mobile-link">Calculator</a></li>
+            <li><a href="/about" class="mobile-link">About</a></li>
+        </ul>
+    </div>
+
     <main>
-        <!-- Hero Section -->
-        <div class="crops-hero">
-            <h1>🌱 Crop Growing Guides</h1>
-            <p>Comprehensive growing information for 30+ crops. Search or browse to find everything you need to grow successfully in South Africa.</p>
+        <!-- Page Hero -->
+        <div class="page-hero">
+            <div class="page-hero-inner reveal">
+                <span class="eyebrow">Crop Library</span>
+                <h1>Your Complete <span class="gradient-text">Growing Library</span></h1>
+                <p>Comprehensive growing guides for 30+ crops. Everything you need — soil, water, fertilizers, disease management, and planning tools, all in one place.</p>
+            </div>
         </div>
 
-        <div class="content-container">
-            <!-- Search Section -->
-            <div class="search-section">
-                <div class="search-box">
-                    <input 
-                        type="text" 
-                        id="cropSearch" 
-                        placeholder="Search for tomatoes, maize, avocados..."
+        <div class="container crops-layout">
+
+            <!-- Search & Filter -->
+            <div class="search-filter-bar reveal">
+                <div class="search-input-wrap">
+                    <i class="fas fa-search search-icon-input"></i>
+                    <input
+                        type="text"
+                        id="cropSearch"
+                        placeholder="Search tomatoes, maize, avocados..."
                         autocomplete="off"
                     >
-                    <span class="search-icon">🔍</span>
                 </div>
-                
-                <!-- Category Filter -->
                 <div class="category-filter">
-                    <button class="filter-btn active" data-category="all">All Crops</button>
-                    <button class="filter-btn" data-category="High-Value Crops">High-Value</button>
-                    <button class="filter-btn" data-category="Field Crops">Field Crops</button>
-                    <button class="filter-btn" data-category="Vegetables">Vegetables</button>
-                    <button class="filter-btn" data-category="Fruits">Fruits</button>
+                    <button class="filter-btn active" data-category="all" id="filter-all">All Crops</button>
+                    <button class="filter-btn" data-category="High-Value Crops" id="filter-highvalue">High-Value</button>
+                    <button class="filter-btn" data-category="Field Crops" id="filter-field">Field Crops</button>
+                    <button class="filter-btn" data-category="Vegetables" id="filter-veg">Vegetables</button>
+                    <button class="filter-btn" data-category="Fruits" id="filter-fruits">Fruits</button>
                 </div>
             </div>
 
-            <!-- Results Count -->
-            <div class="results-info">
+            <!-- Results info -->
+            <div class="results-info reveal">
                 <p id="resultsCount">Showing all crops</p>
             </div>
 
             <!-- Crops Grid -->
             <div class="crops-grid" id="cropsGrid">
-                <!-- Cards will be dynamically generated here -->
+                <!-- Dynamically generated -->
             </div>
 
-            <!-- No Results Message -->
-            <div class="no-results" id="noResults" style="display: none;">
-                <p>🔍 No crops found matching your search.</p>
-                <p>Try searching for something else!</p>
+            <!-- No results -->
+            <div class="no-results" id="noResults" style="display:none;">
+                <div class="no-results-icon"><i class="fas fa-search"></i></div>
+                <h3>No crops found</h3>
+                <p>Try a different search term or category.</p>
             </div>
+
         </div>
     </main>
-     <footer class="site-footer">
-        <div class="footer-container">
-            <!-- About / Mission -->
-            <div class="footer-section about-footer">
-                <h3>GrowTech Collective</h3>
-                <p>Empowering communities with sustainable food gardening and innovative technology. Join us in reducing food insecurity and creating opportunities for growth.</p>
-            </div>
 
-            <!-- Quick Links -->
-            <div class="footer-section links-footer">
-                <h3>Quick Links</h3>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="/resources/static/images/finalogo.png" alt="GrowTech Logo" class="footer-logo">
+                <span class="footer-brand-name">GrowTech Collective</span>
+                <p class="footer-tagline">Empowering communities with sustainable food gardening and innovative technology. Reducing food insecurity — one harvest at a time.</p>
+            </div>
+            <div class="footer-links-group">
+                <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="/about">Home</a></li>
-                    <li><a href="/learningHub">Learning Hub</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/learninghub">Learning Hub</a></li>
                     <li><a href="/crops">Browse Crops</a></li>
                     <li><a href="/calculator">Calculator</a></li>
-                    <li><a href="about">About Us</a></li>
+                    <li><a href="/about">About Us</a></li>
                 </ul>
             </div>
-
-            <!-- Contact / Social Media -->
-            <div class="footer-section contact-footer">
-                <h3>Connect With Us</h3>
-                <div class="footer-social-media">
+            <div class="footer-connect">
+                <h4>Connect With Us</h4>
+                <div class="footer-social">
                     <a href="https://www.instagram.com/brysonn.iv" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
                     <a href="https://www.tiktok.com/@brysonn.iv" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
                     <a href="mailto:brysonmabilo@icloud.com" title="Email"><i class="fas fa-envelope"></i></a>
@@ -103,11 +134,27 @@
                 </div>
             </div>
         </div>
-
-        <!-- Copyright -->
         <div class="footer-bottom" id="copy">
-            <p>&copy; 2025 GrowTech Collective. All rights reserved.</p>
+            <p>&copy; 2025 GrowTech Collective. All rights reserved. Built with 🌱 for South African growers.</p>
         </div>
     </footer>
+
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
+
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+        mobileMenu.querySelectorAll('.mobile-link').forEach(l => {
+            l.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); });
+        });
+
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.06, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>

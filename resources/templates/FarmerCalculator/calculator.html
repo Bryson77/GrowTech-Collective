@@ -3,238 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/resources/templates/FarmerCalculator/calculator.css">
-    <script src="calculator.js" defer></script>
-    <title>Farmer's Calculator - GrowTech Collective</title>
+    <title>Farmer's Calculator – GrowTech Collective</title>
+    <meta name="description" content="Calculate yield estimates, production costs, water requirements, and profit projections for 30+ crops using verified South African agricultural data and live SAFEX prices.">
     <link rel="icon" href="/resources/static/images/finalogo.png" type="image/png">
+    <meta property="og:title" content="Farmer's Calculator – GrowTech Collective">
+    <meta property="og:description" content="Plan smarter, harvest better. Real SA data for yield, costs, and profits.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://growtechcollective.online/calculator">
+    <meta property="og:image" content="https://growtechcollective.online/resources/static/images/finalogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="/resources/templates/global.css">
+    <link rel="stylesheet" href="/resources/templates/FarmerCalculator/calculator.css">
+    <script src="/resources/templates/FarmerCalculator/calculator.js" defer></script>
 </head>
 <body>
-    <nav>
-        <ul>
-            <li class="brand">
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="brand" id="nav-brand">
                 <img src="/resources/static/images/finalogo.png" alt="GrowTech Logo" class="nav-logo">
-                <span class="name">GrowTech Collective</span>
-            </li>
-            <li><a href="../../index.html">Home</a></li>
-                        <li><a href="/learninghub">Learning Hub</a></li>
-                        <li><a href="/crops">Browse Crops</a></li>
-                        <li><a href="/calculator">Calculator</a></li>
-                        <li><a href="/about">About Us</a></li>
-        </ul>
+                <span class="name">GrowTech<span class="name-accent">.</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">Home</a></li>
+                <li><a href="/learninghub" class="nav-link">Learning Hub</a></li>
+                <li><a href="/crops" class="nav-link">Browse Crops</a></li>
+                <li><a href="/calculator" class="nav-link active">Calculator</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
+            </ul>
+            <a href="/crops" class="nav-cta">Browse Crops</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </nav>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="/" class="mobile-link">Home</a></li>
+            <li><a href="/learninghub" class="mobile-link">Learning Hub</a></li>
+            <li><a href="/crops" class="mobile-link">Browse Crops</a></li>
+            <li><a href="/calculator" class="mobile-link">Calculator</a></li>
+            <li><a href="/about" class="mobile-link">About</a></li>
+        </ul>
+    </div>
+
     <main>
-        <!-- Hero Section -->
-        <div class="plant-hero">
-            <h1>Farmer's Calculator</h1>
-            <p>Plan smarter, harvest better. Get instant insights on yield, costs, profits, and the best provinces for your crops—all backed by real South African agricultural data.</p>
+        <!-- Page Hero -->
+        <div class="page-hero">
+            <div class="page-hero-inner reveal">
+                <span class="eyebrow">Farmer's Calculator</span>
+                <h1>Know Your Numbers <span class="gradient-text">Before You Plant</span></h1>
+                <p>Instant insights on yield, costs, profits, and the best provinces for your crops — all backed by verified South African agricultural data and live SAFEX prices.</p>
+            </div>
         </div>
 
-        <div class="content-box">
-            <!-- Calculator Form Section -->
-            <div class="calculator-section">
-                <h2>Calculate Your Farm's Potential</h2>
-                <p class="section-description">Select your crop and enter your farm size to receive detailed calculations on yield estimates, costs, water requirements, and profitability projections.</p>
-                
-                <form id="calculatorForm">
+        <div class="container calc-layout">
+
+            <!-- Calculator Form -->
+            <div class="calculator-panel reveal" id="calculatorSection">
+                <div class="calc-header">
+                    <div class="calc-header-icon"><i class="fas fa-calculator"></i></div>
+                    <div>
+                        <h2>Calculate Your Farm's Potential</h2>
+                        <p>Select your crop and enter your farm size for detailed projections.</p>
+                    </div>
+                </div>
+
+                <form id="calculatorForm" class="calc-form">
                     <div class="form-group">
-                        <label for="cropSelect">Select Your Crop:</label>
-                        <select id="cropSelect" required>
-                            <option value="">-- Choose a Crop --</option>
-                            <optgroup label="High-Value Crops">
-                                <option value="macadamia">Macadamia Nuts</option>
-                                <option value="avocado">Avocados</option>
-                                <option value="blueberries">Blueberries</option>
-                            </optgroup>
-                            <optgroup label="Citrus Fruits">
-                                <option value="oranges">Oranges</option>
-                                <option value="lemons">Lemons</option>
-                                <option value="grapefruit">Grapefruit</option>
-                            </optgroup>
-                            <optgroup label="Table & Wine Grapes">
-                                <option value="table_grapes">Table Grapes</option>
-                                <option value="wine_grapes">Wine Grapes</option>
-                            </optgroup>
-                            <optgroup label="Field Crops">
-                                <option value="maize">Maize</option>
-                                <option value="soybeans">Soybeans</option>
-                                <option value="sunflower">Sunflower</option>
-                                <option value="wheat">Wheat</option>
-                                <option value="sorghum">Sorghum</option>
-                                <option value="groundnuts">Groundnuts</option>
-                            </optgroup>
-                            <optgroup label="Vegetables">
-                                <option value="tomatoes">Tomatoes</option>
-                                <option value="potatoes">Potatoes</option>
-                                <option value="onions">Onions</option>
-                                <option value="cabbage">Cabbage</option>
-                                <option value="carrots">Carrots</option>
-                                <option value="lettuce">Lettuce</option>
-                                <option value="peppers">Peppers</option>
-                            </optgroup>
-                            <optgroup label="Deciduous Fruits">
-                                <option value="apples">Apples</option>
-                                <option value="pears">Pears</option>
-                                <option value="peaches">Peaches</option>
-                                <option value="plums">Plums</option>
-                            </optgroup>
-                            <optgroup label="Tropical Fruits">
-                                <option value="mangoes">Mangoes</option>
-                                <option value="bananas">Bananas</option>
-                                <option value="pineapples">Pineapples</option>
-                            </optgroup>
-                        </select>
+                        <label for="cropSelect">Select Your Crop</label>
+                        <div class="select-wrapper">
+                            <select id="cropSelect" required>
+                                <option value="">— Choose a Crop —</option>
+                                <optgroup label="High-Value Crops">
+                                    <option value="macadamia">Macadamia Nuts</option>
+                                    <option value="avocado">Avocados</option>
+                                    <option value="blueberries">Blueberries</option>
+                                </optgroup>
+                                <optgroup label="Citrus Fruits">
+                                    <option value="oranges">Oranges</option>
+                                    <option value="lemons">Lemons</option>
+                                    <option value="grapefruit">Grapefruit</option>
+                                </optgroup>
+                                <optgroup label="Table &amp; Wine Grapes">
+                                    <option value="table_grapes">Table Grapes</option>
+                                    <option value="wine_grapes">Wine Grapes</option>
+                                </optgroup>
+                                <optgroup label="Field Crops">
+                                    <option value="maize">Maize</option>
+                                    <option value="soybeans">Soybeans</option>
+                                    <option value="sunflower">Sunflower</option>
+                                    <option value="wheat">Wheat</option>
+                                    <option value="sorghum">Sorghum</option>
+                                    <option value="groundnuts">Groundnuts</option>
+                                </optgroup>
+                                <optgroup label="Vegetables">
+                                    <option value="tomatoes">Tomatoes</option>
+                                    <option value="potatoes">Potatoes</option>
+                                    <option value="onions">Onions</option>
+                                    <option value="cabbage">Cabbage</option>
+                                    <option value="carrots">Carrots</option>
+                                    <option value="lettuce">Lettuce</option>
+                                    <option value="peppers">Peppers</option>
+                                </optgroup>
+                                <optgroup label="Deciduous Fruits">
+                                    <option value="apples">Apples</option>
+                                    <option value="pears">Pears</option>
+                                    <option value="peaches">Peaches</option>
+                                    <option value="plums">Plums</option>
+                                </optgroup>
+                                <optgroup label="Tropical Fruits">
+                                    <option value="mangoes">Mangoes</option>
+                                    <option value="bananas">Bananas</option>
+                                    <option value="pineapples">Pineapples</option>
+                                </optgroup>
+                            </select>
+                            <i class="fas fa-chevron-down select-arrow"></i>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="hectares">Farm Size (Hectares):</label>
-                        <input 
-                            type="number" 
-                            id="hectares" 
-                            min="0.1" 
-                            step="0.1" 
-                            placeholder="e.g., 10.5"
-                            required
-                        >
-                        <small>Enter the size of your farm in hectares (1 hectare = 10,000 m²)</small>
+                        <label for="hectares">Farm Size (Hectares)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="hectares" min="0.1" step="0.1" placeholder="e.g., 10.5" required>
+                            <span class="input-suffix">ha</span>
+                        </div>
+                        <small>1 hectare = 10,000 m²</small>
                     </div>
 
-                    <button type="submit" id="calculateBtn">
+                    <button type="submit" id="calculateBtn" class="btn-primary calc-btn">
+                        <i class="fas fa-chart-bar"></i>
                         <span class="btn-text">Calculate Now</span>
-                        <span class="btn-icon">📊</span>
                     </button>
                 </form>
 
-                <!-- Loading State -->
-                <div id="loadingState" class="loading-state" style="display: none;">
+                <!-- Loading -->
+                <div id="loadingState" class="loading-state" style="display:none;">
                     <div class="spinner"></div>
                     <p>Analyzing your farm data...</p>
                 </div>
             </div>
 
             <!-- Results Section -->
-            <div id="resultsSection" class="results-section" style="display: none;">
-                <div class="crop-title-display">
+            <div id="resultsSection" class="results-panel" style="display:none;">
+                <div class="results-title">
+                    <div class="calc-header-icon"><i class="fas fa-chart-line"></i></div>
                     <h2 id="cropNameDisplay">Crop Analysis</h2>
                 </div>
 
                 <div class="results-grid">
                     <div class="result-card yield-card">
-                        <div class="card-icon">🌾</div>
-                        <h3>Estimated Yield</h3>
-                        <p class="result-value" id="yieldResult">--</p>
-                        <p class="result-detail" id="yieldDetail">--</p>
+                        <div class="result-card-icon"><i class="fas fa-wheat"></i></div>
+                        <div class="result-card-body">
+                            <h3>Estimated Yield</h3>
+                            <p class="result-value" id="yieldResult">--</p>
+                            <p class="result-detail" id="yieldDetail">--</p>
+                        </div>
                     </div>
-
                     <div class="result-card revenue-card">
-                        <div class="card-icon">💵</div>
-                        <h3>Revenue Potential</h3>
-                        <p class="result-value" id="revenueResult">--</p>
-                        <p class="result-detail" id="revenueDetail">--</p>
+                        <div class="result-card-icon"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="result-card-body">
+                            <h3>Revenue Potential</h3>
+                            <p class="result-value" id="revenueResult">--</p>
+                            <p class="result-detail" id="revenueDetail">--</p>
+                        </div>
                     </div>
-
                     <div class="result-card cost-card">
-                        <div class="card-icon">💰</div>
-                        <h3>Total Costs</h3>
-                        <p class="result-value" id="costResult">--</p>
-                        <div class="cost-breakdown" id="costBreakdown">--</div>
+                        <div class="result-card-icon"><i class="fas fa-coins"></i></div>
+                        <div class="result-card-body">
+                            <h3>Total Costs</h3>
+                            <p class="result-value" id="costResult">--</p>
+                            <div class="cost-breakdown" id="costBreakdown">--</div>
+                        </div>
                     </div>
-
                     <div class="result-card profit-card">
-                        <div class="card-icon">📈</div>
-                        <h3>Projected Profit</h3>
-                        <p class="result-value profit-highlight" id="profitResult">--</p>
-                        <p class="result-detail" id="profitDetail">--</p>
+                        <div class="result-card-icon"><i class="fas fa-chart-line"></i></div>
+                        <div class="result-card-body">
+                            <h3>Projected Profit</h3>
+                            <p class="result-value profit-highlight" id="profitResult">--</p>
+                            <p class="result-detail" id="profitDetail">--</p>
+                        </div>
                     </div>
-
                     <div class="result-card water-card">
-                        <div class="card-icon">💧</div>
-                        <h3>Water Requirements</h3>
-                        <p class="result-value" id="waterResult">--</p>
-                        <p class="result-detail" id="waterDetail">--</p>
+                        <div class="result-card-icon"><i class="fas fa-tint"></i></div>
+                        <div class="result-card-body">
+                            <h3>Water Requirements</h3>
+                            <p class="result-value" id="waterResult">--</p>
+                            <p class="result-detail" id="waterDetail">--</p>
+                        </div>
                     </div>
-
                     <div class="result-card growing-card">
-                        <div class="card-icon">⏱️</div>
-                        <h3>Growing Period</h3>
-                        <p class="result-value" id="growingResult">--</p>
+                        <div class="result-card-icon"><i class="fas fa-clock"></i></div>
+                        <div class="result-card-body">
+                            <h3>Growing Period</h3>
+                            <p class="result-value" id="growingResult">--</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="calculation-transparency">
-                    <h3>🔍 Calculation Breakdown</h3>
+                <div class="breakdown-card">
+                    <h3><i class="fas fa-search"></i> Calculation Breakdown</h3>
                     <div id="transparencyContent" class="transparency-content">--</div>
                 </div>
 
-                <div class="province-recommendation">
-                    <h3>🎯 Best Province for Your Crop</h3>
+                <div class="breakdown-card province-card">
+                    <h3><i class="fas fa-map-marker-alt"></i> Best Province for Your Crop</h3>
                     <div id="provinceResult" class="province-content">--</div>
                 </div>
 
-                <div class="ai-insights">
-                    <h3>🤖 AI-Powered Insights</h3>
+                <div class="breakdown-card ai-card">
+                    <h3><i class="fas fa-robot"></i> AI-Powered Insights</h3>
                     <div id="aiInsights" class="insights-content">--</div>
                 </div>
 
-                <button id="recalculateBtn" class="secondary-btn">Calculate Another Crop</button>
+                <button id="recalculateBtn" class="btn-ghost recalc-btn">
+                    <i class="fas fa-redo"></i> Calculate Another Crop
+                </button>
             </div>
 
-            <!-- Info Box -->
-            <div class="info-box">
-                <p>All calculations are based on verified data from GrainSA, DAFF, and industry experts. Results may vary based on local conditions, management practices, and market fluctuations.</p>
+            <!-- Data disclaimer -->
+            <div class="info-banner reveal">
+                <i class="fas fa-info-circle"></i>
+                <p>All calculations use verified data from <strong>GrainSA</strong>, <strong>DAFF</strong>, and industry experts. Results may vary based on local conditions, management practices, and market fluctuations.</p>
             </div>
 
-            <!-- AI Assistant Section -->
-            <div class="ai-helper-section">
-                <h2>Ask Tyler</h2>
-                <p>Have questions about your results? Tyler can help you understand the calculations and provide personalized farming advice!</p>
-                <iframe
-                    src="https://www.chatbase.co/chatbot-iframe/uy3rgp2TERhZa8OWQ6Tv_"
-                    width="100%"
-                    style="height: 700px; min-height: 700px"
-                    frameborder="0"
-                ></iframe>
+            <!-- Tyler AI -->
+            <div class="ai-section reveal" id="tyler">
+                <div class="ai-section-header">
+                    <div class="ai-icon-badge"><i class="fas fa-robot"></i></div>
+                    <div>
+                        <h2>Ask Tyler</h2>
+                        <p>Have questions about your results? Tyler can help you understand the calculations and give personalized farming advice.</p>
+                    </div>
+                </div>
+                <div class="ai-iframe-wrapper">
+                    <iframe
+                        src="https://www.chatbase.co/chatbot-iframe/uy3rgp2TERhZa8OWQ6Tv_"
+                        width="100%"
+                        style="height: 640px; min-height: 640px"
+                        frameborder="0"
+                    ></iframe>
+                </div>
             </div>
+
         </div>
     </main>
-    <!-- FOOTER -->
-                <footer class="site-footer">
-                    <div class="footer-container">
-                        <!-- About / Mission -->
-                        <div class="footer-section about-footer">
-                            <h3>GrowTech Collective</h3>
-                            <p>Empowering communities with sustainable food gardening and innovative technology. Join us in reducing food insecurity and creating opportunities for growth.</p>
-                        </div>
 
-                        <!-- Quick Links -->
-                        <div class="footer-section links-footer">
-                            <h3>Quick Links</h3>
-                            <ul>
-                                <li><a href="/about">Home</a></li>
-                                <li><a href="/learningHub">Learning Hub</a></li>
-                                <li><a href="/crops">Browse Crops</a></li>
-                                <li><a href="/calculator">Calculator</a></li>
-                                <li><a href="about">About Us</a></li>
-                            </ul>
-                        </div>
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="/resources/static/images/finalogo.png" alt="GrowTech Logo" class="footer-logo">
+                <span class="footer-brand-name">GrowTech Collective</span>
+                <p class="footer-tagline">Empowering communities with sustainable food gardening and innovative technology. Reducing food insecurity — one harvest at a time.</p>
+            </div>
+            <div class="footer-links-group">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/learninghub">Learning Hub</a></li>
+                    <li><a href="/crops">Browse Crops</a></li>
+                    <li><a href="/calculator">Calculator</a></li>
+                    <li><a href="/about">About Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-connect">
+                <h4>Connect With Us</h4>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/brysonn.iv" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@brysonn.iv" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                    <a href="mailto:brysonmabilo@icloud.com" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+27694046138" title="Phone"><i class="fas fa-phone"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom" id="copy">
+            <p>&copy; 2025 GrowTech Collective. All rights reserved. Built with 🌱 for South African growers.</p>
+        </div>
+    </footer>
 
-                        <!-- Contact / Social Media -->
-                        <div class="footer-section contact-footer">
-                            <h3>Connect With Us</h3>
-                            <div class="footer-social-media">
-                                <a href="https://www.instagram.com/brysonn.iv" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                                <a href="https://www.tiktok.com/@brysonn.iv" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                                <a href=mailto:"brysonmabilo@icloud.com" title="Email"><i class="fas fa-envelope"></i></a>
-                                <a href="tel:+27694046138" title="Phone"><i class="fas fa-phone"></i></a>
-                            </div>
-                        </div>
-                    </div>
+    <script>
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
 
-                    <!-- Copyright -->
-                    <div class="footer-bottom" id="copy">
-                        <p>&copy; 2025 GrowTech Collective. All rights reserved.</p>
-                    </div>
-                </footer>
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobile-menu');
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mobileMenu.classList.toggle('open'); });
+        mobileMenu.querySelectorAll('.mobile-link').forEach(l => {
+            l.addEventListener('click', () => { hamburger.classList.remove('open'); mobileMenu.classList.remove('open'); });
+        });
+
+        const revealEls = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>

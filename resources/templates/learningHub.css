@@ -1,529 +1,206 @@
-/* ============================================
-   GROWTECH COLLECTIVE - LEARNING HUB CSS
-   ============================================ */
+/* learningHub.css — Learning Hub Styles (builds on global.css) */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ─── Hub Layout ────────────────────────────────────────── */
+.hub-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    padding-bottom: 4rem;
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-    line-height: 1.6;
-    color: #2d3748;
-    background: linear-gradient(to bottom, #f7fafc 0%, #ffffff 100%);
-    min-height: 100vh;
-}
-
-/* ============================================
-   COMPACT STICKY NAVIGATION
-   ============================================ */
-nav {
-    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
-    padding: 0.6rem 1.5rem;
-    box-shadow: 0 2px 10px rgba(47, 133, 90, 0.15);
+/* ─── Sidebar ───────────────────────────────────────────── */
+.hub-sidebar {
     position: sticky;
-    top: 0;
-    z-index: 1000;
+    top: 90px;
 }
 
-nav ul {
-    list-style: none;
+.sidebar-card {
+    background: rgba(14,35,22,0.5);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(74,222,128,0.1);
+    border-radius: 16px;
+    padding: 1.5rem;
+}
+
+.sidebar-card h3 {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(74,222,128,0.08);
+}
+
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.sidebar-links a {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    gap: 0.5rem;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-}
-
-.nav-logo {
-    height: 35px;
-    width: auto;
-}
-
-.name {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: white;
-    letter-spacing: -0.5px;
-}
-
-nav li:not(.brand) {
-    display: inline-block;
-}
-
-nav a {
-    color: white;
+    gap: 0.55rem;
+    font-size: 0.86rem;
+    color: var(--text-muted);
+    padding: 0.42rem 0.6rem;
+    border-radius: 8px;
+    transition: all 0.25s ease;
     text-decoration: none;
-    padding: 0.5rem 0.9rem;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-    font-weight: 500;
-    font-size: 0.95rem;
 }
 
-nav a:hover {
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-}
-
-/* ============================================
-   MAIN CONTENT
-   ============================================ */
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 3rem 2rem;
-}
-
-/* ============================================
-   HERO SECTION
-   ============================================ */
-.learning-hero {
-    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
-    color: white;
-    padding: 4rem 2rem;
+.sidebar-links a i {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    width: 14px;
     text-align: center;
-    margin: -3rem -2rem 3rem -2rem;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 0 4px 20px rgba(47, 133, 90, 0.2);
+    transition: color 0.25s ease;
 }
 
-.learning-hero h1 {
-    color: white;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-    font-weight: 800;
-    letter-spacing: -1px;
+.sidebar-links a:hover,
+.sidebar-links a.active {
+    background: rgba(74,222,128,0.08);
+    color: var(--green-400);
 }
 
-.learning-hero p {
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 1.15rem;
-    max-width: 700px;
-    margin: 0 auto;
-    line-height: 1.7;
+.sidebar-links a:hover i,
+.sidebar-links a.active i {
+    color: var(--green-400);
 }
 
-/* ============================================
-   CONTENT BOX
-   ============================================ */
-.content-box {
-    max-width: 900px;
-    width: 100%;
-    margin: 0 auto;
+/* ─── Topic Cards ───────────────────────────────────────── */
+.hub-topics {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-/* ============================================
-   TOPIC CARDS
-   ============================================ */
 .topic-card {
-    background: white;
-    border-radius: 12px;
-    padding: 2.5rem;
-    margin-bottom: 2.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
-    border: 1px solid #e2e8f0;
-    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+    background: rgba(14,35,22,0.45);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(74,222,128,0.1);
+    border-radius: 16px;
+    padding: 1.8rem 2rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    scroll-margin-top: 100px;
 }
 
 .topic-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(47, 133, 90, 0.15);
+    border-color: rgba(74,222,128,0.25);
+    box-shadow: 0 0 28px rgba(74,222,128,0.06);
+    transform: translateX(4px);
 }
 
-.topic-card h2 {
-    color: #2f855a;
-    font-size: 1.875rem;
-    margin-top: 0;
-    margin-bottom: 1rem;
+.topic-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #22c55e, #4ade80);
+    border-radius: 11px;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    font-weight: 700;
-}
-
-.topic-card h2::before {
-    content: "🌱";
-    font-size: 2rem;
-}
-
-.topic-card p {
-    color: #4a5568;
-    line-height: 1.8;
-    margin-bottom: 1.5rem;
-    font-size: 1.05rem;
-}
-
-.topic-card .button {
-    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
-    color: white;
-    padding: 0.75rem 1.75rem;
-    border: none;
-    border-radius: 8px;
-    text-decoration: none;
-    display: inline-block;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(47, 133, 90, 0.25);
-    cursor: pointer;
-}
-
-.topic-card .button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(47, 133, 90, 0.35);
-}
-
-/* Alternate card backgrounds */
-.topic-card:nth-child(even) {
-    background: linear-gradient(135deg, #f0fff4 0%, #ffffff 100%);
-}
-
-/* ============================================
-   SPECIFIC SECTION IDs
-   ============================================ */
-#plant-guides h2::before {
-    content: "🌿";
-}
-
-#benefits h2::before {
-    content: "✨";
-}
-
-#getting-started h2::before {
-    content: "🚀";
-}
-
-#methods h2::before {
-    content: "🌿";
-}
-
-#irrigation h2::before {
-    content: "💧";
-}
-
-#fertilizers h2::before {
-    content: "🌾";
-}
-
-#soil h2::before {
-    content: "🪴";
-}
-
-#pests h2::before {
-    content: "🐛";
-}
-
-#composting h2::before {
-    content: "♻️";
-}
-
-#seasonal-calendar h2::before {
-    content: "📅";
-}
-
-#harvesting h2::before {
-    content: "🧺";
-}
-
-#companion-planting h2::before {
-    content: "🌻";
-}
-
-#plant-nutrition h2::before {
-    content: "💊";
-}
-
-#microclimate h2::before {
-    content: "🌡️";
-}
-
-/* ============================================
-   AI ASSISTANT SECTION
-   ============================================ */
-.ai-section {
-    background: linear-gradient(135deg, #f0fff4 0%, #e6fffa 100%);
-    padding: 3rem 2rem;
-    border-radius: 16px;
-    margin-top: 3rem;
-    border: 2px solid #9ae6b4;
-    box-shadow: 0 4px 16px rgba(47, 133, 90, 0.1);
-}
-
-.ai-section h1 {
-    text-align: center;
-    color: #2f855a;
-    font-size: 2.25rem;
-    margin-bottom: 1rem;
-    font-weight: 800;
-}
-
-.ai-section h1::before {
-    content: "🤖 ";
-}
-
-.ai-section > p {
-    text-align: center;
-    color: #4a5568;
-    margin-bottom: 2rem;
-    font-size: 1.1rem;
-}
-
-.ai-section iframe {
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    border: none;
-}
-
-/* ============================================
-   TYPOGRAPHY
-   ============================================ */
-h1 {
-    font-size: 2.5rem;
-    color: #2f855a;
-    margin-bottom: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-
-h2 {
-    font-size: 2rem;
-    color: #2f855a;
-    margin: 3rem 0 1rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-}
-
-h3 {
-    font-size: 1.5rem;
-    color: #2f855a;
-    margin: 2rem 0 1rem;
-    font-weight: 700;
-}
-
-p {
-    font-size: 1.05rem;
-    color: #4a5568;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-}
-
-a {
-    color: #2f855a;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-a:hover {
-    color: #38a169;
-}
-
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
-@media (max-width: 992px) {
-    nav ul {
-        gap: 0.4rem;
-    }
-    
-    .name {
-        font-size: 1.1rem;
-    }
-    
-    nav a {
-        padding: 0.4rem 0.65rem;
-        font-size: 0.88rem;
-    }
-}
-
-@media (max-width: 768px) {
-    nav {
-        padding: 0.5rem 1rem;
-    }
-    
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-    
-    .brand {
-        flex-basis: 100%;
-        justify-content: center;
-        margin-bottom: 0.4rem;
-    }
-    
-    .nav-logo {
-        height: 26px;
-    }
-    
-    .name {
-        font-size: 1rem;
-    }
-
-    main {
-        padding: 2rem 1rem;
-    }
-
-    .learning-hero {
-        padding: 2.5rem 1.5rem;
-        margin: -2rem -1rem 2rem -1rem;
-    }
-
-    .learning-hero h1 {
-        font-size: 2rem;
-    }
-
-    .learning-hero p {
-        font-size: 1rem;
-    }
-
-    .topic-card {
-        padding: 2rem;
-    }
-
-    .topic-card h2 {
-        font-size: 1.5rem;
-    }
-
-    .topic-card p {
-        font-size: 1rem;
-    }
-
-    .ai-section {
-        padding: 2rem 1.5rem;
-    }
-
-    .ai-section h1 {
-        font-size: 1.875rem;
-    }
-}
-
-@media (max-width: 480px) {
-    nav a {
-        padding: 0.35rem 0.55rem;
-        font-size: 0.82rem;
-    }
-    
-    .name {
-        font-size: 0.95rem;
-    }
-    
-    .nav-logo {
-        height: 24px;
-    }
-
-    .topic-card {
-        padding: 1.5rem;
-    }
-
-    .topic-card h2 {
-        font-size: 1.35rem;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-}
-/* ============================================
-   SITE FOOTER - FULLY UPDATED
-   ============================================ */
-.site-footer {
-    background: linear-gradient(135deg, #2f855a 0%, #38a169 100%);
-    color: white;
-    padding: 3rem 2rem 1rem;
-    font-size: 0.95rem;
-}
-
-.footer-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto 2rem;
-    gap: 2rem;
-}
-
-.footer-section {
-    flex: 1 1 250px;
-}
-
-.footer-section h3 {
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-    color: #ffffff; /* White headings */
-}
-
-.footer-section p,
-.footer-section ul,
-.footer-section li {
-    color: #ffffff; /* White text for readability */
-    line-height: 1.6;
-}
-
-.footer-section ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-section li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-section a {
-    color: #ffffff; /* White links */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-section a:hover {
-    color: #f0fff4; /* Slightly lighter white on hover */
-}
-
-/* Footer Social Media */
-.footer-social-media {
-    display: flex;
-    gap: 1rem;
-    margin-top: 0.5rem;
-}
-
-.footer-social-media a {
-    display: flex;
     justify-content: center;
+    font-size: 1.1rem;
+    color: #031a0b;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(74,222,128,0.2);
+    margin-top: 0.15rem;
+}
+
+.topic-body h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.5px;
+    margin-bottom: 0.65rem;
+}
+
+.topic-body p {
+    font-size: 0.93rem;
+    color: var(--text-secondary);
+    line-height: 1.78;
+    margin-bottom: 1rem;
+}
+
+.topic-cta {
+    display: inline-flex;
     align-items: center;
-    width: 50px;
-    height: 50px;
-    font-size: 1.4rem;
-    background: #ffffff; /* White circle */
-    color: #2f855a; /* Green icon */
-    border-radius: 50%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+    gap: 0.4rem;
+    font-size: 0.86rem;
+    font-weight: 600;
+    color: var(--green-400);
+    text-decoration: none;
+    transition: all 0.25s ease;
 }
 
-.footer-social-media a:hover {
-    transform: translateY(-5px) scale(1.1);
-    background: #38a169; /* Green on hover */
-    color: #ffffff; /* Icon turns white on hover */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+.topic-cta i { font-size: 0.75rem; transition: transform 0.25s ease; }
+.topic-cta:hover { gap: 0.6rem; }
+.topic-cta:hover i { transform: translateX(4px); }
+
+/* ─── AI Card ───────────────────────────────────────────── */
+.ai-card {
+    grid-template-columns: 1fr;
+    background: linear-gradient(135deg, rgba(14,35,22,0.6) 0%, rgba(6,20,12,0.7) 100%);
+    border-color: rgba(74,222,128,0.2);
 }
 
-/* Footer Bottom */
-.footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    text-align: center;
-    padding-top: 1rem;
-    font-size: 0.85rem;
-    color: #ffffff; /* Full white copyright */
-    font-weight: 500; /* Slightly bolder for visibility */
+.ai-icon {
+    background: linear-gradient(135deg, #7c3aed, #4ade80);
+    box-shadow: 0 4px 16px rgba(124,58,237,0.25);
 }
-#copy{
-    color: white;
+
+.ai-iframe-wrapper {
+    margin-top: 1.2rem;
+    background: rgba(6,13,10,0.5);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(74,222,128,0.12);
+}
+
+.ai-iframe-wrapper iframe {
+    display: block;
+    width: 100%;
+    border: none;
+}
+
+/* ─── Reveal stagger for hub topics ────────────────────── */
+.hub-topics .reveal:nth-child(1)  { transition-delay: 0.04s; }
+.hub-topics .reveal:nth-child(2)  { transition-delay: 0.08s; }
+.hub-topics .reveal:nth-child(3)  { transition-delay: 0.12s; }
+.hub-topics .reveal:nth-child(4)  { transition-delay: 0.16s; }
+.hub-topics .reveal:nth-child(5)  { transition-delay: 0.20s; }
+.hub-topics .reveal:nth-child(6)  { transition-delay: 0.24s; }
+.hub-topics .reveal:nth-child(7)  { transition-delay: 0.28s; }
+
+/* ─── Responsive ────────────────────────────────────────── */
+@media (max-width: 900px) {
+    .hub-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .hub-sidebar {
+        position: static;
+        display: none; /* hide sidebar on mobile, jump links less useful */
+    }
+}
+
+@media (max-width: 600px) {
+    .topic-card {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.4rem 1.3rem;
+    }
+
+    .topic-icon {
+        width: 42px;
+        height: 42px;
+        font-size: 1rem;
+    }
 }

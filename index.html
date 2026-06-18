@@ -3,145 +3,450 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GrowTech Collective - Smart Growing Companion</title>
+    <title>GrowTech Collective – Smart Growing Companion</title>
+    <meta name="description" content="GrowTech Collective — intelligence, guidance, and planning tools to help every grower make confident decisions and achieve better harvests in South Africa.">
     <link rel="icon" href="/resources/static/images/finalogo.png" type="image/png">
-    <meta property="og:title" content="GrowTech Collective – Gardening Tips">
-    <meta property="og:description" content="Learn eco-friendly gardening techniques and plant guides with GrowTech Collective.">
+    <meta property="og:title" content="GrowTech Collective – Smart Growing Companion">
+    <meta property="og:description" content="Intelligence, guidance, and planning tools for every grower. Explore 30+ crops, calculate profits, and master sustainable farming.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://growtech-collective.netlify.app/">
-    <meta property="og:image" content="https://growtech-collective.netlify.app/resources/static/images/finallogo.png">
-    <link rel="stylesheet" href="/homepage.css">
+    <meta property="og:url" content="https://growtechcollective.online/">
+    <meta property="og:image" content="https://growtechcollective.online/resources/static/images/finalogo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="/homepage.css">
 </head>
 <body>
-        <nav>
-            <ul>
-                <li class="brand">
-                    <img src="resources/static/images/finalogo.png" alt="GrowTech Logo" class="nav-logo">
-                    <span class="name">GrowTech Collective</span>
-                </li>
-                        <li><a href="../../index.html">Home</a></li>
-                        <li><a href="/learninghub">Learning Hub</a></li>
-                        <li><a href="/crops">Browse Crops</a></li>
-                        <li><a href="/calculator">Calculator</a></li>
-                        <li><a href="/about">About Us</a></li>
+
+    <!-- Animated background canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-inner">
+            <a href="/" class="brand" id="nav-brand">
+                <img src="resources/static/images/finalogo.png" alt="GrowTech Logo" class="nav-logo">
+                <span class="name">GrowTech<span class="name-accent">.</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link active">Home</a></li>
+                <li><a href="/learninghub" class="nav-link">Learning Hub</a></li>
+                <li><a href="/crops" class="nav-link">Browse Crops</a></li>
+                <li><a href="/calculator" class="nav-link">Calculator</a></li>
+                <li><a href="/about" class="nav-link">About</a></li>
             </ul>
-        </nav>
+            <a href="/learninghub" class="nav-cta" id="nav-cta-btn">Get Started</a>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="/" class="mobile-link">Home</a></li>
+            <li><a href="/learninghub" class="mobile-link">Learning Hub</a></li>
+            <li><a href="/crops" class="mobile-link">Browse Crops</a></li>
+            <li><a href="/calculator" class="mobile-link">Calculator</a></li>
+            <li><a href="/about" class="mobile-link">About</a></li>
+        </ul>
+    </div>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <h1>Your Smart Growing Companion</h1>
-        <p>Intelligence, guidance, and planning tools to help every grower make confident decisions and achieve better harvests.</p>
-        <a href="/learningHub"><button class="cta-button">Get Started</button></a>
-    </section>
-
-    <main>
-        <!-- Why GrowTech Section -->
-        <section class="section">
-            <h2>Why GrowTech?</h2>
-            <p>Everything you need to grow smarter, from learning fundamentals to planning your perfect harvest.</p>
-        </section>
-
-        <!-- Features Grid -->
-        <div class="features">
-            <div class="feature-card">
-                <h3>📚 Learn the Fundamentals</h3>
-                <p>Master essential growing skills with practical lessons on soil preparation, watering techniques, seasonal planning, and sustainable farming practices in the Learning Hub.</p>
-                <img src="resources/static/images/learningHub.jpg" alt="Learning Hub">
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <div class="hero-badge reveal">
+                <span class="badge-dot"></span>
+                <span>South Africa's #1 Growing Intelligence Platform</span>
             </div>
-
-            <div class="feature-card">
-                <h3>🌱 Browse 30+ Crops</h3>
-                <p>Explore complete growing guides for fruits, vegetables, and field crops with detailed information on soil, water, sunlight, climate, and best SA provinces for each plant.</p>
-                <img src="resources/static/images/plantGuides.jpg" alt="Browse Crops">
+            <h1 class="hero-title reveal">
+                Grow Smarter.<br>
+                <span class="gradient-text">Harvest Better.</span>
+            </h1>
+            <p class="hero-subtitle reveal">
+                Intelligence, guidance, and planning tools that help every grower — from backyard to farm — make confident decisions and achieve results that actually matter.
+            </p>
+            <div class="hero-actions reveal">
+                <a href="/learninghub" class="btn-primary" id="hero-cta-btn">
+                    <span>Start Growing</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="/crops" class="btn-ghost" id="hero-browse-btn">
+                    <i class="fas fa-seedling"></i>
+                    <span>Browse 30+ Crops</span>
+                </a>
             </div>
-
-            <div class="feature-card">
-                <h3>🧮 Calculate Farm Profits</h3>
-                <p>Estimate yield, revenue, production costs, and profit potential using real-time SAFEX market prices and verified GrainSA agricultural data for accurate projections.</p>
-                <img src="resources/static/images/calculations.jpg" alt="Farmer Calculator">
-            </div>
-
-            <div class="feature-card">
-                <h3>🌿 Manage Pests & Diseases</h3>
-                <p>Access comprehensive pest control and disease management guides with organic solutions, treatment costs, and prevention strategies specific to South African conditions.</p>
-                <img src="resources/static/images/plantGuides.jpg" alt="Pest Management">
-            </div>
-
-            <div class="feature-card">
-                <h3>💚 Smart Fertilizer Recommendations</h3>
-                <p>Get budget-friendly fertilizer options for each crop, from free homemade compost to commercial blends, with application rates, NPK ratios, and cost comparisons.</p>
-                <img src="resources/static/images/learningHub.jpg" alt="Fertilizer Guide">
-            </div>
-
-            <div class="feature-card">
-                <h3>📐 Plan Your Garden Layout</h3>
-                <p>Use interactive garden planners to calculate optimal spacing, water needs, setup costs, expected yields, and ROI for your specific garden or farm size.</p>
-                <img src="resources/static/images/calculations.jpg" alt="Garden Planner">
+            <div class="hero-stats reveal">
+                <div class="stat">
+                    <span class="stat-number" data-target="30">0</span><span class="stat-plus">+</span>
+                    <span class="stat-label">Crop Guides</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-target="100">0</span><span class="stat-plus">%</span>
+                    <span class="stat-label">Free Access</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat">
+                    <span class="stat-number" data-target="9">0</span><span class="stat-plus"></span>
+                    <span class="stat-label">SA Provinces</span>
+                </div>
             </div>
         </div>
-
-        <!-- Farmer Calculator CTA Section -->
-        <section class="cta-section">
-            <h2>🧮 Farmer's Calculator</h2>
-            <p>Plan smarter, harvest better. Calculate yield estimates, production costs, water requirements, and profit projections for 30+ crops based on verified South African agricultural data.</p>
-            <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem;">
-                <a href="/calculator"><button class="cta-button">Calculate Now</button></a>
+        <div class="hero-visual">
+            <div class="hero-image-wrapper reveal">
+                <img src="resources/static/images/plantGuides.jpg" alt="Growing Guide" class="hero-img">
+                <div class="hero-image-overlay"></div>
+                <div class="floating-tag tag-1">
+                    <i class="fas fa-leaf"></i> 30+ Crops Covered
+                </div>
+                <div class="floating-tag tag-2">
+                    <i class="fas fa-chart-line"></i> Real-time SAFEX Prices
+                </div>
+                <div class="floating-tag tag-3">
+                    <i class="fas fa-flask"></i> Soil &amp; Water Analysis
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Crop Search Section -->
-        <section class="cta-section">
-            <h2>🌱 Browse Crops</h2>
-            <p>Search 30+ crops and access complete growing guides including soil requirements, water needs, fertilizers, disease management, pest control, and garden planning calculators.</p>
-            <a href="/crops"><button>Browse All Crops</button></a>
-        </section>
+    <!-- Why GrowTech Section -->
+    <section class="why-section" id="why">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="eyebrow">Why GrowTech?</span>
+                <h2>Everything you need to grow smarter</h2>
+                <p>From fundamentals to forecasts — one platform built specifically for South African growers.</p>
+            </div>
 
-        <!-- Final CTA -->
-        <section class="section">
-            <h2>Everything You Need to Grow Better</h2>
-            <p>From learning to planning to real-world decisions, GrowTech Collective brings together the knowledge and tools you need to build a healthier garden or a more efficient farm.</p>
-            <a href="/about"><button>Join GrowTech</button></a>
-        </section>
-    </main>
-    
-    <!-- FOOTER -->
+            <!-- Features Grid -->
+            <div class="features-grid">
+
+                <div class="feature-card reveal" id="feature-learn">
+                    <div class="card-glow"></div>
+                    <div class="card-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Learn the Fundamentals</h3>
+                        <p>Master essential growing skills with practical lessons on soil preparation, watering techniques, seasonal planning, and sustainable farming practices.</p>
+                        <a href="/learninghub" class="card-link">
+                            Explore Hub <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <img src="resources/static/images/learningHub.jpg" alt="Learning Hub" class="card-image">
+                </div>
+
+                <div class="feature-card reveal" id="feature-crops">
+                    <div class="card-glow"></div>
+                    <div class="card-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Browse 30+ Crops</h3>
+                        <p>Explore complete growing guides for fruits, vegetables, and field crops — soil, water, sunlight, climate, and best SA provinces for each plant.</p>
+                        <a href="/crops" class="card-link">
+                            View All Crops <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <img src="resources/static/images/plantGuides.jpg" alt="Browse Crops" class="card-image">
+                </div>
+
+                <div class="feature-card reveal" id="feature-calc">
+                    <div class="card-glow"></div>
+                    <div class="card-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Calculate Farm Profits</h3>
+                        <p>Estimate yield, revenue, production costs, and profit potential using real-time SAFEX market prices and verified GrainSA agricultural data.</p>
+                        <a href="/calculator" class="card-link">
+                            Calculate Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <img src="resources/static/images/calculations.jpg" alt="Calculator" class="card-image">
+                </div>
+
+                <div class="feature-card reveal" id="feature-pest">
+                    <div class="card-glow"></div>
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Manage Pests &amp; Diseases</h3>
+                        <p>Access comprehensive pest control and disease management guides with organic solutions, treatment costs, and prevention strategies for SA conditions.</p>
+                        <a href="/crops" class="card-link">
+                            View Guides <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <img src="resources/static/images/herbs.jpg" alt="Pest Management" class="card-image">
+                </div>
+
+                <div class="feature-card reveal" id="feature-fert">
+                    <div class="card-glow"></div>
+                    <div class="card-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Smart Fertilizer Picks</h3>
+                        <p>Get budget-friendly fertilizer options for each crop — from free homemade compost to commercial blends, with NPK ratios and cost comparisons.</p>
+                        <a href="/crops" class="card-link">
+                            See Options <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <img src="resources/static/images/first_garden.jpg" alt="Fertilizer" class="card-image">
+                </div>
+
+                <div class="feature-card reveal" id="feature-plan">
+                    <div class="card-glow"></div>
+                    <div class="card-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <div class="card-content">
+                        <h3>Plan Your Garden Layout</h3>
+                        <p>Calculate optimal spacing, water needs, setup costs, expected yields, and ROI for your specific garden or farm — interactively.</p>
+                        <a href="/calculator" class="card-link">
+                            Plan Now <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <img src="resources/static/images/large_garden.jpg" alt="Garden Planner" class="card-image">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator CTA Banner -->
+    <section class="cta-banner reveal" id="cta-calculator">
+        <div class="cta-banner-bg"></div>
+        <div class="container cta-banner-inner">
+            <div class="cta-banner-text">
+                <span class="eyebrow light">Farmer's Calculator</span>
+                <h2>Know your numbers before you plant a single seed</h2>
+                <p>Calculate yield estimates, production costs, water requirements, and profit projections for 30+ crops — powered by verified SA agricultural data and live SAFEX prices.</p>
+            </div>
+            <div class="cta-banner-action">
+                <a href="/calculator" class="btn-primary large" id="calc-cta-btn">
+                    <i class="fas fa-calculator"></i>
+                    <span>Calculate Now</span>
+                </a>
+                <div class="cta-feature-list">
+                    <div class="cta-feat"><i class="fas fa-check-circle"></i> Real-time market prices</div>
+                    <div class="cta-feat"><i class="fas fa-check-circle"></i> GrainSA verified data</div>
+                    <div class="cta-feat"><i class="fas fa-check-circle"></i> 30+ crop profiles</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Browse Crops Strip -->
+    <section class="crops-strip" id="crops-preview">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="eyebrow">Browse Crops</span>
+                <h2>Your complete growing library</h2>
+                <p>Search 30+ crops and access complete guides — soil, water, fertilizers, disease control, pest management, and planning tools, all in one place.</p>
+            </div>
+            <div class="crops-showcase reveal">
+                <div class="crop-pill"><i class="fas fa-apple-alt"></i> Apples</div>
+                <div class="crop-pill"><i class="fas fa-carrot"></i> Carrots</div>
+                <div class="crop-pill active"><i class="fas fa-seedling"></i> Maize</div>
+                <div class="crop-pill"><i class="fas fa-leaf"></i> Spinach</div>
+                <div class="crop-pill"><i class="fas fa-pepper-hot"></i> Tomatoes</div>
+                <div class="crop-pill"><i class="fas fa-spa"></i> Basil</div>
+                <div class="crop-pill"><i class="fas fa-pepper-hot"></i> Peppers</div>
+                <div class="crop-pill"><i class="fas fa-apple-alt"></i> Citrus</div>
+                <div class="crop-pill"><i class="fas fa-leaf"></i> Cabbage</div>
+                <div class="crop-pill"><i class="fas fa-seedling"></i> Wheat</div>
+                <div class="crop-pill"><i class="fas fa-spa"></i> Mint</div>
+                <div class="crop-pill dim">+ 19 more</div>
+            </div>
+            <div class="reveal" style="text-align: center; margin-top: 3rem;">
+                <a href="/crops" class="btn-primary" id="crops-browse-btn">
+                    <span>Browse All Crops</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta reveal" id="final-cta">
+        <div class="container">
+            <div class="final-cta-card">
+                <div class="final-cta-glow"></div>
+                <span class="eyebrow">Ready to grow?</span>
+                <h2>Everything you need to grow better — all in one place</h2>
+                <p>From learning to planning to real-world decisions, GrowTech Collective brings together the knowledge and tools you need to build a healthier garden or a more efficient farm.</p>
+                <div class="final-cta-buttons">
+                    <a href="/about" class="btn-primary large" id="join-btn">Join GrowTech</a>
+                    <a href="/learninghub" class="btn-ghost large" id="hub-btn">Explore Learning Hub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="site-footer">
-        <div class="footer-container">
-            <!-- About / Mission -->
-            <div class="footer-section about-footer">
-                <h3>GrowTech Collective</h3>
-                <p>Empowering communities with sustainable food gardening and innovative technology. Join us in reducing food insecurity and creating opportunities for growth.</p>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="resources/static/images/finalogo.png" alt="GrowTech Logo" class="footer-logo">
+                <span class="footer-brand-name">GrowTech Collective</span>
+                <p class="footer-tagline">Empowering communities with sustainable food gardening and innovative technology. Reducing food insecurity — one harvest at a time.</p>
             </div>
 
-            <!-- Quick Links -->
-            <div class="footer-section links-footer">
-                <h3>Quick Links</h3>
+            <div class="footer-links-group">
+                <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="/about">Home</a></li>
-                    <li><a href="/learningHub">Learning Hub</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/learninghub">Learning Hub</a></li>
                     <li><a href="/crops">Browse Crops</a></li>
                     <li><a href="/calculator">Calculator</a></li>
                     <li><a href="/about">About Us</a></li>
                 </ul>
             </div>
 
-            <!-- Contact / Social Media -->
-            <div class="footer-section contact-footer">
-                <h3>Connect With Us</h3>
-                <div class="footer-social-media">
-                    <a href="https://www.instagram.com/brysonn.iv" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.tiktok.com/@brysonn.iv" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                    <a href="mailto:brysonmabilo@icloud.com" title="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="tel:+27694046138" title="Phone"><i class="fas fa-phone"></i></a>
+            <div class="footer-connect">
+                <h4>Connect With Us</h4>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/brysonn.iv" target="_blank" title="Instagram" id="social-instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.tiktok.com/@brysonn.iv" target="_blank" title="TikTok" id="social-tiktok"><i class="fab fa-tiktok"></i></a>
+                    <a href="mailto:brysonmabilo@icloud.com" title="Email" id="social-email"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+27694046138" title="Phone" id="social-phone"><i class="fas fa-phone"></i></a>
                 </div>
             </div>
         </div>
-
-        <!-- Copyright -->
         <div class="footer-bottom" id="copy">
-            <p>&copy; 2025 GrowTech Collective. All rights reserved.</p>
+            <p>&copy; 2025 GrowTech Collective. All rights reserved. Built with 🌱 for South African growers.</p>
         </div>
     </footer>
+
+    <script>
+    // ─── Animated Background Canvas ───────────────────────────────
+    const canvas = document.getElementById('bg-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let W, H;
+
+    function resize() {
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    class Particle {
+        constructor() { this.reset(); }
+        reset() {
+            this.x = Math.random() * W;
+            this.y = Math.random() * H;
+            this.r = Math.random() * 1.5 + 0.3;
+            this.vx = (Math.random() - 0.5) * 0.3;
+            this.vy = (Math.random() - 0.5) * 0.3;
+            this.alpha = Math.random() * 0.5 + 0.1;
+        }
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            if (this.x < 0 || this.x > W || this.y < 0 || this.y > H) this.reset();
+        }
+        draw() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(74, 222, 128, ${this.alpha})`;
+            ctx.fill();
+        }
+    }
+
+    for (let i = 0; i < 80; i++) particles.push(new Particle());
+
+    function drawConnections() {
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < 120) {
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.strokeStyle = `rgba(74, 222, 128, ${0.08 * (1 - dist / 120)})`;
+                    ctx.lineWidth = 0.5;
+                    ctx.stroke();
+                }
+            }
+        }
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => { p.update(); p.draw(); });
+        drawConnections();
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    // ─── Navbar Scroll Effect ───────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+
+    // ─── Hamburger Menu ─────────────────────────────────────────────
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileMenu.classList.toggle('open');
+    });
+    mobileMenu.querySelectorAll('.mobile-link').forEach(l => {
+        l.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileMenu.classList.remove('open');
+        });
+    });
+
+    // ─── Scroll Reveal ──────────────────────────────────────────────
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
+
+    // ─── Animated Counters ──────────────────────────────────────────
+    const counters = document.querySelectorAll('.stat-number');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const el = entry.target;
+                const target = +el.getAttribute('data-target');
+                const duration = 1500;
+                const step = target / (duration / 16);
+                let current = 0;
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    el.textContent = Math.floor(current);
+                }, 16);
+                counterObserver.unobserve(el);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
+    </script>
 </body>
 </html>
